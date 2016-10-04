@@ -5,9 +5,11 @@
  */
 package starwars;
 
+import byui.cit260.starWars.model.Player;
+
 /**
  *
- * @author ESD
+ * @author Bryce Blauser
  */
 public class StarWars {
 
@@ -15,7 +17,16 @@ public class StarWars {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Player currentPlayer = new Player();
+        
+        
+        currentPlayer.setName("Test McTesterson");
+        currentPlayer.setCoordinates("A,1");
+        
+        String playerInfo = currentPlayer.toString();
+        
+        System.out.println(playerInfo);
+        
     }
     
 }
