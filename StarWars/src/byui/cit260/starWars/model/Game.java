@@ -17,6 +17,26 @@ public class Game implements Serializable{
     private Double totalTime;
     private Boolean isPlaying;
     private Boolean gameOver;
+    
+    // Move to Game Modifier
+    private Double gameModAmplifier;
+    private Double gameModReplenishBoost;
+
+    public Double getGameModReplenishBoost() {
+        return gameModReplenishBoost;
+    }
+
+    public void setGameModReplenishBoost(Double gameModReplenishBoost) {
+        this.gameModReplenishBoost = gameModReplenishBoost;
+    }
+    
+    public Double getGameModAmplifier() {
+        return gameModAmplifier;
+    }
+
+    public void setGameModAmplifier(Double gameModAmplifier) {
+        this.gameModAmplifier = gameModAmplifier;
+    }
 
     public Game() {
     }

@@ -20,6 +20,7 @@ import byui.cit260.starWars.model.RebelTransportShip;
 import byui.cit260.starWars.model.RepairShop;
 import byui.cit260.starWars.model.Scene;
 import byui.cit260.starWars.model.SupplyShip;
+import byui.cit260.starWars.model.Target;
 
 /**
  *
@@ -203,6 +204,17 @@ public class StarWars {
         String theRebelTransportShip = rebelTransportShip.toString();
 
         System.out.println(theRebelTransportShip);
+        
+        // Target
+        Target newTarget = new Target();
+        newTarget.setTargetHealth(100);
+        newTarget.setTargetShield(100);
+        newTarget.setTargetName("Test Target");
+        newTarget.setTargetType("Rebel Fighter");
+        
+        String theNewTarget = newTarget.toString();
+        
+        System.out.println(theNewTarget);
         
     }
 }
