@@ -20,13 +20,13 @@ public class Game implements Serializable{
     
     // Move to Game Modifier
     private Double gameModAmplifier;
-    private Double gameModReplenishBoost;
+    private boolean gameModReplenishBoost;
 
-    public Double getGameModReplenishBoost() {
+    public boolean getGameModReplenishBoost() {
         return gameModReplenishBoost;
     }
 
-    public void setGameModReplenishBoost(Double gameModReplenishBoost) {
+    public void setGameModReplenishBoost(boolean gameModReplenishBoost) {
         this.gameModReplenishBoost = gameModReplenishBoost;
     }
     

@@ -6,11 +6,13 @@
 package starwars;
 
 
+import byui.cit260.starWars.control.ItemControl;
 import byui.cit260.starWars.model.DeathStar;
 import byui.cit260.starWars.model.EnemyFighters;
 import byui.cit260.starWars.model.FriendlyFighters;
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
+import byui.cit260.starWars.model.Item.itemType;
 import byui.cit260.starWars.model.Location;
 import byui.cit260.starWars.model.Map;
 import byui.cit260.starWars.model.Menu;
@@ -31,6 +33,7 @@ public class StarWars {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         Player currentPlayer = new Player();
         
@@ -73,9 +76,8 @@ public class StarWars {
             
          Item shipItems = new Item();
          
-         
-            shipItems.setType("laser");
-            shipItems.setQuantity("l0");
+            shipItems.setType(itemType.Missile);
+            shipItems.setQuantity(10);
             
             String weapons = shipItems.toString();
             
@@ -215,6 +217,32 @@ public class StarWars {
         String theNewTarget = newTarget.toString();
         
         System.out.println(theNewTarget);
+        
+        
+        // Testing replenish (Multiple Items)
+        Item repItems1 = new Item();
+         
+            repItems1.setType(itemType.Missile);
+            repItems1.setQuantity(1);
+            
+            String repItem1 = repItems1.toString();
+            
+            System.out.println(repItem1);
+            ItemControl instance1 = new ItemControl();
+            String result1 = instance1.replenishItem(repItems1, 60, 20000, true);
+            System.out.println(result1);
+        
+        Item repItems = new Item();
+         
+            repItems.setType(itemType.Flare);
+            repItems.setQuantity(0);
+            
+            String repItem = repItems.toString();
+            
+            System.out.println(repItem);
+            ItemControl instance = new ItemControl();
+            String result = instance.replenishItem(repItems, 100, 200, true);
+            System.out.println(result);
         
     }
 }

@@ -14,32 +14,58 @@ import java.util.Objects;
  */
 public class Item implements Serializable {
     
-    private String type;
-    private String quantity;
+    public enum itemType {
+        Missile, 
+        Torpedo, 
+        Flare
+    }
+    
+    private itemType type;
+    private int quantity;
 
     public Item() {
     }
 
-    public String getType() {
+    public int maxQuantity(itemType type) {
+        
+        if (type == null) return 0;
+        
+        switch (type) {
+            case Missile:
+                return 50;
+            case Torpedo:
+                return 10;
+            case Flare:
+                return 100;
+            default:
+                return 0;
+        }
+    }
+    
+    public itemType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(itemType type) {
         this.type = type;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int quantity) {
+        this.quantity = (quantity > maxQuantity(this.type)) ? maxQuantity(this.type) : quantity;
     }
     
+    public void replenishQuantity(){
+        if (this.quantity >= maxQuantity(this.type)) {
+            this.quantity = maxQuantity(this.type);
+        } else {
+            this.quantity++;
+        }
+    }
     
-
- 
-
     @Override
     public int hashCode() {
         int hash = 5;
