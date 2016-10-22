@@ -56,8 +56,57 @@ public class TargetControl {
         return "Target damage done: Shield " + damageShield + " Health " + damageHealth + ", Remaining: Shield " + applyShield + " Health " + applyHealth;
     }
     
-    public String applyRepair(Target target, double amplifier, double amount)  {
-     return "";
-    }
-    
+    public String applyRepair(Target target, double amplifier, double amount) {
+     
+        double repairHealth;
+        double repairShield;
+        double applyRepairShield;
+        double applyRepairHealth;
+        
+        if (target == null) {
+            return "Error: Invalid Target";
+        }
+        if (amount <= 0 ) {
+            return "Error: Invalid Amount value";
+        }
+        if (amplifier < 1 || amplifier > 2) {
+            return "Error: Invalid Amplifier value";
+        }
+
+        
+        else if (target.getTargetHealth() > 100 && target.getTargetShield() < 100){
+            repairHealth = 100; 
+            repairShield = amount * 0.75 * amplifier;
+        }
+        else if (target.getTargetHealth() > 50) {
+            repairShield = amount * 0.75 * amplifier;
+            repairHealth = amount * amplifier;
+        }
+        else if (target.getTargetHealth() >= 1) {
+            repairShield = amount * 0.5 * amplifier;
+            repairHealth = amount * 0.75 * amplifier;
+        }
+        else {
+            
+            return "Target Destoryed";
+        }
+        applyRepairShield = repairShield + target.getTargetShield();
+        applyRepairHealth = repairHealth + target.getTargetHealth();
+        
+        target.setTargetShield(applyRepairShield);
+        target.setTargetHealth(applyRepairHealth);
+        
+        if (target.getTargetHealth() > 100) {
+            applyRepairHealth = 100;
+        }
+         if (target.getTargetShield() > 100) {
+            applyRepairShield = 100;
+         }
+        if (target.getTargetHealth() >= 100 && target.getTargetShield() >= 100) {
+            
+           return "Target at Full Health";
+        }
+            
+    return "Target Repair done: Shield " + repairShield + " Health " + repairHealth + ", Remaining: Shield " + applyRepairShield + " Health " + applyRepairHealth;
+     }    
 }
