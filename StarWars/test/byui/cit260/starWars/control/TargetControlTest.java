@@ -176,5 +176,153 @@ public class TargetControlTest {
         result = instance.applyDamage(target, amplifier, amount);
         assertEquals(expResult, result);
     }
-    
+
+    /**
+     * Test of applyRepair method, of class TargetControl.
+     */
+    @Test
+    public void testApplyRepair() {
+        System.out.println("\tTest case #Error 1");
+        
+        //input values for test case 1
+        Target target = null;
+        double amplifier = 0.0;
+        double amount = 0.0;
+        
+        TargetControl instance = new TargetControl();
+        
+        String expResult = "Error: Invalid Target";
+        String result = instance.applyDamage(target, amplifier, amount);
+        assertEquals(expResult, result);
+        
+         /********************************************
+         * Test case applyRepair #1
+         ********************************************/
+         
+       
+         
+         
+         System.out.println("\tTest case applyRepair #1");
+        
+        //input values for test case 1
+        target = new Target();
+        amplifier = 1.2;
+        amount = 30.0;
+        
+        target.setTargetShield(1);
+        target.setTargetHealth(1);
+        
+        expResult = "Target Repair done: Shield 18.0 Health 27.0, Remaining: Shield 19.0 Health 28.0";
+        result = instance.applyRepair(target, amplifier, amount);
+        assertEquals(expResult, result);
+        
+         /********************************************
+         * Test case applyRepair #2
+         ********************************************/
+        
+        System.out.println("\tTest case applyRepair #2");
+        
+        //input values for test case 2
+        target = new Target();
+        amplifier = 1.8;
+        amount = 30.0;
+        
+        target.setTargetShield(100);
+        target.setTargetHealth(100);
+        
+        expResult = "Target at Full Health";
+        result = instance.applyRepair(target, amplifier, amount);
+        assertEquals(expResult, result);
+        
+         /********************************************
+         * Test case applyRepair #3
+         ********************************************/
+        
+        System.out.println("\tTest case applyRepair #3");
+        
+        //input values for test case 3
+        target = new Target();
+        amplifier = 1.8;
+        amount = 10.0;
+        
+        target.setTargetShield(60);
+        target.setTargetHealth(100);
+        
+        expResult = "Target Repair done: Shield 13.5 Health 18.0, Remaining: Shield 73.5 Health 100.0";
+        result = instance.applyRepair(target, amplifier, amount);
+        assertEquals(expResult, result);
+        
+         /********************************************
+         * Test case applyRepair #4
+         ********************************************/
+        
+        System.out.println("\tTest case applyRepair #4");
+        
+        //input values for test case 4
+        target = new Target();
+        amplifier = -0.1;
+        amount = 50.0;
+        
+        target.setTargetShield(40);
+        target.setTargetHealth(70);
+        
+        expResult = "Error: Invalid Amplifier value";
+        result = instance.applyRepair(target, amplifier, amount);
+        assertEquals(expResult, result);
+        
+         /********************************************
+         * Test case applyRepair #5
+         ********************************************/
+        
+        System.out.println("\tTest case applyRepair #5");
+        
+        //input values for test case 5
+        target = new Target();
+        amplifier = 1;
+        amount = -1;
+        
+        target.setTargetShield(40);
+        target.setTargetHealth(70);
+        
+        expResult = "Error: Invalid Amount value";
+        result = instance.applyRepair(target, amplifier, amount);
+        assertEquals(expResult, result);
+        
+         /********************************************
+         * Test case applyRepair #6
+         ********************************************/
+        
+        System.out.println("\tTest case applyRepair #6");
+        
+        //input values for test case 6
+        target = new Target();
+        amplifier = 1;
+        amount = 50;
+        
+        target.setTargetShield(1);
+        target.setTargetHealth(1);
+        
+        expResult = "Target Repair done: Shield 25.0 Health 37.5, Remaining: Shield 26.0 Health 38.5";
+        result = instance.applyRepair(target, amplifier, amount);
+        assertEquals(expResult, result);
+        
+         /********************************************
+         * Test case applyRepair #7
+         ********************************************/
+        
+        System.out.println("\tTest case applyRepair #7");
+        
+        //input values for test case 7
+        target = new Target();
+        amplifier = 2;
+        amount = 50;
+        
+        target.setTargetShield(100);
+        target.setTargetHealth(100);
+        
+        expResult = "Target at Full Health";
+        result = instance.applyRepair(target, amplifier, amount);
+        assertEquals(expResult, result);
+    }
+   
 }
