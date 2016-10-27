@@ -5,7 +5,7 @@
  */
 package byui.cit260.starWars.view;
 
-import byui.cit260.starWars.model.GameControl;
+import byui.cit260.starWars.control.GameControl;
 import byui.cit260.starWars.model.Player;
 import java.util.Scanner;
 

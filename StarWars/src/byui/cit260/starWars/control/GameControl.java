@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.starWars.model;
+package byui.cit260.starWars.control;
 
+import byui.cit260.starWars.model.Player;
 import starwars.StarWars;
 
 /**
@@ -25,6 +26,10 @@ public class GameControl {
         StarWars.setPlayer(player); // save the player
         
         return player;
+    }
+
+    public static void createNewGame(Player name) {
+       
     }
   
 }
