@@ -23,6 +23,7 @@ import byui.cit260.starWars.model.RepairShop;
 import byui.cit260.starWars.model.Scene;
 import byui.cit260.starWars.model.SupplyShip;
 import byui.cit260.starWars.model.Target;
+import byui.cit260.starWars.view.StartProgramView;
 
 /**
  *
@@ -34,19 +35,22 @@ public class StarWars {
      * @param args the command line arguments
      */
     @SuppressWarnings("empty-statement")
+    
+    private static Game currentGame = null;
+    private static Player player = null;
+    
     public static void main(String[] args) {
         Player currentPlayer = new Player();
         
-        
         Game game = new Game();
          
-         game.setGameOver(false);
-         game.setIsPlaying(true);
-         game.setTotalTime(500.2);
+        game.setGameOver(false);
+        game.setIsPlaying(true);
+        game.setTotalTime(500.2);
          
-         String theGame = game.toString();
+        String theGame = game.toString();
          
-         System.out.println(theGame);
+        System.out.println(theGame);
         
         currentPlayer.setName("Test McTesterson");
         currentPlayer.setCoordinates("A,1");
@@ -57,53 +61,57 @@ public class StarWars {
         
         Menu menulist = new Menu();
         
-            menulist.setHelp("help menu");
-            menulist.setSave("would you like to save game");
-            menulist.setQuit("Give UP?");
+        menulist.setHelp("help menu");
+        menulist.setSave("would you like to save game");
+        menulist.setQuit("Give UP?");
+
+        String menuInfo = menulist.toString();
         
-            String menuInfo = menulist.toString();
+        System.out.println(menuInfo);
         
-            System.out.println(menuInfo);
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
         
-         Map newMap = new Map();
+        /*
+        Map newMap = new Map();
          
-            newMap.setRowCount("A");
-            newMap.setColumCount("1");
+        newMap.setRowCount("A");
+        newMap.setColumCount("1");
+
+        String gameMap = newMap.toString();
+
+        System.out.println(gameMap);
             
-            String gameMap = newMap.toString();
-            
-            System.out.println(gameMap);
-            
-         Item shipItems = new Item();
+        Item shipItems = new Item();
          
-            shipItems.setType(itemType.Missile);
-            shipItems.setQuantity(10);
+        shipItems.setType(itemType.Missile);
+        shipItems.setQuantity(10);
+
+        String weapons = shipItems.toString();
+
+        System.out.println(weapons);
             
-            String weapons = shipItems.toString();
-            
-            System.out.println(weapons);
-            
-         Location shipLocation = new Location();
+        Location shipLocation = new Location();
          
-            shipLocation.setRow("y");
-            shipLocation.setColumn("3");
-            shipLocation.setStatus("DogFight");
-            
-            String ship = shipLocation.toString();
-            
-            System.out.println(ship);
-         
+        shipLocation.setRow("y");
+        shipLocation.setColumn("3");
+        shipLocation.setStatus("DogFight");
+
+        String ship = shipLocation.toString();
+
+        System.out.println(ship);
+
         
         // Scene
-         Scene scene = new Scene();
-         
-         scene.setDescription("Scene by Itself...");
-         scene.setDisplaySymbol("X");
-         scene.setTravelTime(20.0);
-         
-         String theScene = scene.toString();
-         
-         System.out.println(theScene);
+        Scene scene = new Scene();
+
+        scene.setDescription("Scene by Itself...");
+        scene.setDisplaySymbol("X");
+        scene.setTravelTime(20.0);
+
+        String theScene = scene.toString();
+
+        System.out.println(theScene);
         
         // Friendly Fighters
         FriendlyFighters friendlyFighters = new FriendlyFighters();
@@ -220,29 +228,41 @@ public class StarWars {
         
         
         // Testing replenish (Multiple Items)
+        // Replenish Missiles
         Item repItems1 = new Item();
-         
-            repItems1.setType(itemType.Missile);
-            repItems1.setQuantity(1);
-            
-            String repItem1 = repItems1.toString();
-            
-            System.out.println(repItem1);
-            ItemControl instance1 = new ItemControl();
-            String result1 = instance1.replenishItem(repItems1, 60, 20000, true);
-            System.out.println(result1);
+       
+        repItems1.setType(itemType.Missile);
+        repItems1.setQuantity(1);
+
+        ItemControl instance1 = new ItemControl();
+        String result1 = instance1.replenishItem(repItems1, 5, 1000, true);
+        System.out.println(result1);
         
+        // Replenish Flares
         Item repItems = new Item();
          
-            repItems.setType(itemType.Flare);
-            repItems.setQuantity(0);
-            
-            String repItem = repItems.toString();
-            
-            System.out.println(repItem);
-            ItemControl instance = new ItemControl();
-            String result = instance.replenishItem(repItems, 100, 200, true);
-            System.out.println(result);
-        
+        repItems.setType(itemType.Flare);
+        repItems.setQuantity(0);
+
+        ItemControl instance = new ItemControl();
+        String result = instance.replenishItem(repItems, 100, 200, true);
+        System.out.println(result);
+        */
+    }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        StarWars.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        StarWars.player = player;
     }
 }

@@ -44,6 +44,10 @@ public class ItemControl {
         
         long ticksPerReplenish = (duration / quantity);
         
+        if (ticksPerReplenish < 1) {
+            return "Error: Replenish duration is not sufficient to replenish quantity";
+        }
+        
         // Schedule item to replenish
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         
@@ -52,7 +56,8 @@ public class ItemControl {
             @Override
             public void run() {
                 item.replenishQuantity();
-                System.out.println("Replenished " + item.getType() + ", now at " + item.getQuantity() + " of " + item.maxQuantity(item.getType()));
+                // Display each tick...
+                //System.out.println("Replenished " + item.getType() + ", now at " + item.getQuantity() + " of " + item.maxQuantity(item.getType()));
                 qtyReplenished++;
                 if (item.getQuantity() >= item.maxQuantity(item.getType()) || qtyReplenished >= quantity) {
                     System.out.println(item.getType() + " Replenished (" + quantity + ")");
