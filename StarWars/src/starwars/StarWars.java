@@ -228,7 +228,8 @@ public class StarWars {
         
         
         // Testing replenish (Multiple Items)
-        // Replenish Missiles
+        
+         // Replenish Missiles
         Item repItems1 = new Item();
        
         repItems1.setType(itemType.Missile);
@@ -245,7 +246,7 @@ public class StarWars {
         repItems.setQuantity(0);
 
         ItemControl instance = new ItemControl();
-        String result = instance.replenishItem(repItems, 100, 200, true);
+        String result = instance.replenishItem(repItems, 100, 2000, true);
         System.out.println(result);
         */
     }

@@ -5,33 +5,33 @@
  */
 package byui.cit260.starWars.view;
 
-import byui.cit260.starWars.control.GameControl;
 import java.util.Scanner;
-import starwars.StarWars;
 
 /**
  *
  * @author Bryce Blauser
  */
-public class MainMenuView {
-
-    private String menu;
+class GameHelpView {
     
-    public MainMenuView() {
+    private String menu;
+    MainMenuView mainMenu = new MainMenuView();
+    
+    public GameHelpView() {
         this.menu = "\n"
-                + "\n--------------------------------"
-                + "\n| Main Menu                    |"
-                + "\n--------------------------------"
-                + "\nG - Start New Game"
-                + "\nL - Load Saved Game"
-                + "\nH - Help Menu"
-                + "\nS - Save game"
-                + "\nQ - Quit"
-                + "\n--------------------------------" ;
+                + "\n-------------------------------------------"
+                + "\n| Help Menu                               |"
+                + "\n-------------------------------------------"
+                + "\nG - What is the goal of the game?"
+                + "\nA - How to attack"
+                + "\nI - Aiming"
+                + "\nM - Viewing the map"
+                + "\nE - Avoiding fire using evasive maneuvers"
+                + "\nX - Exit"
+                + "\n-------------------------------------------" ;
         
     }
     
-    public void displayMainMenuView() {
+    public void displayHelpMenuView() {
         boolean done = false; // set flag for not done
         
         System.out.println(this.menu);
@@ -39,8 +39,11 @@ public class MainMenuView {
         do {
             // prompt for and get menu input
             String menuOption = this.getMenuOption();
-            if (menuOption.equals("Q") || menuOption.equals("q") ) // user wants to exit
+            // user wants to exit
+            if (menuOption.toUpperCase().equals("X")) {
+                mainMenu.displayMainMenuView();
                 return;
+            }
             
             // do the requested action and display the next view
             done = this.doAction(menuOption);
@@ -72,16 +75,19 @@ public class MainMenuView {
         
         switch (choice) {
             case "G": // Create and start game
-                this.startNewGame();
+                this.showGoalText();
                 break;
-            case "L": 
-                this.startExistingGame();
+            case "A": 
+                this.showAttackText();
                 break;
-            case "H":
-                this.displayHelpMenu();
+            case "I":
+                this.showAimingText();
                 break;
-            case "S":
-                this.saveGame();
+            case "M":
+                this.showMapText();
+                break;
+            case "E":
+                this.showManeuverText();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -90,26 +96,28 @@ public class MainMenuView {
         return false;
     }
 
-    private void startNewGame() {
-        GameControl.createNewGame(StarWars.getPlayer());
-        
-        // display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+    private void showGoalText() {
+        System.out.println("\n The goal of this game is to destroy the Death Star");
     }
 
-    private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
+    private void showAttackText() {
+        System.out.println("\n You attack by doing xyz and pressing x button");
     }
 
-    private void displayHelpMenu() {
-        // display the help menu
-        GameHelpView helpMenu = new GameHelpView();
-        helpMenu.displayHelpMenuView();
+    private void showAimingText() {
+        System.out.println("\n You aim by pressing up and down arrows until the target"
+                         + "\n is in the crosshairs");
     }
 
-    private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+    private void showMapText() {
+        System.out.println("\n The map shows the following locations:");
     }
+
+    private void showManeuverText() {
+        System.out.println("\n You maneuver you fighter by doing xyz and launching"
+                         + "\nflares by pressing xyz button");
+    }
+
     
+   
 }
