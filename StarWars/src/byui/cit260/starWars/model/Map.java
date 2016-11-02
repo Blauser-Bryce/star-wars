@@ -17,10 +17,29 @@ public class Map implements Serializable{
     private String rowCount;
     private String columCount;
 
+    private String mapLayout;
+    
     public Map() {
+        mapLayout = "  ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                   +"\n ----------------------------"
+                   +"\n0|                          |0"
+                   +"\n1|                          |1"
+                   +"\n2|                          |2"
+                   +"\n3|               S          |3"
+                   +"\n4|                          |4"
+                   +"\n5|                          |5"
+                   +"\n6|                          |6"
+                   +"\n7|                          |7"
+                   +"\n8|                          |8"
+                   +"\n9|                          |9"
+                   +"\n ----------------------------"
+                   +"\n  ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        // Supply Ship P3
     }
-    
-    
+
+    public String getMapLayout() {
+        return mapLayout;
+    }    
 
     public String getRowCount() {
         return rowCount;

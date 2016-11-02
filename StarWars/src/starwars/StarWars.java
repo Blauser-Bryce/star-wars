@@ -40,6 +40,10 @@ public class StarWars {
     private static Player player = null;
     
     public static void main(String[] args) {
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
+        
+        /*
         Player currentPlayer = new Player();
         
         Game game = new Game();
@@ -68,9 +72,9 @@ public class StarWars {
         String menuInfo = menulist.toString();
         
         System.out.println(menuInfo);
+        */
         
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
+
         
         /*
         Map newMap = new Map();

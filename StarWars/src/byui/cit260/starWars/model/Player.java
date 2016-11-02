@@ -5,6 +5,9 @@
  */
 package byui.cit260.starWars.model;
 
+import static byui.cit260.starWars.model.Item.itemType.Flare;
+import static byui.cit260.starWars.model.Item.itemType.Missile;
+import static byui.cit260.starWars.model.Item.itemType.Torpedo;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -18,7 +21,48 @@ public class Player implements Serializable {
     private String name;
     private String coordinates;
     
+    private Item missiles = new Item();
+    private Item torpedos = new Item();
+    private Item flares = new Item();
+    
     public Player() {
+        // Load up inventory
+        
+        // Set to 0 for starting
+        missiles.setType(Missile);
+        //missiles.setQuantity(missiles.maxQuantity(Missile));
+        missiles.setQuantity(0);
+        torpedos.setType(Torpedo);
+        //torpedos.setQuantity(torpedos.maxQuantity(Torpedo));
+        torpedos.setQuantity(0);
+        flares.setType(Flare);
+        //flares.setQuantity(flares.maxQuantity(Flare));
+        flares.setQuantity(0);
+        
+    }
+
+    public Item getMissiles() {
+        return missiles;
+    }
+
+    public void setMissiles(Item missiles) {
+        this.missiles = missiles;
+    }
+
+    public Item getTorpedos() {
+        return torpedos;
+    }
+
+    public void setTorpedos(Item torpedos) {
+        this.torpedos = torpedos;
+    }
+
+    public Item getFlares() {
+        return flares;
+    }
+
+    public void setFlares(Item flares) {
+        this.flares = flares;
     }
 
     public String getName() {
