@@ -111,10 +111,14 @@ public class GameMenuView {
     
     private void attackTurboLaser() {
        // TargetControl.attackTurboLaser;
+       AttackTurboLaser attackTurboLaser = new AttackTurboLaser();
+       attackTurboLaser.displayAttackTurboLaser();
     }
     
     private void attackTieFighter() {
         //TargetControl.attackTieFighter;
+        AttackTieFighter attackTieFighter = new AttackTieFighter();
+        attackTieFighter.displayAttackTieFighter();
     }
     
     private void attackDeflectorShield() {
