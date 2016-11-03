@@ -5,6 +5,8 @@
  */
 package byui.cit260.starWars.view;
 
+import byui.cit260.starWars.control.TargetControl;
+import byui.cit260.starWars.model.Target;
 import java.util.Scanner;
 
 /**
@@ -74,7 +76,7 @@ public class AttackDeflectorShield {
                 this.evasiveManeuver();
                 break;
             default:
-                System.err.println("\n*** Invalid selection. *** Try again.");
+                System.out.println("\n*** Invalid selection. *** Try again.");
                 break;
         }
         
