@@ -34,7 +34,8 @@ public class AttackDeflectorShield {
             // prompt for and get menu input
             String menuOption = this.getMenuOption();
             // user wanta to exit
-            if (menuOption.toLowerCase().equals("X")) {
+            if (menuOption.toUpperCase().equals("X")) {
+                mainMenu.displayMainMenuView();
                 return;
             }
             
@@ -62,10 +63,10 @@ public class AttackDeflectorShield {
         return value;
     }
 
-    private boolean doAction(String menuOption) {
-        menuOption = menuOption.toUpperCase(); // converto to upper
+    private boolean doAction(String choice) {
+        choice = choice.toUpperCase(); // converto to upper
         
-        switch (menuOption) {
+        switch (choice) {
             case "T": // Fire Torpedo
                 this.damageDeflectorShield();
                 break;
