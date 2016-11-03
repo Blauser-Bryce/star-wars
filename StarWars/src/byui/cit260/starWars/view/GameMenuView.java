@@ -123,6 +123,8 @@ public class GameMenuView {
     
     private void attackDeflectorShield() {
         //TargetControl.attackDefletorShield;
+        AttackDeflectorShield attackDeflectorShield = new AttackDeflectorShield();
+        attackDeflectorShield.displayAttackDeflectorShield();
     }
     
     private void evasiveManeuver() {
