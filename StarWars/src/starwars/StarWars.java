@@ -41,7 +41,7 @@ public class StarWars {
     
     public static void main(String[] args) {
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
+        startProgramView.display();
         
         /*
         Player currentPlayer = new Player();

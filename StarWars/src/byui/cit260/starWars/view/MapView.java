@@ -12,83 +12,36 @@ import java.util.Scanner;
  *
  * @author Bryce Blauser
  */
-public class MapView {
+public class MapView extends View {
     
     private String menu;
     private String wayPointPrompt;
     
     GameMenuView gameMenu = new GameMenuView();
+    Map map = new Map();
+    String mapLayout = map.getMapLayout();
+    ///  *** Add Map Layout *** ///
     
     public MapView() {
-        Map map = new Map();
-        
-        this.menu = map.getMapLayout()
-                +"\n"
+        super( "\n"
                 + "\n-------------------------------------------"
                 + "\n| Map Menu                               |"
                 + "\n-------------------------------------------"
                 + "\nW - Move to Waypoint"
                 + "\nX - Exit"
                 + "\n  Supply Ship (3P)"
-                + "\n-------------------------------------------" ;
-        
-        this.wayPointPrompt = 
-                    "-------------------------------------------"
-                + "\n| Enter Waypoint                            |"
-                + "\n-------------------------------------------"
-                + "\n  Supply Ship (3P)"
-                + "\n-------------------------------------------\n" ;
-        
-    }
-    
-    public void displayMapView() {
-        boolean done = false; // set flag for not done
-        
-        System.out.println(this.menu);
-        
-        do {
-            // prompt for and get menu input
-            String menuOption = this.getMenuOption();
-            // user wants to exit
-            if (menuOption.toUpperCase().equals("X")) {
-                gameMenu.displayGameMenu();
-                return;
-            }
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
+                + "\n-------------------------------------------");
+
     }
 
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
+    @Override
+    public boolean doAction(String value) {
         
-        while (!valid) { // loop while invalid value is entered
-                       
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        return value;
-    }
-
-    private boolean doAction(String choice) {
+        value = value.toUpperCase(); // converto to upper
         
-        choice = choice.toUpperCase(); // converto to upper
-        
-        switch (choice) {
+        switch (value) {
             case "W": // Prompt for Waypoint
                 this.moveToWaypoint();
-                break;
-            case "3P":  // Move to Supply Ship
-                this.moveToSupplyShip();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -98,26 +51,9 @@ public class MapView {
     }
 
     private void moveToWaypoint() {
-        boolean done = false; // set flag for not done
-        
-        System.out.println(this.wayPointPrompt);
-        
-        do {
-            // prompt for and get menu input
-            String menuOption = this.getMenuOption();
-            // user wants to exit
-            if (menuOption.toUpperCase().equals("X")) {
-                this.displayMapView();
-                return;
-            }
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
+        // display the help menu
+        EnterWaypointView waypointMenu = new EnterWaypointView();
+        waypointMenu.display();
     }
 
-    private void moveToSupplyShip() {
-        SupplyShipView supplyView = new SupplyShipView();
-        supplyView.displaySupplyView();
-    }
 }

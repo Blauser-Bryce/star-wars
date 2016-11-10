@@ -11,13 +11,13 @@ import java.util.Scanner;
  *
  * @author Edvaldo Melo
  */
-public class GameMenuView {
+public class GameMenuView extends View {
 
     private String menu;
     MainMenuView mainMenu = new MainMenuView();
     
     public GameMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n--------------------------------"
                 + "\n| Game Menu                    |"
                 + "\n--------------------------------"
@@ -29,52 +29,15 @@ public class GameMenuView {
                 + "\nT - Fire Torpedo"
                 + "\nA - View Ammunition"
                 + "\nX - Exit"
-                + "\n--------------------------------" ; 
-    }
-    
-    public void displayGameMenu() {
-        boolean done = false; // set flag for not done
-        
-        System.out.println(this.menu);
-        
-        do {
-            // prompt for and get menu input
-            String menuOption = this.getMenuOption();
-            // user wants to exit
-            if (menuOption.toUpperCase().equals("X")) {
-                mainMenu.displayMainMenuView();
-                return;
-            }
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
+                + "\n--------------------------------"); 
     }
 
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
+    @Override
+    public boolean doAction(String value) {
         
-        while (!valid) { // loop while invalid value is entered
-            
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        return value;
-    }
-
-    private boolean doAction(String choice) {
+        value = value.toUpperCase(); //convert to upper
         
-        choice = choice.toUpperCase(); //convert to upper
-        
-        switch (choice) {
+        switch (value) {
             case "M": // view map
                 this.viewMap();
                 break;
@@ -106,25 +69,25 @@ public class GameMenuView {
     private void viewMap() {
        // display the map view
        MapView mapView = new MapView();
-       mapView.displayMapView();
+       mapView.display();
     }
     
     private void attackTurboLaser() {
        // TargetControl.attackTurboLaser;
        AttackTurboLaser attackTurboLaser = new AttackTurboLaser();
-       attackTurboLaser.displayAttackTurboLaser();
+       attackTurboLaser.display();
     }
     
     private void attackTieFighter() {
         //TargetControl.attackTieFighter;
         AttackTieFighter attackTieFighter = new AttackTieFighter();
-        attackTieFighter.displayAttackTieFighter();
+        attackTieFighter.display();
     }
     
     private void attackDeflectorShield() {
         //TargetControl.attackDefletorShield;
         AttackDeflectorShield attackDeflectorShield = new AttackDeflectorShield();
-        attackDeflectorShield.displayAttackDeflectorShield();
+        attackDeflectorShield.display();
     }
     
     private void evasiveManeuver() {
@@ -138,6 +101,6 @@ public class GameMenuView {
     private void viewAmmuntion() {
         // Display the ammuntion
         AmmunitionView ammoView = new AmmunitionView();
-        ammoView.displayAmmunitionView();
+        ammoView.display();
     }
 }
