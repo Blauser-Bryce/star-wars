@@ -13,60 +13,26 @@ import starwars.StarWars;
  *
  * @author Bryce Blauser
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
     private String menu;
     
     public MainMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n--------------------------------"
                 + "\n| Main Menu                    |"
                 + "\n--------------------------------"
                 + "\nG - Start New Game"
                 + "\nL - Load Saved Game"
                 + "\nH - Help Menu"
-                + "\nS - Save game"
-                + "\nQ - Quit"
-                + "\n--------------------------------" ;
+                + "\nS - Save Game"
+                + "\nX - Exit Game"
+                + "\n--------------------------------");
         
-    }
-    
-    public void displayMainMenuView() {
-        boolean done = false; // set flag for not done
-        
-        System.out.println(this.menu);
-        
-        do {
-            // prompt for and get menu input
-            String menuOption = this.getMenuOption();
-            if (menuOption.equals("Q") || menuOption.equals("q") ) // user wants to exit
-                return;
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
     }
 
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while invalid value is entered
-                       
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        return value;
-    }
-
-    private boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); // converto to upper
         
@@ -95,7 +61,7 @@ public class MainMenuView {
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenu();
+        gameMenu.display();
     }
 
     private void startExistingGame() {
@@ -105,7 +71,7 @@ public class MainMenuView {
     private void displayHelpMenu() {
         // display the help menu
         GameHelpView helpMenu = new GameHelpView();
-        helpMenu.displayHelpMenuView();
+        helpMenu.display();
     }
 
     private void saveGame() {

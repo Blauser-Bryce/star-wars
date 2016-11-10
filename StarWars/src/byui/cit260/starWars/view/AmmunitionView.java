@@ -34,7 +34,7 @@ public class AmmunitionView {
         
     }
     
-    public void displayAmmunitionView() {
+    public void display() {
         boolean done = false; // set flag for not done
         
         System.out.println(this.ammunition);
@@ -52,7 +52,8 @@ public class AmmunitionView {
                 System.out.println("\nInvalid value: value cannot be blank");
                 continue;
             }
-            gameMenu.displayGameMenu();
+            
+            gameMenu.display();
             break; // end the loop
         }
 

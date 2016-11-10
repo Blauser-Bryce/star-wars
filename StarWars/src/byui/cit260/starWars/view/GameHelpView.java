@@ -11,13 +11,13 @@ import java.util.Scanner;
  *
  * @author Bryce Blauser
  */
-class GameHelpView {
+class GameHelpView extends View {
     
     private String menu;
     MainMenuView mainMenu = new MainMenuView();
     
     public GameHelpView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n-------------------------------------------"
                 + "\n| Help Menu                               |"
                 + "\n-------------------------------------------"
@@ -27,53 +27,16 @@ class GameHelpView {
                 + "\nM - Viewing the map"
                 + "\nE - Avoiding fire using evasive maneuvers"
                 + "\nX - Exit"
-                + "\n-------------------------------------------" ;
+                + "\n-------------------------------------------");
         
     }
     
-    public void displayHelpMenuView() {
-        boolean done = false; // set flag for not done
+    @Override
+    public boolean doAction(String value) {
         
-        System.out.println(this.menu);
+        value = value.toUpperCase(); // converto to upper
         
-        do {
-            // prompt for and get menu input
-            String menuOption = this.getMenuOption();
-            // user wants to exit
-            if (menuOption.toUpperCase().equals("X")) {
-                mainMenu.displayMainMenuView();
-                return;
-            }
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
-    }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while invalid value is entered
-                       
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        return value;
-    }
-
-    private boolean doAction(String choice) {
-        
-        choice = choice.toUpperCase(); // converto to upper
-        
-        switch (choice) {
+        switch (value) {
             case "G": // Create and start game
                 this.showGoalText();
                 break;

@@ -11,62 +11,25 @@ import java.util.Scanner;
  *
  * @author Edvaldo Melo
  */
-public class AttackDeflectorShield {
+public class AttackDeflectorShield extends View {
     MainMenuView mainMenu = new MainMenuView();
     private String menu;
     
     public AttackDeflectorShield() {
-        this.menu = "\n"
+        super("\n"
                 + "\n--------------------------------------------------"
                 + "\n        You Have Encountered a Deflector Shild    "
                 + "\nT       Fire Torpedo                              "
                 + "\nE       Evasive Maneuver                          "
                 + "\nX       Exit                                      "
-                + "\n--------------------------------------------------";          
+                + "\n--------------------------------------------------");          
     }
     
-    public void displayAttackDeflectorShield() {
-        boolean done = false; // set flag for not done
+    @Override
+    public boolean doAction(String value) {
+        value = value.toUpperCase(); // converto to upper
         
-        System.out.println(this.menu);
-        
-        do {
-            // prompt for and get menu input
-            String menuOption = this.getMenuOption();
-            // user wanta to exit
-            if (menuOption.toUpperCase().equals("X")) {
-                mainMenu.displayMainMenuView();
-                return;
-            }
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
-    }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while invalid value is entered
-            
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        return value;
-    }
-
-    private boolean doAction(String choice) {
-        choice = choice.toUpperCase(); // converto to upper
-        
-        switch (choice) {
+        switch (value) {
             case "T": // Fire Torpedo
                 this.damageDeflectorShield();
                 break;

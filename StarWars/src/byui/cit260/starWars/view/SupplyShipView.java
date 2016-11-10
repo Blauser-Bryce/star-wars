@@ -16,7 +16,7 @@ import starwars.StarWars;
  *
  * @author Bryce Blauser
  */
-public class SupplyShipView {
+public class SupplyShipView extends View {
 
     private String menu;
     private String wayPointPrompt;
@@ -27,7 +27,7 @@ public class SupplyShipView {
     MapView mapView = new MapView();
     
     public SupplyShipView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n--------------------------------"
                 + "\n| Supply Ship Options          |"
                 + "\n--------------------------------"
@@ -35,52 +35,15 @@ public class SupplyShipView {
                 + "\nT - Replenish Torpedoes"
                 + "\nF - Replenish Flares"
                 + "\nX - Exit"
-                + "\n--------------------------------" ; 
+                + "\n--------------------------------"); 
     }
     
-    void displaySupplyView() {
-        boolean done = false; // set flag for not done
+    @Override
+    public boolean doAction(String value) {
         
-        System.out.println(this.menu);
+        value = value.toUpperCase(); // converto to upper
         
-        do {
-            // prompt for and get menu input
-            String menuOption = this.getMenuOption();
-            // user wants to exit
-            if (menuOption.toUpperCase().equals("X")) {
-                mapView.displayMapView();
-                return;
-            }
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
-    }
-    
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while invalid value is entered
-                       
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        return value;
-    }
-
-    private boolean doAction(String choice) {
-        
-        choice = choice.toUpperCase(); // converto to upper
-        
-        switch (choice) {
+        switch (value) {
             case "M": // Replenish Missile
                 item = player.getMissiles();
                 this.getQuantity();
@@ -136,7 +99,7 @@ public class SupplyShipView {
         
         // user wants to exit
         if (repAmount.toUpperCase().equals("X")) {
-            mapView.displayMapView();
+            mapView.display();
         }
 
         int amount = Integer.parseInt(repAmount);
@@ -145,6 +108,6 @@ public class SupplyShipView {
         String result = repItem.replenishItem(this.item, amount, 10000, true);
         System.out.println(result);
         
-        this.displaySupplyView();
+        this.display();
     }
 }
