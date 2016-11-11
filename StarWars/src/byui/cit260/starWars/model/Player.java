@@ -25,6 +25,8 @@ public class Player implements Serializable {
     private Item torpedos = new Item();
     private Item flares = new Item();
     
+    private Target currentTarget = new Target();
+    
     public Player() {
         // Load up inventory
         
@@ -39,8 +41,21 @@ public class Player implements Serializable {
         //flares.setQuantity(flares.maxQuantity(Flare));
         flares.setQuantity(0);
         
+        currentTarget.setTargetHealth(100);
+        currentTarget.setTargetShield(100);
+        currentTarget.setTargetName("Testing New Target");
+        currentTarget.setTargetType("Testing Type");
+        
+    }
+    
+    public Target getCurrentTarget() {
+        return currentTarget;
     }
 
+    public void setCurrentTarget(Target currentTarget) {
+        this.currentTarget = currentTarget;
+    }
+    
     public Item getMissiles() {
         return missiles;
     }

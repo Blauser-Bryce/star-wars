@@ -5,6 +5,7 @@
  */
 package byui.cit260.starWars.view;
 
+import byui.cit260.starWars.model.Map;
 import java.util.Scanner;
 
 /**
@@ -41,22 +42,22 @@ public class GameMenuView extends View {
             case "M": // view map
                 this.viewMap();
                 break;
-            case "L": // view map
+            case "L": // attack turbo laser
                 this.attackTurboLaser();
                 break;
-            case "F": // view map
+            case "F": // attack tie fighter
                 this.attackTieFighter();
                 break;
-            case "S": // view map
+            case "S": // attack deflector shield
                 this.attackDeflectorShield();
                 break;
-            case "E": // view map
+            case "E": // evasive maneuver
                 this.evasiveManeuver();
                 break;
-            case "T": // view map
+            case "T": // fire torpedo
                 this.fireTorpedo();
                 break;
-            case "A": // view map
+            case "A": // view ammunition
                 this.viewAmmuntion();
                 break;
             default:
@@ -67,6 +68,10 @@ public class GameMenuView extends View {
     }
   
     private void viewMap() {
+       Map map = new Map();
+       String mapLayout = map.getMapLayout();
+       System.out.println(mapLayout);
+       
        // display the map view
        MapView mapView = new MapView();
        mapView.display();

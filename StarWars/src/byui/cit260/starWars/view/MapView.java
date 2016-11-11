@@ -18,9 +18,6 @@ public class MapView extends View {
     private String wayPointPrompt;
     
     GameMenuView gameMenu = new GameMenuView();
-    Map map = new Map();
-    String mapLayout = map.getMapLayout();
-    ///  *** Add Map Layout *** ///
     
     public MapView() {
         super( "\n"
