@@ -14,6 +14,7 @@ import starwars.StarWars;
  */
 public class GameControl {
 
+   
     public static Player createPlayer(String name) {
         
         if (name == null) {

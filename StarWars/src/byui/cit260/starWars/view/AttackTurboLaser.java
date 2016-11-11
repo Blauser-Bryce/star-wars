@@ -5,9 +5,7 @@
  */
 package byui.cit260.starWars.view;
 
-import byui.cit260.starWars.control.TargetControl;
-import byui.cit260.starWars.model.Target;
-import java.util.Scanner;
+import byui.cit260.starWars.model.Aim;
 
 /**
  *
@@ -64,8 +62,15 @@ public class AttackTurboLaser extends View {
     }
 
 
-    private int damageTurboLaser() {
+    private void damageTurboLaser() {
         
+        Aim aim = new Aim();
+        System.out.println(aim.getAimLayout());
+        
+        AimView aimView = new AimView();
+        aimView.display();
+        
+        /*
         int location = 2;//test turbo Laser location
         int target = 2;// test target location
         int health = 100;// test health
@@ -91,7 +96,8 @@ public class AttackTurboLaser extends View {
           System.out.println("miss");
         
      
-    return health; 
+        return health; 
+        */
     }
        private void evasiveManeuver() {
         System.out.println("*** Evasive Maneuver called ***");
