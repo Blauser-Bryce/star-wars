@@ -30,6 +30,6 @@ public class GameControl {
 
     public static void createNewGame(Player name) {
        
-    }
-  
-}
+        }
+
+ }
