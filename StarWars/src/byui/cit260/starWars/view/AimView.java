@@ -86,7 +86,8 @@ public class AimView extends View {
     }
 
     private void fire() {
-        System.out.println("\nFire stub");
+    FireTorpedoView torpedo = new  FireTorpedoView();
+    torpedo.display();
         
     }
     

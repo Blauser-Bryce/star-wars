@@ -77,8 +77,7 @@ public class FireTorpedoView extends View {
     }
     
     private void Evasive () {
-    EvasiveManeuverView evade = new EvasiveManeuverView();
-    evade.display();
+    System.out.println("\n stub for evasive");
         
     }
 
