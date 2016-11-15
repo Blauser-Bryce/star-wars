@@ -5,8 +5,8 @@
  */
 package byui.cit260.starWars.view;
 
+import byui.cit260.starWars.model.EvasiveManeuver;
 import byui.cit260.starWars.model.Map;
-import java.util.Scanner;
 
 /**
  *
@@ -97,6 +97,8 @@ public class GameMenuView extends View {
     
     private void evasiveManeuver() {
         //TargetControl.evasiveManeuver;
+        EvasiveManeuver evasiveManeuver = new EvasiveManeuver();
+        evasiveManeuver.display();
     }
     
     private void fireTorpedo() {
