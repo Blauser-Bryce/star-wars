@@ -24,7 +24,16 @@ public class Game implements Serializable{
 
     private Player player;
     private Item[] inventory;
+    private EnemyFighter[] enemyFighters;
     private Map map;
+
+    public EnemyFighter[] getEnemyFighters() {
+        return enemyFighters;
+    }
+
+    public void setEnemyFighters(EnemyFighter[] enemyFighters) {
+        this.enemyFighters = enemyFighters;
+    }
 
     public Player getPlayer() {
         return player;

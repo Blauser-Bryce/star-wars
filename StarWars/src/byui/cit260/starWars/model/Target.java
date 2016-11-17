@@ -14,11 +14,27 @@ import java.util.Objects;
  */
 public class Target implements Serializable {
  
+    public enum targetType {
+        tieFighter(50),
+        tieInterceptor(75),
+        darthVader(100);
+        
+        private final int defaultHealth;
+        
+        targetType(int defaultHealth) {
+            this.defaultHealth = defaultHealth;
+        }
+        
+        public int getDefaultHealth() {
+            return this.defaultHealth;
+        }
+    }
+    
     private double targetHealth;
     private double targetShield;
     private String targetName;
     private Location targetLocation;
-    private String targetType;
+    private targetType targetType;
 
     public Target() {
     }
@@ -27,11 +43,11 @@ public class Target implements Serializable {
         return targetHealth;
     }
 
-    public String getTargetType() {
+    public targetType getTargetType() {
         return targetType;
     }
 
-    public void setTargetType(String targetType) {
+    public void setTargetType(targetType targetType) {
         this.targetType = targetType;
     }
 

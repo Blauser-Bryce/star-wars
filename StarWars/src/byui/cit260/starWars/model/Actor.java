@@ -48,6 +48,4 @@ public enum Actor implements Serializable {
         return coordinates;
     }
 
-    
-
 }
