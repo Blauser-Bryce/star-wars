@@ -6,6 +6,7 @@
 package byui.cit260.starWars.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,28 +15,28 @@ import java.util.Objects;
  */
 public class Location implements Serializable{
     
-    private String row;
-    private String column;
+    private int row;
+    private int column;
     private String status;
-
+    private Scene scene;
+    private ArrayList<Actor> actors;
+    
     public Location() {
     }
     
-    
-
-    public String getRow() {
+    public int getRow() {
         return row;
     }
 
-    public void setRow(String row) {
+    public void setRow(int row) {
         this.row = row;
     }
 
-    public String getColumn() {
+    public int getColumn() {
         return column;
     }
 
-    public void setColumn(String column) {
+    public void setColumn(int column) {
         this.column = column;
     }
 
@@ -47,6 +48,14 @@ public class Location implements Serializable{
         this.status = status;
     }
 
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+    
+    public Scene getScene() {
+        return scene;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
@@ -81,7 +90,6 @@ public class Location implements Serializable{
     public String toString() {
         return "Location{" + "row=" + row + ", column=" + column + ", status=" + status + '}';
     }
-    
     
     
 }

@@ -6,7 +6,9 @@
 package byui.cit260.starWars.view;
 
 import byui.cit260.starWars.model.EvasiveManeuver;
+import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Map;
+import starwars.StarWars;
 
 /**
  *
@@ -68,9 +70,10 @@ public class GameMenuView extends View {
     }
   
     private void viewMap() {
+       
        Map map = new Map();
-       String mapLayout = map.getMapLayout();
-       System.out.println(mapLayout);
+       map = StarWars.getCurrentGame().getMap();
+       map.displayMap(map);
        
        // display the map view
        MapView mapView = new MapView();

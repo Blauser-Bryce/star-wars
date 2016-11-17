@@ -15,9 +15,37 @@ import java.util.Objects;
 public class Scene implements Serializable{
     
     private String description;
-    private Double travelTime;
+    private int travelTime;
     private String displaySymbol;
 
+    public enum SceneType {
+        rebelTransportShip,
+        yavin4,
+        rebelBaseCommandCenter,
+        rebelBaseHanger,
+        openSpace,
+        deepSpaceBattleLocation,
+        deepSpaceRetreatLocation,
+        DeathStar,
+        deathStarFighterEngagement,
+        quadrant1,
+        quadrant2,
+        quadrant3,
+        quadrant4,
+        deathStarTrench,
+        trenchEntrance,
+        trenchBattleLocation,
+        trenchExit,
+        deathStarExhaustPort,
+        deathStarRetreatLocation,
+        turboLaserBatteries,
+        deflectorShieldGenerators,
+        enemyFighters,
+        friendlyFighters,
+        supplyShip,
+        repairShip
+    }
+    
     public Scene() {
     }
 
@@ -29,15 +57,20 @@ public class Scene implements Serializable{
         this.description = description;
     }
 
-    public Double getTravelTime() {
+    public int getTravelTime() {
         return travelTime;
     }
 
-    public void setTravelTime(Double travelTime) {
+    public void setTravelTime(int travelTime) {
         this.travelTime = travelTime;
     }
 
     public String getDisplaySymbol() {
+        
+        if (this.displaySymbol == null) {
+            return "  ";
+        }
+        
         return displaySymbol;
     }
 

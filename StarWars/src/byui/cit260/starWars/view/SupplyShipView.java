@@ -6,6 +6,7 @@
 package byui.cit260.starWars.view;
 
 import byui.cit260.starWars.control.ItemControl;
+import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Player;
 import java.util.Scanner;
@@ -23,6 +24,8 @@ public class SupplyShipView extends View {
     
     private Item item = new Item();
     Player player = StarWars.getPlayer();
+    
+    Game game = StarWars.getCurrentGame();
     
     MapView mapView = new MapView();
     
@@ -45,15 +48,18 @@ public class SupplyShipView extends View {
         
         switch (value) {
             case "M": // Replenish Missile
-                item = player.getMissiles();
+                //item = player.getMissiles();
+                item = game.getInventoryAtLocation(Item.itemType.Missile.ordinal());
                 this.getQuantity();
                 break;
             case "T":  // Replenish Torpedo
-                item = player.getTorpedos();
+                //item = player.getTorpedos();
+                item = game.getInventoryAtLocation(Item.itemType.Torpedo.ordinal());
                 this.getQuantity();
                 break;
             case "F":  // Replenish Flare
-                item = player.getFlares();
+                //item = player.getFlares();
+                item = game.getInventoryAtLocation(Item.itemType.Flare.ordinal());
                 this.getQuantity();
                 break;
             default:

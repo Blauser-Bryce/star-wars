@@ -22,6 +22,38 @@ public class Game implements Serializable{
     private Double gameModAmplifier;
     private boolean gameModReplenishBoost;
 
+    private Player player;
+    private Item[] inventory;
+    private Map map;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+    
+    public Item[] getInventory() {
+        return inventory;
+    }
+
+    public Item getInventoryAtLocation(int location){
+        return inventory[location];
+    }
+    
+    public void setInventory(Item[] inventory) {
+        this.inventory = inventory;
+    }
+    
     public boolean getGameModReplenishBoost() {
         return gameModReplenishBoost;
     }
@@ -39,6 +71,7 @@ public class Game implements Serializable{
     }
 
     public Game() {
+        
     }
 
     public Double getTotalTime() {
