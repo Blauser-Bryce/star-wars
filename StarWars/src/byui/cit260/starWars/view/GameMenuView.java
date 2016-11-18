@@ -128,11 +128,15 @@ public class GameMenuView extends View {
         
         int strongestEnemy = targetControl.getMaxEnemyHealth(enemyFighterList);
         
-        System.out.println("\n The Strongest Enemy is: "
-                          +"\n Name:\t" + enemyFighterList[strongestEnemy].getTargetName()
-                          +"\n Location: \t(" + enemyFighterList[strongestEnemy].getTargetLocation().getRow() + "," 
-                          + enemyFighterList[strongestEnemy].getTargetLocation().getColumn() + ")"
-                          + "\n Health: \t" + enemyFighterList[strongestEnemy].getTargetHealth()      
-        );
+        if (strongestEnemy >= 0) {
+            System.out.println("\n The Strongest Enemy is: "
+                              +"\n Name:\t" + enemyFighterList[strongestEnemy].getTargetName()
+                              +"\n Location: \t(" + enemyFighterList[strongestEnemy].getTargetLocation().getRow() + "," 
+                              + enemyFighterList[strongestEnemy].getTargetLocation().getColumn() + ")"
+                              + "\n Health: \t" + enemyFighterList[strongestEnemy].getTargetHealth()      
+            );
+        } else {
+            System.out.println("\n No enemies exist");
+        }
     }
 }

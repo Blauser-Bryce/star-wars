@@ -115,7 +115,7 @@ public class TargetControl {
         
         double maxValue = enemyFighterList[0].getTargetHealth();
         int index = 0;
-        int enemyIndex = index;
+        int enemyIndex = -1;
         
         for (EnemyFighter enemyFighter : enemyFighterList) {
             if (enemyFighter.getTargetHealth() > maxValue) {
