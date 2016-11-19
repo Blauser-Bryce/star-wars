@@ -5,6 +5,9 @@
  */
 package byui.cit260.starWars.view;
 
+import byui.cit260.starWars.control.GameControl;
+import byui.cit260.starWars.control.TargetControl;
+import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.EvasiveManeuver;
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Map;
@@ -31,6 +34,7 @@ public class GameMenuView extends View {
                 + "\nE - Evasive Maneuver"
                 + "\nT - Fire Torpedo"
                 + "\nA - View Ammunition"
+                + "\nV - View Strongest Enemy"
                 + "\nX - Exit"
                 + "\n--------------------------------"); 
     }
@@ -61,6 +65,9 @@ public class GameMenuView extends View {
                 break;
             case "A": // view ammunition
                 this.viewAmmuntion();
+                break;
+            case "V": // view strongest enemy
+                this.viewStrongestEnemy();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -112,5 +119,24 @@ public class GameMenuView extends View {
         // Display the ammuntion
         AmmunitionView ammoView = new AmmunitionView();
         ammoView.display();
+    }
+
+    private void viewStrongestEnemy() {
+        
+        TargetControl targetControl = new TargetControl();
+        EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
+        
+        int strongestEnemy = targetControl.getMaxEnemyHealth(enemyFighterList);
+        
+        if (strongestEnemy >= 0) {
+            System.out.println("\n The Strongest Enemy is: "
+                              +"\n Name:\t" + enemyFighterList[strongestEnemy].getTargetName()
+                              +"\n Location: \t(" + enemyFighterList[strongestEnemy].getTargetLocation().getRow() + "," 
+                              + enemyFighterList[strongestEnemy].getTargetLocation().getColumn() + ")"
+                              + "\n Health: \t" + enemyFighterList[strongestEnemy].getTargetHealth()      
+            );
+        } else {
+            System.out.println("\n No enemies exist");
+        }
     }
 }

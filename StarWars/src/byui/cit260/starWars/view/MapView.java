@@ -5,9 +5,6 @@
  */
 package byui.cit260.starWars.view;
 
-import byui.cit260.starWars.model.Map;
-import java.util.Scanner;
-
 /**
  *
  * @author Bryce Blauser

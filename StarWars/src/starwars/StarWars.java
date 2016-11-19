@@ -8,7 +8,7 @@ package starwars;
 
 import byui.cit260.starWars.control.ItemControl;
 import byui.cit260.starWars.model.DeathStar;
-import byui.cit260.starWars.model.EnemyFighters;
+import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.FriendlyFighters;
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;

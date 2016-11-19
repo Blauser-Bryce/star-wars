@@ -5,6 +5,7 @@
  */
 package byui.cit260.starWars.control;
 
+import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Map;
@@ -52,11 +53,15 @@ public class GameControl {
         Item[] inventoryList = GameControl.createInventoryList();
         game.setInventory(inventoryList);
         
+        // create the enemy fighter list
+        EnemyFighter[] enemyFighterList = GameControl.createEnemyFighters();
+        game.setEnemyFighters(enemyFighterList);
+        
         Map map = new Map(); 
         map = map.createMap();  // Create and initialize the map
         game.setMap(map);
                 
-        MapControl.moveActorsToStartingLocation(map);
+       // MapControl.moveActorsToStartingLocation(map);
         
     }
 
@@ -65,6 +70,49 @@ public class GameControl {
         return null;
     }
 
+    private static EnemyFighter[] createEnemyFighters() {
+        
+        EnemyFighter[] enemyFighters = new EnemyFighter[20];
+        
+        // Create default tie fighter
+        EnemyFighter tieFighter = new EnemyFighter();
+        Location location = new Location();
+        location.setRow(0);
+        location.setColumn(0);
+        location.setStatus("Enemy Fighters Initialized Here");
+        
+        tieFighter.setTargetType(EnemyFighter.targetType.tieFighter);
+        tieFighter.setTargetHealth(EnemyFighter.targetType.tieFighter.getDefaultHealth());
+        tieFighter.setTargetShield(100);
+        tieFighter.setTargetLocation(location);
+        
+        // Populate the tie fighters
+        for (int i = 0; i < 11; i++) {
+            tieFighter.setTargetName("Tie Fighter " + (i + 1));
+            enemyFighters[i] = tieFighter;
+        }
+        
+        // Populate the tie interceptors
+        tieFighter.setTargetType(EnemyFighter.targetType.tieInterceptor);
+        tieFighter.setTargetHealth(EnemyFighter.targetType.tieInterceptor.getDefaultHealth());
+        for (int i = 11; i < 19; i++) {
+            tieFighter.setTargetName("Tie Interceptor " + (i - 10));
+            enemyFighters[i] = tieFighter;
+        }
+        
+        // Create Darth Vader fighter
+        EnemyFighter darthVader = new EnemyFighter();
+        darthVader.setTargetType(EnemyFighter.targetType.darthVader);
+        darthVader.setTargetHealth(EnemyFighter.targetType.darthVader.getDefaultHealth());
+        darthVader.setTargetShield(100);
+        darthVader.setTargetLocation(location);
+        darthVader.setTargetName("Darth Vader");
+        
+        enemyFighters[19] = darthVader;
+        
+        return enemyFighters;
+    }
+    
     private static Item[] createInventoryList() {
         
         // created array(list) of inventory items

@@ -5,6 +5,7 @@
  */
 package byui.cit260.starWars.control;
 
+import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Target;
 
 /**
@@ -107,6 +108,23 @@ public class TargetControl {
            return "Target at Full Health";
         }
             
-    return "Target Repair done: Shield " + repairShield + " Health " + repairHealth + ", Remaining: Shield " + applyRepairShield + " Health " + applyRepairHealth;
-     }    
+        return "Target Repair done: Shield " + repairShield + " Health " + repairHealth + ", Remaining: Shield " + applyRepairShield + " Health " + applyRepairHealth;
+    }    
+    
+    public int getMaxEnemyHealth(EnemyFighter[] enemyFighterList) {
+        
+        double maxValue = enemyFighterList[0].getTargetHealth();
+        int index = 0;
+        int enemyIndex = -1;
+        
+        for (EnemyFighter enemyFighter : enemyFighterList) {
+            if (enemyFighter.getTargetHealth() > maxValue) {
+                maxValue = enemyFighter.getTargetHealth();
+                enemyIndex = index;
+            }
+            index++;
+        }
+        
+        return enemyIndex;   
+    }
 }

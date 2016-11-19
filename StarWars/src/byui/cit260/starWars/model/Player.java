@@ -20,7 +20,7 @@ public class Player implements Serializable {
     
     // class instance variables
     private String name;
-    private String coordinates;
+    private Location location = new Location();
     
     //private Item missiles = new Item();
     //private Item torpedos = new Item();
@@ -45,8 +45,11 @@ public class Player implements Serializable {
         currentTarget.setTargetHealth(100);
         currentTarget.setTargetShield(100);
         currentTarget.setTargetName("Testing New Target");
-        currentTarget.setTargetType("Testing Type");
+        currentTarget.setTargetType(Target.targetType.tieInterceptor);
         
+        // Set player location to 10,10
+        location.setColumn(10);
+        location.setRow(10);
     }
     
     public Target getCurrentTarget() {
@@ -55,6 +58,14 @@ public class Player implements Serializable {
 
     public void setCurrentTarget(Target currentTarget) {
         this.currentTarget = currentTarget;
+    }
+    
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
     
     /*
@@ -94,13 +105,13 @@ public class Player implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + Objects.hashCode(this.coordinates);
+        hash = 79 * hash + Objects.hashCode(this.location);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", coordinates=" + coordinates + '}';
+        return "Player{" + "name=" + name + ", coordinates=" + location.getRow() + "," + location.getColumn() + '}';
     }
 
     @Override
@@ -118,20 +129,10 @@ public class Player implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.coordinates, other.coordinates)) {
+        if (!Objects.equals(this.location, other.location)) {
             return false;
         }
         return true;
     }
-    
-    public String getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
-    }
-    
-    
     
 }
