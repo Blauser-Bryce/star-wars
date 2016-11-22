@@ -107,8 +107,15 @@ public class SupplyShipView extends View {
         if (repAmount.toUpperCase().equals("X")) {
             mapView.display();
         }
-
-        int amount = Integer.parseInt(repAmount);
+        
+        int amount = 0;
+        
+        try {
+            amount = Integer.parseInt(repAmount);
+        } catch (NumberFormatException nf) {
+            System.out.println("\nYou must enter a valid number.  Try again or enter X to Exit.");
+        }
+        
         ItemControl repItem = new ItemControl();
         
         String result = repItem.replenishItem(this.item, amount, 10000, true);
