@@ -7,6 +7,7 @@ package byui.cit260.starWars.control;
 
 import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Target;
+import exceptions.TargetControlException;
 
 /**
  *
@@ -111,11 +112,15 @@ public class TargetControl {
         return "Target Repair done: Shield " + repairShield + " Health " + repairHealth + ", Remaining: Shield " + applyRepairShield + " Health " + applyRepairHealth;
     }    
     
-    public int getMaxEnemyHealth(EnemyFighter[] enemyFighterList) {
+    public int getMaxEnemyHealth(EnemyFighter[] enemyFighterList) throws TargetControlException {
         
         double maxValue = enemyFighterList[0].getTargetHealth();
         int index = 0;
-        int enemyIndex = -1;
+        int enemyIndex = 0;
+        
+        if (enemyFighterList == null || enemyFighterList.length == 0) {
+             throw new TargetControlException("No enemies found in current list");
+        }
         
         for (EnemyFighter enemyFighter : enemyFighterList) {
             if (enemyFighter.getTargetHealth() > maxValue) {

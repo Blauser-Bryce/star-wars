@@ -253,8 +253,8 @@ public class Map implements Serializable{
         String line;
         
         System.out.println("                       Star Wars Map ");
-        System.out.println("  0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19");
-        System.out.println("-------------------------------------------------------------");
+        System.out.println("    0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19");
+        System.out.println("  -------------------------------------------------------------");
                 
         location = map.locations[0][0];
         System.out.println(location.getScene().getDisplaySymbol());

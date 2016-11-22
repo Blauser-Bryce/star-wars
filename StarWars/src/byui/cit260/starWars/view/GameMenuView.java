@@ -5,12 +5,11 @@
  */
 package byui.cit260.starWars.view;
 
-import byui.cit260.starWars.control.GameControl;
 import byui.cit260.starWars.control.TargetControl;
 import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.EvasiveManeuver;
-import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Map;
+import exceptions.TargetControlException;
 import starwars.StarWars;
 
 /**
@@ -126,17 +125,15 @@ public class GameMenuView extends View {
         TargetControl targetControl = new TargetControl();
         EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
         
-        int strongestEnemy = targetControl.getMaxEnemyHealth(enemyFighterList);
-        
-        if (strongestEnemy >= 0) {
+        try {
+            int strongestEnemy = targetControl.getMaxEnemyHealth(enemyFighterList);
             System.out.println("\n The Strongest Enemy is: "
                               +"\n Name:\t" + enemyFighterList[strongestEnemy].getTargetName()
                               +"\n Location: \t(" + enemyFighterList[strongestEnemy].getTargetLocation().getRow() + "," 
                               + enemyFighterList[strongestEnemy].getTargetLocation().getColumn() + ")"
-                              + "\n Health: \t" + enemyFighterList[strongestEnemy].getTargetHealth()      
-            );
-        } else {
-            System.out.println("\n No enemies exist");
+                              + "\n Health: \t" + enemyFighterList[strongestEnemy].getTargetHealth());
+        } catch (TargetControlException me) {
+            System.out.println(me.getMessage());
         }
     }
 }
