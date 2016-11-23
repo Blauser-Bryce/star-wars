@@ -146,4 +146,20 @@ public class TargetControl {
         
         return enemyIndex;   
     }
-}
+        public int getLengthEnemyHealth(EnemyFighter[] enemyFighterList) {
+        int size = enemyFighterList.length;
+        return size;
+    }
+        public double getAvgEnemyHealth(EnemyFighter[] enemyFighterList) {
+       
+        double total = 0;
+        for (int i = 0; i < enemyFighterList.length -1 ; i++) {
+            total = total + enemyFighterList[i].getTargetHealth();
+        }
+        
+        double average = total / (enemyFighterList.length-1);         
+        
+        return average;            
+       
+         }  
+    }

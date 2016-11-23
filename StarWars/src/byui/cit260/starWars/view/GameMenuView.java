@@ -36,6 +36,8 @@ public class GameMenuView extends View {
                 + "\nA - View Ammunition"
                 + "\nV - View Strongest Enemy"
                 + "\nW - View Weakest Enemy"
+                + "\nR - View Remaining Enemies"
+                + "\nH - View Average Health"
                 + "\nX - Exit"
                 + "\n--------------------------------"); 
     }
@@ -72,6 +74,12 @@ public class GameMenuView extends View {
                 break;
             case "W": // view weakest enemy
                 this.viewWeakEnemy();
+                break;
+            case "R": // view remaining ememy
+                this.viewRemainingEnemy();
+                break;
+            case "H": // view avearge health enemy
+                this.viewAvgEnemy();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -143,7 +151,7 @@ public class GameMenuView extends View {
             System.out.println("\n No enemies exist");
         }
     }
-
+    /*gary moser*/
     private void viewWeakEnemy() {
         TargetControl targetControl = new TargetControl();
         EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
@@ -161,6 +169,28 @@ public class GameMenuView extends View {
             System.out.println("\n No enemies exist");
         }
     }
+         /*gary moser*/
+    private void viewRemainingEnemy() {
+        TargetControl targetControl = new TargetControl();
+        EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
+        int remainingEnemy = targetControl.getLengthEnemyHealth(enemyFighterList);
+        
+        if (remainingEnemy > 0){
+        System.out.println("\n" + remainingEnemy + " Enemies Remaining");
+        }
+        else{
+        System.out.println("No Ememies Remain");
+        }
+    }
+        /*gary moser */
+    private void viewAvgEnemy() {
+        TargetControl targetControl = new TargetControl();
+        EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
+        double avgEnemy = targetControl.getAvgEnemyHealth(enemyFighterList);
+        
+        System.out.println("\n Average Enemy Health " + avgEnemy);
+            }
+    
         
     
 }
