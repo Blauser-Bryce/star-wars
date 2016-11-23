@@ -9,6 +9,7 @@ import static byui.cit260.starWars.model.Item.itemType.Flare;
 import static byui.cit260.starWars.model.Item.itemType.Missile;
 import static byui.cit260.starWars.model.Item.itemType.Torpedo;
 */
+
 import java.io.Serializable;
 import java.util.Objects;
 
