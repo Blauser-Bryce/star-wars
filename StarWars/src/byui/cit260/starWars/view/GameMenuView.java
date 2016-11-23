@@ -35,6 +35,7 @@ public class GameMenuView extends View {
                 + "\nT - Fire Torpedo"
                 + "\nA - View Ammunition"
                 + "\nV - View Strongest Enemy"
+                + "\nW - View Weakest Enemy"
                 + "\nX - Exit"
                 + "\n--------------------------------"); 
     }
@@ -68,6 +69,9 @@ public class GameMenuView extends View {
                 break;
             case "V": // view strongest enemy
                 this.viewStrongestEnemy();
+                break;
+            case "W": // view weakest enemy
+                this.viewWeakEnemy();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -139,4 +143,24 @@ public class GameMenuView extends View {
             System.out.println("\n No enemies exist");
         }
     }
+
+    private void viewWeakEnemy() {
+        TargetControl targetControl = new TargetControl();
+        EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
+        
+        int weakEnemy = targetControl.getLowEnemyHealth(enemyFighterList);
+                
+        if (weakEnemy >= 0) {
+            System.out.println("\n The weakest Enemy is: "
+                              +"\n Name:\t" + enemyFighterList[weakEnemy].getTargetName()
+                              +"\n Location: \t(" + enemyFighterList[weakEnemy].getTargetLocation().getRow() + "," 
+                              + enemyFighterList[weakEnemy].getTargetLocation().getColumn() + ")"
+                              + "\n Health: \t" + enemyFighterList[weakEnemy].getTargetHealth()      
+            );
+        } else {
+            System.out.println("\n No enemies exist");
+        }
+    }
+        
+    
 }

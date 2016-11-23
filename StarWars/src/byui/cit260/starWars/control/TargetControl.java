@@ -7,6 +7,8 @@ package byui.cit260.starWars.control;
 
 import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Target;
+import java.util.Collections;
+
 
 /**
  *
@@ -122,6 +124,23 @@ public class TargetControl {
                 maxValue = enemyFighter.getTargetHealth();
                 enemyIndex = index;
             }
+            index++;
+        }
+        
+        return enemyIndex;   
+    }
+    
+        public int getLowEnemyHealth(EnemyFighter[] enemyFighterList) {
+        double lowValue = enemyFighterList[0].getTargetHealth();
+        int index = 0;
+        int enemyIndex = -1;
+        
+        for (EnemyFighter enemyFighter : enemyFighterList) {
+            if (enemyFighter.getTargetHealth() <= lowValue) {
+               lowValue = enemyFighter.getTargetHealth();
+                enemyIndex = index;
+            } 
+            
             index++;
         }
         
