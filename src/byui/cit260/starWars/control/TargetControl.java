@@ -5,9 +5,7 @@
  */
 package byui.cit260.starWars.control;
 
-import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Target;
-import exceptions.TargetControlException;
 
 /**
  *
@@ -109,60 +107,6 @@ public class TargetControl {
            return "Target at Full Health";
         }
             
-        return "Target Repair done: Shield " + repairShield + " Health " + repairHealth + ", Remaining: Shield " + applyRepairShield + " Health " + applyRepairHealth;
-    }    
-    
-    public int getMaxEnemyHealth(EnemyFighter[] enemyFighterList) throws TargetControlException {
-        
-        double maxValue = enemyFighterList[0].getTargetHealth();
-        int index = 0;
-        int enemyIndex = 0;
-        
-        if (enemyFighterList == null || enemyFighterList.length == 0) {
-             throw new TargetControlException("No enemies found in current list");
-        }
-        
-        for (EnemyFighter enemyFighter : enemyFighterList) {
-            if (enemyFighter.getTargetHealth() > maxValue) {
-                maxValue = enemyFighter.getTargetHealth();
-                enemyIndex = index;
-            }
-            index++;
-        }
-        
-        return enemyIndex;   
-    }
-    
-        public int getLowEnemyHealth(EnemyFighter[] enemyFighterList) {
-        double lowValue = enemyFighterList[0].getTargetHealth();
-        int index = 0;
-        int enemyIndex = -1;
-        
-        for (EnemyFighter enemyFighter : enemyFighterList) {
-            if (enemyFighter.getTargetHealth() <= lowValue) {
-               lowValue = enemyFighter.getTargetHealth();
-                enemyIndex = index;
-            } 
-            
-            index++;
-        }
-        
-        return enemyIndex;   
-    }
-        public int getLengthEnemyHealth(EnemyFighter[] enemyFighterList) {
-        int size = enemyFighterList.length;
-        return size;
-    }
-        public double getAvgEnemyHealth(EnemyFighter[] enemyFighterList) {
-       
-        double total = 0;
-        for (int i = 0; i < enemyFighterList.length -1 ; i++) {
-            total = total + enemyFighterList[i].getTargetHealth();
-        }
-        
-        double average = total / (enemyFighterList.length-1);         
-        
-        return average;            
-       
-         }  
-    }
+    return "Target Repair done: Shield " + repairShield + " Health " + repairHealth + ", Remaining: Shield " + applyRepairShield + " Health " + applyRepairHealth;
+     }    
+}

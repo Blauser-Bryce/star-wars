@@ -40,6 +40,4 @@ source
 .Trashes
 ehthumbs.db
 Thumbs.db
-/NetBeansProjects/Star-wars/nbproject/private/
-/StarWars/Star-wars/nbproject/private/
-/NetBeansProjects/Star-wars/build/
+/build/

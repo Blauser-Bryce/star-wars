@@ -6,23 +6,23 @@
 package starwars;
 
 
-//import byui.cit260.starWars.control.ItemControl;
-//import byui.cit260.starWars.model.DeathStar;
-//import byui.cit260.starWars.model.EnemyFighter;
-//import byui.cit260.starWars.model.FriendlyFighters;
+import byui.cit260.starWars.control.ItemControl;
+import byui.cit260.starWars.model.DeathStar;
+import byui.cit260.starWars.model.EnemyFighters;
+import byui.cit260.starWars.model.FriendlyFighters;
 import byui.cit260.starWars.model.Game;
-//import byui.cit260.starWars.model.Item;
-//import byui.cit260.starWars.model.Item.itemType;
-//import byui.cit260.starWars.model.Location;
-//import byui.cit260.starWars.model.Map;
-//import byui.cit260.starWars.model.Menu;
-//import byui.cit260.starWars.model.OpenSpace;
+import byui.cit260.starWars.model.Item;
+import byui.cit260.starWars.model.Item.itemType;
+import byui.cit260.starWars.model.Location;
+import byui.cit260.starWars.model.Map;
+import byui.cit260.starWars.model.Menu;
+import byui.cit260.starWars.model.OpenSpace;
 import byui.cit260.starWars.model.Player;
-//import byui.cit260.starWars.model.RebelTransportShip;
-//import byui.cit260.starWars.model.RepairShop;
-//import byui.cit260.starWars.model.Scene;
-//import byui.cit260.starWars.model.SupplyShip;
-//import byui.cit260.starWars.model.Target;
+import byui.cit260.starWars.model.RebelTransportShip;
+import byui.cit260.starWars.model.RepairShop;
+import byui.cit260.starWars.model.Scene;
+import byui.cit260.starWars.model.SupplyShip;
+import byui.cit260.starWars.model.Target;
 import byui.cit260.starWars.view.StartProgramView;
 
 /**
@@ -41,13 +41,8 @@ public class StarWars {
     
     public static void main(String[] args) {
         StartProgramView startProgramView = new StartProgramView();
-        try {
-            startProgramView.display();
-        } catch (Throwable te) {
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            startProgramView.display();
-        }
+        startProgramView.display();
+        
         /*
         Player currentPlayer = new Player();
         

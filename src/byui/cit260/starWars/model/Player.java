@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 package byui.cit260.starWars.model;
-/*
+
 import static byui.cit260.starWars.model.Item.itemType.Flare;
 import static byui.cit260.starWars.model.Item.itemType.Missile;
 import static byui.cit260.starWars.model.Item.itemType.Torpedo;
-*/
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -21,17 +19,17 @@ public class Player implements Serializable {
     
     // class instance variables
     private String name;
-    private Location location = new Location();
+    private String coordinates;
     
-    //private Item missiles = new Item();
-    //private Item torpedos = new Item();
-    //private Item flares = new Item();
+    private Item missiles = new Item();
+    private Item torpedos = new Item();
+    private Item flares = new Item();
     
     private Target currentTarget = new Target();
     
     public Player() {
         // Load up inventory
-        /*
+        
         // Set to 0 for starting
         missiles.setType(Missile);
         //missiles.setQuantity(missiles.maxQuantity(Missile));
@@ -42,15 +40,12 @@ public class Player implements Serializable {
         flares.setType(Flare);
         //flares.setQuantity(flares.maxQuantity(Flare));
         flares.setQuantity(0);
-        */
+        
         currentTarget.setTargetHealth(100);
         currentTarget.setTargetShield(100);
         currentTarget.setTargetName("Testing New Target");
-        currentTarget.setTargetType(Target.targetType.tieInterceptor);
+        currentTarget.setTargetType("Testing Type");
         
-        // Set player location to 10,10
-        location.setColumn(10);
-        location.setRow(10);
     }
     
     public Target getCurrentTarget() {
@@ -61,15 +56,6 @@ public class Player implements Serializable {
         this.currentTarget = currentTarget;
     }
     
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-    
-    /*
     public Item getMissiles() {
         return missiles;
     }
@@ -93,7 +79,7 @@ public class Player implements Serializable {
     public void setFlares(Item flares) {
         this.flares = flares;
     }
-*/
+
     public String getName() {
         return name;
     }
@@ -106,13 +92,13 @@ public class Player implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + Objects.hashCode(this.location);
+        hash = 79 * hash + Objects.hashCode(this.coordinates);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", coordinates=" + location.getRow() + "," + location.getColumn() + '}';
+        return "Player{" + "name=" + name + ", coordinates=" + coordinates + '}';
     }
 
     @Override
@@ -130,10 +116,20 @@ public class Player implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.location, other.location)) {
+        if (!Objects.equals(this.coordinates, other.coordinates)) {
             return false;
         }
         return true;
     }
+    
+    public String getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
+    }
+    
+    
     
 }

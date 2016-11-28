@@ -5,6 +5,9 @@
  */
 package byui.cit260.starWars.view;
 
+import byui.cit260.starWars.model.Map;
+import java.util.Scanner;
+
 /**
  *
  * @author Bryce Blauser
@@ -23,7 +26,7 @@ public class MapView extends View {
                 + "\n-------------------------------------------"
                 + "\nW - Move to Waypoint"
                 + "\nX - Exit"
-                + "\n  Supply Ship 18,9"
+                + "\n  Supply Ship (3P)"
                 + "\n-------------------------------------------");
 
     }

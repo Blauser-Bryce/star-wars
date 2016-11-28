@@ -16,6 +16,7 @@ import static byui.cit260.starWars.model.Item.itemType.Torpedo;
 import byui.cit260.starWars.model.Location;
 import byui.cit260.starWars.model.Scene;
 import byui.cit260.starWars.model.Scene.SceneType;
+import exceptions.MapControlException;
 import starwars.StarWars;
 
 /**
@@ -60,8 +61,16 @@ public class GameControl {
         Map map = new Map(); 
         map = map.createMap();  // Create and initialize the map
         game.setMap(map);
-                
-       // MapControl.moveActorsToStartingLocation(map);
+       
+        // Move player to location
+        Location location = new Location();
+        location.setColumn(10);
+        location.setRow(10);
+        try {
+            PlayerControl.movePlayerToLocation(location);
+        } catch (MapControlException me) {
+            System.out.println(me.getMessage());
+        }
         
     }
 
