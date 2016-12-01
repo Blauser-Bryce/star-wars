@@ -28,10 +28,10 @@ public class PlayerControl {
         
         if (newRow < 0 || newRow >= map.getNoOfRows() || newColumn < 0 || newColumn >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move player to location " + newRow + ", " + newColumn + " because that location is outside the bounds of the map.");
+        } else {
+            Player player = StarWars.getPlayer();
+            player.setLocation(location);
         }
-        
-        Player player = StarWars.getPlayer();
-        player.setLocation(location);
         
     }
     

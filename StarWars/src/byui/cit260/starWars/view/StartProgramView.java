@@ -26,7 +26,7 @@ public class StartProgramView extends View {
     }
 
     public void displayBanner() {
-      System.out.println(
+      console.println(
         "***************************************************************************************"
       + "\n*This game will be a text based role playing game where the trench run Death Star     *"
       + "\n*destruction sequence from the movie “Star Wars: A New Hope” is recreated.             *"
@@ -48,7 +48,7 @@ public class StartProgramView extends View {
     @Override
     public boolean doAction(String value) {
         if (value.length() < 2) {
-            System.out.println("\nInvalid players name:"
+            console.println("\nInvalid players name:"
                     + "The name must be greater than one character in length");
             return false;
         }
@@ -57,7 +57,7 @@ public class StartProgramView extends View {
         Player player = GameControl.createPlayer(value);
         
         if (player == null) { // if unsuccessful
-            System.out.println("\nError creating player.");
+            console.println("\nError creating player.");
             return false;
         }
         
@@ -68,7 +68,7 @@ public class StartProgramView extends View {
     }
     
     private void displayNextView(Player player) {
-        System.out.println("\n========================================="
+        console.println("\n========================================="
                          + "\n Welcome to the game " + player.getName()
                          + "\n We hope you have a lot of fun!"
                          + "\n=========================================");

@@ -24,6 +24,12 @@ import byui.cit260.starWars.model.Player;
 //import byui.cit260.starWars.model.SupplyShip;
 //import byui.cit260.starWars.model.Target;
 import byui.cit260.starWars.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 /**
  *
@@ -39,14 +45,46 @@ public class StarWars {
     private static Game currentGame = null;
     private static Player player = null;
     
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
+    
     public static void main(String[] args) {
-        StartProgramView startProgramView = new StartProgramView();
+        
         try {
+            
+            // Open character stream files for end user input and output
+            StarWars.inFile = new BufferedReader(new InputStreamReader(System.in));
+            StarWars.outFile = new PrintWriter(System.out, true);
+            
+            // open log file
+            String filePath = "log.txt";
+            StarWars.logFile = new PrintWriter(filePath);
+            
+            StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
-        } catch (Throwable te) {
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            startProgramView.display();
+            return;
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.toString() +
+                    "\nCause: " + e.getCause() +
+                    "\nMessage: " + e.getMessage());
+            //e.printStackTrace();
+        } finally {
+            try {
+                if (StarWars.inFile != null)
+                    StarWars.inFile.close();
+                
+                if (StarWars.outFile != null)
+                    StarWars.outFile.close();
+                
+                if (StarWars.logFile != null)
+                    StarWars.logFile.close();
+            } catch (IOException ex) {
+                //Logger.getLogger(StarWars.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error closing files");
+                return;
+            }
         }
         /*
         Player currentPlayer = new Player();
@@ -59,14 +97,14 @@ public class StarWars {
          
         String theGame = game.toString();
          
-        System.out.println(theGame);
+        console.println(theGame);
         
         currentPlayer.setName("Test McTesterson");
         currentPlayer.setCoordinates("A,1");
         
         String playerInfo = currentPlayer.toString();
         
-        System.out.println(playerInfo);
+        console.println(playerInfo);
         
         Menu menulist = new Menu();
         
@@ -76,7 +114,7 @@ public class StarWars {
 
         String menuInfo = menulist.toString();
         
-        System.out.println(menuInfo);
+        console.println(menuInfo);
         */
         
 
@@ -89,7 +127,7 @@ public class StarWars {
 
         String gameMap = newMap.toString();
 
-        System.out.println(gameMap);
+        console.println(gameMap);
             
         Item shipItems = new Item();
          
@@ -98,7 +136,7 @@ public class StarWars {
 
         String weapons = shipItems.toString();
 
-        System.out.println(weapons);
+        console.println(weapons);
             
         Location shipLocation = new Location();
          
@@ -108,7 +146,7 @@ public class StarWars {
 
         String ship = shipLocation.toString();
 
-        System.out.println(ship);
+        console.println(ship);
 
         
         // Scene
@@ -120,7 +158,7 @@ public class StarWars {
 
         String theScene = scene.toString();
 
-        System.out.println(theScene);
+        console.println(theScene);
         
         // Friendly Fighters
         FriendlyFighters friendlyFighters = new FriendlyFighters();
@@ -135,7 +173,7 @@ public class StarWars {
         
         String theFriendlyFighters = friendlyFighters.toString();
 
-        System.out.println(theFriendlyFighters);
+        console.println(theFriendlyFighters);
         
         // Supply Ship
         SupplyShip supplyShip = new SupplyShip();
@@ -150,7 +188,7 @@ public class StarWars {
         
         String theSupplyShip = supplyShip.toString();
 
-        System.out.println(theSupplyShip);
+        console.println(theSupplyShip);
         
         // Repair Shop
         RepairShop repairShop = new RepairShop();
@@ -164,7 +202,7 @@ public class StarWars {
         
         String theRepairShop = repairShop.toString();
 
-        System.out.println(theRepairShop);
+        console.println(theRepairShop);
         
         // Enemy Fighters
         EnemyFighters enemyFighters = new EnemyFighters();
@@ -179,7 +217,7 @@ public class StarWars {
         
         String theEnemyFighters = enemyFighters.toString();
 
-        System.out.println(theEnemyFighters);
+        console.println(theEnemyFighters);
         
         // Death Star
         DeathStar deathStar = new DeathStar();
@@ -194,7 +232,7 @@ public class StarWars {
         
         String theDeathStar = deathStar.toString();
 
-        System.out.println(theDeathStar);
+        console.println(theDeathStar);
         
         // Open Space
         OpenSpace openSpace = new OpenSpace();
@@ -208,7 +246,7 @@ public class StarWars {
         
         String theOpenSpace = openSpace.toString();
 
-        System.out.println(theOpenSpace);
+        console.println(theOpenSpace);
     
         // Rebel Transport Ship
         RebelTransportShip rebelTransportShip = new RebelTransportShip();
@@ -222,7 +260,7 @@ public class StarWars {
         
         String theRebelTransportShip = rebelTransportShip.toString();
 
-        System.out.println(theRebelTransportShip);
+        console.println(theRebelTransportShip);
         
         // Target
         Target newTarget = new Target();
@@ -233,7 +271,7 @@ public class StarWars {
         
         String theNewTarget = newTarget.toString();
         
-        System.out.println(theNewTarget);
+        console.println(theNewTarget);
         
         
         // Testing replenish (Multiple Items)
@@ -246,7 +284,7 @@ public class StarWars {
 
         ItemControl instance1 = new ItemControl();
         String result1 = instance1.replenishItem(repItems1, 5, 1000, true);
-        System.out.println(result1);
+        console.println(result1);
         
         // Replenish Flares
         Item repItems = new Item();
@@ -256,7 +294,7 @@ public class StarWars {
 
         ItemControl instance = new ItemControl();
         String result = instance.replenishItem(repItems, 100, 2000, true);
-        System.out.println(result);
+        console.println(result);
         */
     }
 
@@ -274,5 +312,29 @@ public class StarWars {
 
     public static void setPlayer(Player player) {
         StarWars.player = player;
+    }
+    
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        StarWars.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        StarWars.inFile = inFile;
+    }
+    
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        StarWars.logFile = logFile;
     }
 }

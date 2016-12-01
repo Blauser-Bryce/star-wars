@@ -57,32 +57,32 @@ public class AimView extends View {
         
         aim.aimUp();
         aimLayout = aim.getAimLayout();
-        System.out.println(aimLayout);
-        System.out.println("\nAim up stub");
+        console.println(aimLayout);
+        console.println("\nAim up stub");
     }
 
     private void aimDown() {
         
         aim.aimDown();
         aimLayout = aim.getAimLayout();
-        System.out.println(aimLayout);
-        System.out.println("\nAim down stub");
+        console.println(aimLayout);
+        console.println("\nAim down stub");
     }
 
     private void aimLeft() {
         
         aim.aimLeft();
         aimLayout = aim.getAimLayout();
-        System.out.println(aimLayout);
-        System.out.println("\nAim left stub");
+        console.println(aimLayout);
+        console.println("\nAim left stub");
     }
 
     private void aimRight() {
         
         aim.aimRight();
         aimLayout = aim.getAimLayout();
-        System.out.println(aimLayout);
-        System.out.println("\nAim right stub");
+        console.println(aimLayout);
+        console.println("\nAim right stub");
     }
 
     private void fire() {

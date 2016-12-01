@@ -7,8 +7,10 @@ package byui.cit260.starWars.model;
 
 import byui.cit260.starWars.control.GameControl;
 import byui.cit260.starWars.model.Scene.SceneType;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Objects;
+import starwars.StarWars;
 
 /**
  *
@@ -16,6 +18,8 @@ import java.util.Objects;
  */
 public class Map implements Serializable{
 
+    private static final PrintWriter console = StarWars.getOutFile();
+    
     private int noOfRows;
     private int noOfColumns;
     private Location[][] locations;
@@ -56,7 +60,7 @@ public class Map implements Serializable{
 
     public Map(int noOfRows, int noOfColumns) {
         if (noOfRows < 1 || noOfColumns < 1) {
-            System.out.println("The number of rows and columns must be > zero");
+            console.println("The number of rows and columns must be > zero");
             return;
         }
         
@@ -89,7 +93,7 @@ public class Map implements Serializable{
     
     private static Scene[] createScenes() {
         
-        System.out.println("\n *** Creating Scenes ***");
+        console.println("\n *** Creating Scenes ***");
         
         Scene[] scenes = new Scene[SceneType.values().length];
         
@@ -252,12 +256,12 @@ public class Map implements Serializable{
         
         String line;
         
-        System.out.println("                       Star Wars Map ");
-        System.out.println("    0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19");
-        System.out.println("  -------------------------------------------------------------");
+        console.println("                       Star Wars Map ");
+        console.println("    0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19");
+        console.println("  -------------------------------------------------------------");
                 
         location = map.locations[0][0];
-        System.out.println(location.getScene().getDisplaySymbol());
+        console.println(location.getScene().getDisplaySymbol());
         for (int row = 0; row < map.getNoOfRows(); row++) {
             line = String.valueOf(row); 
             if (row < 10) line += " ";
@@ -265,9 +269,9 @@ public class Map implements Serializable{
                 location = map.locations[row][column];
                 line += "|" + location.getScene().getDisplaySymbol();
             }
-            System.out.println(line + "|");
+            console.println(line + "|");
         }
-        System.out.println("-------------------------------------------------------------");
+        console.println("-------------------------------------------------------------");
     }    
 
     @Override

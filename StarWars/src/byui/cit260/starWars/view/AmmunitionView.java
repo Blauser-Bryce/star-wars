@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package byui.cit260.starWars.view;
-
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Player;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import starwars.StarWars;
 
 /**
@@ -24,17 +24,20 @@ public class AmmunitionView {
 
     Game game = StarWars.getCurrentGame();
     
+    protected final BufferedReader keyboard = StarWars.getInFile();
+    protected final PrintWriter console = StarWars.getOutFile();
+    
     public AmmunitionView() {
        
         StringBuilder line; 
         
         Item[] ammunition = game.getInventory();
         
-        System.out.println("\n      LIST OF AMMUNITION ITEMS");
+        console.println("\n      LIST OF AMMUNITION ITEMS");
         line = new StringBuilder("                                          ");
         line.insert(0, "TYPE");
         line.insert(20, "QUANTITY");
-        System.out.println(line.toString());
+        console.println(line.toString());
         
         // for each inventory item
         for (Item item : ammunition) {
@@ -42,7 +45,7 @@ public class AmmunitionView {
             line.insert(0, item.getType());
             line.insert(20, item.getQuantity());
             
-            System.out.println(line.toString());
+            console.println(line.toString());
         }
         
          /*
@@ -60,26 +63,27 @@ public class AmmunitionView {
     public void display() {
         boolean done = false; // set flag for not done
         
-        //System.out.println(this.ammunition);
+        //console.println(this.ammunition);
         
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while invalid value is entered
-                       
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            
-            gameMenu.display();
-            break; // end the loop
-        }
+        try {
+            while (!valid) { // loop while invalid value is entered
 
+                value = this.keyboard.readLine(); // get next line typed on the keyboard
+                value = value.trim(); // trim off the leading and trailing blanks
+
+                if (value.length() < 1) { // value is blank
+                    ErrorView.display(this.getClass().getName(),"Invalid value: value cannot be blank");
+                    continue;
+                }
+
+                gameMenu.display();
+                break; // end the loop
+            }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
+        }
     }
     
 }

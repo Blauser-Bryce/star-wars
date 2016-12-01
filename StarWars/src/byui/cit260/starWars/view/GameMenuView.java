@@ -81,7 +81,7 @@ public class GameMenuView extends View {
                 this.viewAvgEnemy();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
         }
         
         return false;
@@ -139,13 +139,13 @@ public class GameMenuView extends View {
         
         try {
             int strongestEnemy = targetControl.getMaxEnemyHealth(enemyFighterList);
-            System.out.println("\n The Strongest Enemy is: "
+            console.println("\n The Strongest Enemy is: "
                               +"\n Name:\t" + enemyFighterList[strongestEnemy].getTargetName()
                               +"\n Location: \t(" + enemyFighterList[strongestEnemy].getTargetLocation().getRow() + "," 
                               + enemyFighterList[strongestEnemy].getTargetLocation().getColumn() + ")"
                               + "\n Health: \t" + enemyFighterList[strongestEnemy].getTargetHealth());
         } catch (TargetControlException me) {
-            System.out.println(me.getMessage());
+            ErrorView.display(this.getClass().getName(), me.getMessage());
         }
     }
     /*gary moser*/
@@ -156,14 +156,14 @@ public class GameMenuView extends View {
         int weakEnemy = targetControl.getLowEnemyHealth(enemyFighterList);
                 
         if (weakEnemy >= 0) {
-            System.out.println("\n The weakest Enemy is: "
+            console.println("\n The weakest Enemy is: "
                               +"\n Name:\t" + enemyFighterList[weakEnemy].getTargetName()
                               +"\n Location: \t(" + enemyFighterList[weakEnemy].getTargetLocation().getRow() + "," 
                               + enemyFighterList[weakEnemy].getTargetLocation().getColumn() + ")"
                               + "\n Health: \t" + enemyFighterList[weakEnemy].getTargetHealth()      
             );
         } else {
-            System.out.println("\n No enemies exist");
+            console.println("\n No enemies exist");
         }
     }
          /*gary moser*/
@@ -173,20 +173,21 @@ public class GameMenuView extends View {
         int remainingEnemy = targetControl.getLengthEnemyHealth(enemyFighterList);
         
         if (remainingEnemy > 0){
-        System.out.println("\n" + remainingEnemy + " Enemies Remaining");
+        console.println("\n" + remainingEnemy + " Enemies Remaining");
         }
         else{
-        System.out.println("No Ememies Remain");
+        console.println("No Ememies Remain");
         }
     }
-        /*gary moser */
+    
+    /*gary moser */
     private void viewAvgEnemy() {
         TargetControl targetControl = new TargetControl();
         EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
         double avgEnemy = targetControl.getAvgEnemyHealth(enemyFighterList);
         
-        System.out.println("\n Average Enemy Health " + avgEnemy);
-            }
+        console.println("\n Average Enemy Health " + avgEnemy);
+    }
     
         
     

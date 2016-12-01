@@ -50,7 +50,7 @@ public class MainMenuView extends View {
                 this.saveGame();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
         }
         
         return false;
@@ -65,7 +65,20 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
+        
+        // prompt for and get the name of the file to save the game in
+        console.println("\n\nEnter the file path for the file where the game is saved.");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void displayHelpMenu() {
@@ -75,7 +88,16 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+        // prompt for and get the name of the file to save the game in
+        console.println("\n\nEnter the file path for the file where the game is to be saved.");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(StarWars.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+
     }
     
 }

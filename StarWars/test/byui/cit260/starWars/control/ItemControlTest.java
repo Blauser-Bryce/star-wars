@@ -6,14 +6,18 @@
 package byui.cit260.starWars.control;
 
 import byui.cit260.starWars.model.Item;
+import java.io.PrintWriter;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import starwars.StarWars;
 
 /**
  *
  * @author Bryce Blauser
  */
 public class ItemControlTest {
+    
+    private static final PrintWriter console = StarWars.getOutFile();
     
     public ItemControlTest() {
     }
@@ -24,11 +28,11 @@ public class ItemControlTest {
     @Test
     public void testReplenishItem() {
         
-        System.out.println("replenishItem");
+        console.println("replenishItem");
         /********************************************
          * Test case #Error 1
          ********************************************/
-        System.out.println("\tTest case #Error 1");
+        console.println("\tTest case #Error 1");
         
         //input values for test case 1
         Item item = null;
@@ -44,7 +48,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #1
          ********************************************/
-        System.out.println("\tTest case #1");
+        console.println("\tTest case #1");
         
         //input values for test case 1
         
@@ -65,7 +69,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #2
          ********************************************/
-        System.out.println("\tTest case #2");
+        console.println("\tTest case #2");
         
         //input values for test case 2
         item = new Item();
@@ -85,7 +89,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #3
          ********************************************/
-        System.out.println("\tTest case #3");
+        console.println("\tTest case #3");
         
         //input values for test case 3
         item = new Item();
@@ -105,7 +109,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #4
          ********************************************/
-        System.out.println("\tTest case #4");
+        console.println("\tTest case #4");
         
         //input values for test case 4
         item = new Item();
@@ -125,7 +129,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #5
          ********************************************/
-        System.out.println("\tTest case #5");
+        console.println("\tTest case #5");
         
         //input values for test case 5
         item = new Item();
@@ -145,7 +149,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #6
          ********************************************/
-        System.out.println("\tTest case #6");
+        console.println("\tTest case #6");
         
         //input values for test case 6
         item = new Item();
@@ -165,7 +169,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #7
          ********************************************/
-        System.out.println("\tTest case #7");
+        console.println("\tTest case #7");
         
         //input values for test case 7
         item = new Item();
@@ -185,7 +189,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #8
          ********************************************/
-        System.out.println("\tTest case #8");
+        console.println("\tTest case #8");
         
         //input values for test case 8
         item = new Item();
@@ -205,7 +209,7 @@ public class ItemControlTest {
         /********************************************
          * Test case #9
          ********************************************/
-        System.out.println("\tTest case #9");
+        console.println("\tTest case #9");
         
         //input values for test case 9
         item = new Item();
