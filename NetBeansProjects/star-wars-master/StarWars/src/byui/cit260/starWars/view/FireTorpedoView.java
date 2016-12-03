@@ -58,7 +58,7 @@ public class FireTorpedoView extends View {
                 this.Evasive();
                break;
         default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
         break;
         }
         
@@ -73,11 +73,11 @@ public class FireTorpedoView extends View {
         TargetControl instance = new TargetControl();
         
         String result = instance.applyDamage(target, amplifier, amount);
-        System.out.println(result);
+        console.println(result);
     }
     
     private void Evasive () {
-    System.out.println("\n stub for evasive");
+    console.println("\n stub for evasive");
         
     }
 

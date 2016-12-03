@@ -5,7 +5,9 @@
  */
 package byui.cit260.starWars.view;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import starwars.StarWars;
 
 /**
  *
@@ -14,6 +16,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
+    
+    protected final BufferedReader keyboard = StarWars.getInFile();
+    protected final PrintWriter console = StarWars.getOutFile();
     
     public View() {
         
@@ -27,7 +32,7 @@ public abstract class View implements ViewInterface {
     public void display() {
         boolean done = false; // set flag for not done
         
-        //System.out.println(this.menu);
+        //console.println(this.menu);
         
         do {
             // prompt for and get menu input
@@ -43,23 +48,26 @@ public abstract class View implements ViewInterface {
     
     @Override
     public String getInput() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+        
         String value = null; // value to be returned
         boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while invalid value is entered
-            
-            // Prompt with message
-            System.out.println("\n" + this.displayMessage);
-            
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\n*** You must enter a value ***");
-                continue;
+        try {
+            while (!valid) { // loop while invalid value is entered
+
+                // Prompt with message
+                this.console.println("\n" + this.displayMessage);
+
+                value = this.keyboard.readLine(); // get next line typed on the keyboard
+                value = value.trim(); // trim off the leading and trailing blanks
+
+                if (value.length() < 1) { // value is blank
+                    ErrorView.display(this.getClass().getName(),"You must enter a value");
+                    continue;
+                }
+                break; // end the loop
             }
-            break; // end the loop
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
         return value;
     }

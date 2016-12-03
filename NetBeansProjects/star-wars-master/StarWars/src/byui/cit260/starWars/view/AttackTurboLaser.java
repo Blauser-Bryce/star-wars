@@ -54,7 +54,7 @@ public class AttackTurboLaser extends View {
                 this.evasiveManeuver();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         
@@ -65,7 +65,7 @@ public class AttackTurboLaser extends View {
     private void damageTurboLaser() {
         
         Aim aim = new Aim();
-        System.out.println(aim.getAimLayout());
+        console.println(aim.getAimLayout());
         
         AimView aimView = new AimView();
         aimView.display();
@@ -83,24 +83,24 @@ public class AttackTurboLaser extends View {
         missile --; 
          if (location==target && health >= 1) {       
         health =- damage; 
-        System.out.println("*** damage Turbo laser***" + health + "health remaining");    
+        console.println("*** damage Turbo laser***" + health + "health remaining");    
         return health;
         }
         
         
        else if  (location == target && health <= 0)  {
-            System.out.println("turbo laser destroyed");
+            console.println("turbo laser destroyed");
        
        }        
        else 
-          System.out.println("miss");
+          console.println("miss");
         
      
         return health; 
         */
     }
        private void evasiveManeuver() {
-        System.out.println("*** Evasive Maneuver called ***");
+        console.println("*** Evasive Maneuver called ***");
     }       
 
 

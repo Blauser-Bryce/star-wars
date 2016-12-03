@@ -9,7 +9,6 @@ import byui.cit260.starWars.control.ItemControl;
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Player;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 import starwars.StarWars;
 
@@ -63,45 +62,49 @@ public class SupplyShipView extends View {
                 this.getQuantity();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                ErrorView.display(this.getClass().getName(), "Invalid selection - Try again");
         }
         this.getQuantity();
         return false;
     }
     
     private void getQuantity() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+        
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
-        while (!valid) { // loop while invalid value is entered
-            System.out.println("\nEnter Quantity to Replenish");
-            
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
+        try {
+            while (!valid) { // loop while invalid value is entered
+                console.println("\nEnter Quantity to Replenish");
+
+                value = this.keyboard.readLine(); // get next line typed on the keyboard
+                value = value.trim(); // trim off the leading and trailing blanks
+
+                if (value.length() < 1) { // value is blank
+                    ErrorView.display(this.getClass().getName(), "Invalid value: value cannot be blank");
+                    continue;
+                }
+
+                if (value.toUpperCase().equals("X"))
+                    break;
+
+                if (Pattern.matches("^[0-9]*$", value)) {
+                    valid = true;
+                    this.repItem(value);
+                } else {
+                    ErrorView.display(this.getClass().getName(), "Invalid value: can only contain a whole number");
+                    continue;
+                }
+
+                break; // end the loop
             }
-            
-            if (value.toUpperCase().equals("X"))
-                break;
-                       
-            if (Pattern.matches("^[0-9]*$", value)) {
-                valid = true;
-                this.repItem(value);
-            } else {
-                System.out.println("\nInvalid value: can only contain a whole number");
-                continue;
-            }
-            
-            break; // end the loop
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
     }
 
     private void repItem(String repAmount) {
-        System.out.println("\nReplenishing " + repAmount);
+        console.println("\nReplenishing " + repAmount);
         
         // user wants to exit
         if (repAmount.toUpperCase().equals("X")) {
@@ -113,13 +116,13 @@ public class SupplyShipView extends View {
         try {
             amount = Integer.parseInt(repAmount);
         } catch (NumberFormatException nf) {
-            System.out.println("\nYou must enter a valid number.  Try again or enter X to Exit.");
+            ErrorView.display(this.getClass().getName(), "You must enter a valid number.  Try again or enter X to Exit.");
         }
         
         ItemControl repItem = new ItemControl();
         
         String result = repItem.replenishItem(this.item, amount, 10000, true);
-        System.out.println(result);
+        console.println(result);
         
         this.display();
     }

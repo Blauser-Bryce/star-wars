@@ -6,14 +6,18 @@
 package byui.cit260.starWars.control;
 
 import byui.cit260.starWars.model.Target;
+import java.io.PrintWriter;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import starwars.StarWars;
 
 /**
  *
  * @author Bryce Blauser
  */
 public class TargetControlTest {
+    
+    private static final PrintWriter console = StarWars.getOutFile();
     
     public TargetControlTest() {
     }
@@ -27,7 +31,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #Error 1
          ********************************************/
-        System.out.println("\tTest case #Error 1");
+        console.println("\tTest case #Error 1");
         
         //input values for test case 1
         Target target = null;
@@ -43,7 +47,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #1
          ********************************************/
-        System.out.println("\tTest case #1");
+        console.println("\tTest case #1");
         
         //input values for test case 1
         target = new Target();
@@ -60,7 +64,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #2
          ********************************************/
-        System.out.println("\tTest case #2");
+        console.println("\tTest case #2");
         
         //input values for test case 2
         target = new Target();
@@ -77,7 +81,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #3
          ********************************************/
-        System.out.println("\tTest case #3");
+        console.println("\tTest case #3");
         
         //input values for test case 3
         target = new Target();
@@ -94,7 +98,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #4
          ********************************************/
-        System.out.println("\tTest case #4");
+        console.println("\tTest case #4");
         
         //input values for test case 4
         target = new Target();
@@ -111,7 +115,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #4
          ********************************************/
-        System.out.println("\tTest case #4");
+        console.println("\tTest case #4");
         
         //input values for test case 4
         target = new Target();
@@ -128,7 +132,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #5
          ********************************************/
-        System.out.println("\tTest case #5");
+        console.println("\tTest case #5");
         
         //input values for test case 5
         target = new Target();
@@ -145,7 +149,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #6
          ********************************************/
-        System.out.println("\tTest case #6");
+        console.println("\tTest case #6");
         
         //input values for test case 6
         target = new Target();
@@ -162,7 +166,7 @@ public class TargetControlTest {
         /********************************************
          * Test case #7
          ********************************************/
-        System.out.println("\tTest case #7");
+        console.println("\tTest case #7");
         
         //input values for test case 7
         target = new Target();
@@ -182,7 +186,7 @@ public class TargetControlTest {
      */
     @Test
     public void testApplyRepair() {
-        System.out.println("\tTest case #Error 1");
+        console.println("\tTest case #Error 1");
         
         //input values for test case 1
         Target target = null;
@@ -202,7 +206,7 @@ public class TargetControlTest {
        
          
          
-         System.out.println("\tTest case applyRepair #1");
+         console.println("\tTest case applyRepair #1");
         
         //input values for test case 1
         target = new Target();
@@ -220,7 +224,7 @@ public class TargetControlTest {
          * Test case applyRepair #2
          ********************************************/
         
-        System.out.println("\tTest case applyRepair #2");
+        console.println("\tTest case applyRepair #2");
         
         //input values for test case 2
         target = new Target();
@@ -238,7 +242,7 @@ public class TargetControlTest {
          * Test case applyRepair #3
          ********************************************/
         
-        System.out.println("\tTest case applyRepair #3");
+        console.println("\tTest case applyRepair #3");
         
         //input values for test case 3
         target = new Target();
@@ -256,7 +260,7 @@ public class TargetControlTest {
          * Test case applyRepair #4
          ********************************************/
         
-        System.out.println("\tTest case applyRepair #4");
+        console.println("\tTest case applyRepair #4");
         
         //input values for test case 4
         target = new Target();
@@ -274,7 +278,7 @@ public class TargetControlTest {
          * Test case applyRepair #5
          ********************************************/
         
-        System.out.println("\tTest case applyRepair #5");
+        console.println("\tTest case applyRepair #5");
         
         //input values for test case 5
         target = new Target();
@@ -292,7 +296,7 @@ public class TargetControlTest {
          * Test case applyRepair #6
          ********************************************/
         
-        System.out.println("\tTest case applyRepair #6");
+        console.println("\tTest case applyRepair #6");
         
         //input values for test case 6
         target = new Target();
@@ -310,7 +314,7 @@ public class TargetControlTest {
          * Test case applyRepair #7
          ********************************************/
         
-        System.out.println("\tTest case applyRepair #7");
+        console.println("\tTest case applyRepair #7");
         
         //input values for test case 7
         target = new Target();

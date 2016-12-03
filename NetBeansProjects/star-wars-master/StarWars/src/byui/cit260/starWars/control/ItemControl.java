@@ -6,17 +6,20 @@
 package byui.cit260.starWars.control;
 
 import byui.cit260.starWars.model.Item;
+import java.io.PrintWriter;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import starwars.StarWars;
 
 /**
  *
  * @author Bryce Blauser
  */
 public class ItemControl {
-        
+    private static final PrintWriter console = StarWars.getOutFile();
+    
     public String replenishItem(Item item, int quantity, long duration, boolean replenishBoost) {
         
         if (item == null || item.getType() == null) {
@@ -57,10 +60,10 @@ public class ItemControl {
             public void run() {
                 item.replenishQuantity();
                 // Display each tick...
-                //System.out.println("Replenished " + item.getType() + ", now at " + item.getQuantity() + " of " + item.maxQuantity(item.getType()));
+                //console.println("Replenished " + item.getType() + ", now at " + item.getQuantity() + " of " + item.maxQuantity(item.getType()));
                 qtyReplenished++;
                 if (item.getQuantity() >= item.maxQuantity(item.getType()) || qtyReplenished >= quantity) {
-                    System.out.println(item.getType() + " Replenished (" + quantity + ")");
+                    console.println(item.getType() + " Replenished (" + quantity + ")");
                     scheduler.shutdownNow();
                 }
             }

@@ -16,7 +16,14 @@ import static byui.cit260.starWars.model.Item.itemType.Torpedo;
 import byui.cit260.starWars.model.Location;
 import byui.cit260.starWars.model.Scene;
 import byui.cit260.starWars.model.Scene.SceneType;
+import byui.cit260.starWars.view.ErrorView;
+import exceptions.GameControlException;
 import exceptions.MapControlException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import starwars.StarWars;
 
 /**
@@ -26,8 +33,8 @@ import starwars.StarWars;
 public class GameControl {
 
     private static Player player;
-
-   
+    private static final PrintWriter console = StarWars.getOutFile();
+    
     public static Player createPlayer(String name) {
         
         if (name == null) {
@@ -69,13 +76,13 @@ public class GameControl {
         try {
             PlayerControl.movePlayerToLocation(location);
         } catch (MapControlException me) {
-            System.out.println(me.getMessage());
+            ErrorView.display("GameControl", me.getMessage());
         }
         
     }
 
     public static Item[] createItemList() {
-        System.out.println("*** called createItemList() in GameControl ***");
+        console.println("*** called createItemList() in GameControl ***");
         return null;
     }
 
@@ -176,6 +183,32 @@ public class GameControl {
         locations[17][8].setScene(scenes[SceneType.friendlyFighters.ordinal()]);
         locations[18][9].setScene(scenes[SceneType.supplyShip.ordinal()]);
         locations[19][10].setScene(scenes[SceneType.repairShip.ordinal()]);
+    }
+
+    public static void saveGame(Game game, String filePath) throws GameControlException {
+        
+        try( FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game); // write the game object out to file
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filepath) throws GameControlException {
+        Game game = null;
+        
+        try( FileInputStream fips = new FileInputStream(filepath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject(); // read the game object from file
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        // close the output file
+        StarWars.setCurrentGame(game);
     }
    
  }

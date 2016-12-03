@@ -4,37 +4,42 @@
  * and open the template in the editor.
  */
 package byui.cit260.starWars.view;
-
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Player;
-import java.util.Scanner;
+import exceptions.GameControlException;
+import java.io.PrintWriter;
 import starwars.StarWars;
 
 /**
  *
  * @author Bryce Blauser
  */
-public class AmmunitionView {
+public class AmmunitionView extends View {
     
     //private String ammunition;
     GameMenuView gameMenu = new GameMenuView();
     
     Player player = StarWars.getPlayer();
-
     Game game = StarWars.getCurrentGame();
+    Item[] ammunition = game.getInventory();
     
     public AmmunitionView() {
        
+        super("\n"
+                + "\n---------------------------------------------------"
+                + "\n Ammunition Report "
+                + "\n R - Print Report to file"
+                + "\n X - Exit "
+                + "\n---------------------------------------------------");
+        
         StringBuilder line; 
         
-        Item[] ammunition = game.getInventory();
-        
-        System.out.println("\n      LIST OF AMMUNITION ITEMS");
+        console.println("\n      LIST OF AMMUNITION ITEMS");
         line = new StringBuilder("                                          ");
         line.insert(0, "TYPE");
         line.insert(20, "QUANTITY");
-        System.out.println(line.toString());
+        console.println(line.toString());
         
         // for each inventory item
         for (Item item : ammunition) {
@@ -42,44 +47,53 @@ public class AmmunitionView {
             line.insert(0, item.getType());
             line.insert(20, item.getQuantity());
             
-            System.out.println(line.toString());
+            console.println(line.toString());
         }
         
-         /*
-        this.ammunition = 
-                    "-------------------------------------------"
-                + "\n| Current Player Ammuntion (" + player.getName() + ")"
-                + "\n-------------------------------------------"
-               + "\n  Missiles: " + player.getMissiles().getQuantity()
-               + "\n  Torpedos: " + player.getTorpedos().getQuantity()
-             + "\n  Flares  : " + player.getFlares().getQuantity()
-                + "\n-------------------------------------------\n"
-                + "\nPress any key to exit" ; */
     }
     
-    public void display() {
-        boolean done = false; // set flag for not done
+    @Override
+    public boolean doAction(String value) {
+        value = value.toUpperCase(); // convert to upper
         
-        //System.out.println(this.ammunition);
-        
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while invalid value is entered
-                       
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off the leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            
-            gameMenu.display();
-            break; // end the loop
+        switch (value) {
+            case "R": // Print the ammunition data to file
+                this.printReport();
+                break;
+            default:
+                console.println("Invalid selection. Try again.");
+                break;
         }
+        return false;
+    }
 
+    private void printReport() {
+        
+        // prompt for and get the name of the file to save the game in
+        console.println("\n\nEnter the file path for the file where the game is to be saved.");
+        String filePath = this.getInput();
+        
+        try {
+            saveReport(filePath);
+            console.println("\nFile successfully saved to: " + filePath);
+        } catch (Exception ex) {
+            ErrorView.display("AmmunitionView", ex.getMessage());
+        }
     }
     
+    public void saveReport(String filePath) throws GameControlException {
+        
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            out.println("\n\n      Ammunition Report");
+            out.printf("%n%-20s%8s","Ammunition Type","Quantity");
+            out.printf("%n%-20s%8s","---------------","--------");
+            
+            // for each inventory item
+            for (Item item : ammunition) {
+                out.printf("%n%-20s%5d",item.getType(), item.getQuantity());
+            }
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
 }

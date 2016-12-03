@@ -41,13 +41,13 @@ public class EnterWaypointView extends View {
             try {
                 row = Integer.parseInt(locationArray[0]);
             } catch (NumberFormatException nf) {
-                System.out.println("\nYou must enter a valid set of numbers.  Try again or enter X to Exit.");
+                ErrorView.display(this.getClass().getName(), "You must enter a valid set of numbers.  Try again or enter X to Exit.");
             }
             
             try {
                 column = Integer.parseInt(locationArray[1]);
             } catch (NumberFormatException nf) {
-                System.out.println("\nYou must enter a valid set of numbers.  Try again or enter X to Exit.");
+                ErrorView.display(this.getClass().getName(), "nYou must enter a valid set of numbers.  Try again or enter X to Exit.");
             }
                         
             // Move player to location
@@ -57,7 +57,7 @@ public class EnterWaypointView extends View {
             try {
                 PlayerControl.movePlayerToLocation(location);
             } catch (MapControlException me) {
-                System.out.println(me.getMessage());
+                ErrorView.display(this.getClass().getName(), me.getMessage());
             }
             
             // Check if the player moved to a new scene and perform action if necessary
@@ -70,7 +70,7 @@ public class EnterWaypointView extends View {
             }
                         
         } else {
-            System.out.println("\n*** Invalid selection *** Try again");
+            console.println("\n*** Invalid selection *** Try again");
         }
 
         return false;

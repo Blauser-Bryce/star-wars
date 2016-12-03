@@ -5,16 +5,17 @@
  */
 package byui.cit260.starWars.control;
 
-//import byui.cit260.starWars.model.Game;
-//import byui.cit260.starWars.model.Location;
 import byui.cit260.starWars.model.Map;
-//import starwars.StarWars;
+import java.io.PrintWriter;
+import starwars.StarWars;
 
 /**
  *
  * @author Bryce Blauser
  */
 public class MapControl {
+    
+    private static final PrintWriter console = StarWars.getOutFile();
     
     public static Map createMap() {
         // Create the map
@@ -31,7 +32,7 @@ public class MapControl {
 
         Location[][] locations = game.getMap().getLocations();
         
-        System.out.println(locations.length());
+        console.println(locations.length());
         
         return locations;
     }
@@ -59,6 +60,6 @@ public class MapControl {
     }
 */    
     static void moveActorsToStartingLocation(Map map) {
-        System.out.println("\n *** moveActorsToStartingLocation called ***");
+        console.println("\n *** moveActorsToStartingLocation called ***");
     }
 }

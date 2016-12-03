@@ -38,7 +38,7 @@ public class MapView extends View {
                 this.moveToWaypoint();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
         }
         
         return false;

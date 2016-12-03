@@ -133,15 +133,11 @@ public class TargetControl {
         return enemyIndex;   
     }
     
-        public int getLowEnemyHealth(EnemyFighter[] enemyFighterList) throws TargetControlException {
+        public int getLowEnemyHealth(EnemyFighter[] enemyFighterList) {
         double lowValue = enemyFighterList[0].getTargetHealth();
         int index = 0;
-        int enemyIndex = 0;
+        int enemyIndex = -1;
         
-        
-        if (enemyFighterList == null || enemyFighterList.length == 0) {
-             throw new TargetControlException("No enemies found in current list");
-        }
         for (EnemyFighter enemyFighter : enemyFighterList) {
             if (enemyFighter.getTargetHealth() <= lowValue) {
                lowValue = enemyFighter.getTargetHealth();
@@ -153,22 +149,13 @@ public class TargetControl {
         
         return enemyIndex;   
     }
-        public int getLengthEnemyHealth(EnemyFighter[] enemyFighterList)throws TargetControlException {
-       
-            if (enemyFighterList == null || enemyFighterList.length == 0) {
-            throw new TargetControlException("No enemies found in current list");
-              }
-       
+        public int getLengthEnemyHealth(EnemyFighter[] enemyFighterList) {
         int size = enemyFighterList.length;
         return size;
     }
-        public double getAvgEnemyHealth(EnemyFighter[] enemyFighterList)throws TargetControlException {
+        public double getAvgEnemyHealth(EnemyFighter[] enemyFighterList) {
        
         double total = 0;
-        
-             if (enemyFighterList == null || enemyFighterList.length == 0) {
-             throw new TargetControlException("No enemies found in current list");
-             }
         for (int i = 0; i < enemyFighterList.length -1 ; i++) {
             total = total + enemyFighterList[i].getTargetHealth();
         }

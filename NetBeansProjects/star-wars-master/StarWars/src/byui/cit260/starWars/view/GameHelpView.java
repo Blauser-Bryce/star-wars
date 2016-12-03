@@ -53,31 +53,31 @@ class GameHelpView extends View {
                 this.showManeuverText();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
         }
         
         return false;
     }
 
     private void showGoalText() {
-        System.out.println("\n The goal of this game is to destroy the Death Star");
+        console.println("\n The goal of this game is to destroy the Death Star");
     }
 
     private void showAttackText() {
-        System.out.println("\n You attack by doing xyz and pressing x button");
+        console.println("\n You attack by doing xyz and pressing x button");
     }
 
     private void showAimingText() {
-        System.out.println("\n You aim by pressing up and down arrows until the target"
+        console.println("\n You aim by pressing up and down arrows until the target"
                          + "\n is in the crosshairs");
     }
 
     private void showMapText() {
-        System.out.println("\n The map shows the following locations:");
+        console.println("\n The map shows the following locations:");
     }
 
     private void showManeuverText() {
-        System.out.println("\n You maneuver you fighter by doing xyz and launching"
+        console.println("\n You maneuver you fighter by doing xyz and launching"
                          + "\nflares by pressing xyz button");
     }
 

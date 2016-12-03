@@ -39,7 +39,7 @@ public class AttackDeflectorShield extends View {
                 this.evasiveManeuver();
                 break;
             default:
-                System.out.println("\n*** Invalid selection. *** Try again.");
+                console.println("\n*** Invalid selection. *** Try again.");
                 break;
         }
         
@@ -60,20 +60,20 @@ public class AttackDeflectorShield extends View {
             missile --;
         if (location == target && health >= 1) {
             health =- damage;
-            System.out.println("*** Damage Deflector Shield. ***" + health + "health remaining");
+            console.println("*** Damage Deflector Shield. ***" + health + "health remaining");
             return health;
         }
         
         else if (location == target && health <= 0) {
-            System.out.println("Deflector Shield Destroyed.");
+            console.println("Deflector Shield Destroyed.");
         }
         
         else
-            System.out.println("Miss");
+            console.println("Miss");
             return health;
     }
 
     private void evasiveManeuver() {
-        System.out.println("*** Evasive Maneuver Called. ***");
+        console.println("*** Evasive Maneuver Called. ***");
     }
 }
