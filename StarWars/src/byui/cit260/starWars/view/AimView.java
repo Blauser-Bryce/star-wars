@@ -46,7 +46,7 @@ public class AimView extends View {
                 this.fire();
                 break;
             default:
-                System.err.println("\n*** Invalid selection. *** Try again.");
+                console.println("Invalid selection. Try again.");
                 break;
         }
         
