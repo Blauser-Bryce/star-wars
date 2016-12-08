@@ -37,8 +37,9 @@ public class Target implements Serializable {
     private targetType targetType;
 
     public Target() {
+        
     }
-
+    
     public double getTargetHealth() {
         return targetHealth;
     }

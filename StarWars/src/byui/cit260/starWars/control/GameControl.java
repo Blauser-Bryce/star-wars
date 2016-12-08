@@ -32,7 +32,7 @@ import starwars.StarWars;
  */
 public class GameControl {
 
-    private static Player player;
+    private Player player;
     private static final PrintWriter console = StarWars.getOutFile();
     
     public static Player createPlayer(String name) {
@@ -50,12 +50,13 @@ public class GameControl {
         return player;
     }
 
-    public static void createNewGame(Player name) {
+    public static void createNewGame(Player player) {
         
         Game game = new Game(); // Create new game
+        game.setPlayer(player); // save player in game
         StarWars.setCurrentGame(game); // Save in StarWars
         
-        game.setPlayer(player); // save player in game
+        StarWars.setPlayer(player);
         
         // create the inventory list and save in the game
         Item[] inventoryList = GameControl.createInventoryList();

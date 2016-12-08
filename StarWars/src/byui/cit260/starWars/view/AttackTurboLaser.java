@@ -6,6 +6,8 @@
 package byui.cit260.starWars.view;
 
 import byui.cit260.starWars.model.Aim;
+import byui.cit260.starWars.model.Player;
+import starwars.StarWars;
 
 /**
  *
@@ -63,43 +65,15 @@ public class AttackTurboLaser extends View {
 
 
     private void damageTurboLaser() {
-        
+                        
         Aim aim = new Aim();
-        console.println(aim.getAimLayout());
+        console.println(aim.drawLayout());
         
         AimView aimView = new AimView();
         aimView.display();
-        
-        /*
-        int location = 2;//test turbo Laser location
-        int target = 2;// test target location
-        int health = 100;// test health
-        int missile = 100;// test 
-        int damage = 30;// test damage done
-        double amplifier = 1.5; //test amplifier
-        double amount = 30;// test amount
-        
-     while (missile > 0) 
-        missile --; 
-         if (location==target && health >= 1) {       
-        health =- damage; 
-        console.println("*** damage Turbo laser***" + health + "health remaining");    
-        return health;
-        }
-        
-        
-       else if  (location == target && health <= 0)  {
-            console.println("turbo laser destroyed");
-       
-       }        
-       else 
-          console.println("miss");
-        
-     
-        return health; 
-        */
     }
-       private void evasiveManeuver() {
+    
+    private void evasiveManeuver() {
         console.println("*** Evasive Maneuver called ***");
     }       
 

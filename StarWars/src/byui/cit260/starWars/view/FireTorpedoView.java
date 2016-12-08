@@ -51,14 +51,13 @@ public class FireTorpedoView extends View {
         
         switch (value) {
             case "F": // fire
-                this.FireTorpedo();
-                break;
-             
+               this.FireTorpedo();
+               break;
             case "E": // evasive
-                this.Evasive();
+               this.Evasive();
                break;
         default:
-                console.println("\n*** Invalid selection *** Try again");
+               console.println("\n*** Invalid selection *** Try again");
         break;
         }
         
@@ -69,7 +68,6 @@ public class FireTorpedoView extends View {
         double amplifier = 1.5;
         double amount = 30;
   
-          
         TargetControl instance = new TargetControl();
         
         String result = instance.applyDamage(target, amplifier, amount);

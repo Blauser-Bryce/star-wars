@@ -5,7 +5,11 @@
  */
 package byui.cit260.starWars.view;
 
+import byui.cit260.starWars.control.TargetControl;
 import byui.cit260.starWars.model.Aim;
+import byui.cit260.starWars.model.Player;
+import byui.cit260.starWars.model.Target;
+import starwars.StarWars;
 
 /**
  *
@@ -14,7 +18,6 @@ import byui.cit260.starWars.model.Aim;
 public class AimView extends View {
     
     Aim aim = new Aim();
-    private String aimLayout;
     
     public AimView () {
         super("\n"
@@ -53,42 +56,46 @@ public class AimView extends View {
         return false;
     }
 
+    private void aimTarget(String direction) {
+        if (!aim.aimDir(direction)) {
+            console.println("\nLost Target!!!");
+            return;
+        }
+  
+        console.println(aim.drawLayout());
+    }
+    
     private void aimUp() {
-        
-        aim.aimUp();
-        aimLayout = aim.getAimLayout();
-        console.println(aimLayout);
-        console.println("\nAim up stub");
+        aimTarget("UP");
     }
 
     private void aimDown() {
-        
-        aim.aimDown();
-        aimLayout = aim.getAimLayout();
-        console.println(aimLayout);
-        console.println("\nAim down stub");
+        aimTarget("DOWN");
     }
 
     private void aimLeft() {
-        
-        aim.aimLeft();
-        aimLayout = aim.getAimLayout();
-        console.println(aimLayout);
-        console.println("\nAim left stub");
+        aimTarget("LEFT");
     }
 
-    private void aimRight() {
-        
-        aim.aimRight();
-        aimLayout = aim.getAimLayout();
-        console.println(aimLayout);
-        console.println("\nAim right stub");
+    private void aimRight() {   
+        aimTarget("RIGHT");
     }
 
     private void fire() {
-    FireTorpedoView torpedo = new  FireTorpedoView();
-    torpedo.display();
         
+        Target target = StarWars.getPlayer().getCurrentTarget();
+        if (aim.isOnTarget()) {
+            TargetControl targetControl = new TargetControl();
+        
+            String attack = targetControl.applyDamage(target, 1.5, 50);
+        
+            console.println(target.getTargetName() + " - HIT : " + attack);
+        } else {
+            console.println("MISSED!");
+        }
+        
+        //FireTorpedoView torpedo = new  FireTorpedoView();
+        //torpedo.display();
     }
     
 }
