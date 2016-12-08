@@ -19,7 +19,7 @@ public abstract class View implements ViewInterface {
     
     protected final BufferedReader keyboard = StarWars.getInFile();
     protected final PrintWriter console = StarWars.getOutFile();
-    
+        
     public View() {
         
     }

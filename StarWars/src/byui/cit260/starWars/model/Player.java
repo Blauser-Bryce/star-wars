@@ -57,8 +57,8 @@ public class Player implements Serializable {
         return currentTarget;
     }
 
-    public void setCurrentTarget(Target currentTarget) {
-        this.currentTarget = currentTarget;
+    public void setCurrentTarget(Target target) {
+        this.currentTarget = target;
     }
     
     public Location getLocation() {

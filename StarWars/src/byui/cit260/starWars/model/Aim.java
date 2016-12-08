@@ -5,7 +5,7 @@
  */
 package byui.cit260.starWars.model;
 
-import java.util.Objects;
+import java.util.Arrays;
 import starwars.StarWars;
 
 /**
@@ -13,81 +13,83 @@ import starwars.StarWars;
  * @author Bryce Blauser
  */
 public class Aim {
-    
-    public String aimLayout;
-    
+        
     Player player = StarWars.getPlayer();
-    Target currentTarget = new Target();
+    private int targetRow;
+    private int targetCol;
+    private final char[][] targetGrid = new char[12][20];
+    private boolean onTarget;
 
+    public boolean isOnTarget() {
+        return onTarget;
+    }
+    
     public Aim() {
-        currentTarget = player.getCurrentTarget();
+        targetRow = 1;
+        targetCol = 1;
+    }
+   
+    public String drawLayout() {
         
-        aimLayout =  "Attacking " + currentTarget.getTargetName()
-                   +"\n----------------------------"
-                   +"\n|            |             |"
-                   +"\n|            |             |"
-                   +"\n|            |             |"
-                   +"\n|            |             |"
-                   +"\n|------------+-------------|"
-                   +"\n|            |             |"
-                   +"\n|            |             |"
-                   +"\n|            |             |"
-                   +"\n|            |             |"
-                   +"\n ---------------------------";
-    }
-
-    public String getAimLayout() {
-        return aimLayout;
-    }
-
-    public void setAimLayout(String aimLayout) {
-        this.aimLayout = aimLayout;
-    }
-
-    public void aimUp() {
+        for (int row = 0; row < 11; row++) {
+            for (int col = 0; col < 19; col++) {
+                if (row == 0 || row == 5 || row == 10) {
+                    targetGrid[row][col] = '-';
+                } else if (col == 0 || col == 9 ||col == 18) {
+                    targetGrid[row][col] = '|';
+                } else {
+                    targetGrid[row][col] = ' ';
+                }
+            }
+        }
+        targetGrid[5][9] = '+';
+        targetGrid[targetRow][targetCol] = 'X';
         
+        onTarget = targetRow == 5 && targetCol == 9;
+        
+        String targetLayout = "\nAttacking " + player.getCurrentTarget().getTargetName();
+        
+        for (int row = 0; row < 11; row++) {
+            targetLayout += "\n";
+            for (int col = 0; col < 19; col++) {
+                targetLayout +=  targetGrid[row][col];
+            }
+        }
+        
+        return targetLayout;
     }
     
-    public void aimDown() {
+    public boolean aimDir(String direction) {
+        switch (direction) {
+            case "UP":
+                targetRow++;
+                break;
+            case "DOWN":
+                targetRow--;
+                break;
+            case "LEFT":
+                targetCol++;
+                break;
+            case "RIGHT":
+                targetCol--;
+                break;
+        }
         
-    }
-    
-    public void aimLeft() {
-        
-    }
-    
-    public void aimRight() {
-        
-    }
-    
-    @Override
-    public String toString() {
-        return "Aim{" + "aimLayout=" + aimLayout + '}';
+        return targetRow > 0 && targetRow < 11 && targetCol > 0 && targetCol < 19;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.aimLayout);
+        int hash = 3;
+        hash = 29 * hash + this.targetRow;
+        hash = 29 * hash + this.targetCol;
+        hash = 29 * hash + Arrays.deepHashCode(this.targetGrid);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Aim other = (Aim) obj;
-        if (!Objects.equals(this.aimLayout, other.aimLayout)) {
-            return false;
-        }
-        return true;
+    public String toString() {
+        return "Aim{" + "targetRow=" + targetRow + ", targetCol=" + targetCol + ", targetGrid=" + targetGrid + '}';
     }
     
 }
