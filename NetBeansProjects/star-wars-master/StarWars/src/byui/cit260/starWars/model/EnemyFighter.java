@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class EnemyFighter extends Target implements Serializable{
     
     public EnemyFighter() {
+        
 
     }
 

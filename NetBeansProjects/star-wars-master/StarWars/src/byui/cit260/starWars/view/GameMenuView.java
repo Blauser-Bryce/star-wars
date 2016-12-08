@@ -8,11 +8,8 @@ package byui.cit260.starWars.view;
 import byui.cit260.starWars.control.TargetControl;
 import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.EvasiveManeuver;
-import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Map;
-import exceptions.GameControlException;
 import exceptions.TargetControlException;
-import java.io.PrintWriter;
 import starwars.StarWars;
 
 /**
@@ -40,7 +37,7 @@ public class GameMenuView extends View {
                 + "\nW - View Weakest Enemy"
                 + "\nR - View Remaining Enemies"
                 + "\nH - View Average Health"
-                + "\nP - Print Remaining Enemies"
+                + "\nN - Select target"
                 + "\nX - Exit"
                 + "\n--------------------------------"); 
     }
@@ -84,8 +81,8 @@ public class GameMenuView extends View {
             case "H": // view avearge health enemy
                 this.viewAvgEnemy();
                 break;
-            case "P": // view avearge health enemy
-                this.remainingEnemiesp();
+            case "N": // Select Target View
+                this.targetView();
                 break;
             default:
                 console.println("\n*** Invalid selection *** Try again");
@@ -195,40 +192,12 @@ public class GameMenuView extends View {
         
         console.println("\n Average Enemy Health " + avgEnemy);
     }
-   /*gary Moser */
-    private void remainingEnemiesp() {
-     
-        console.println("\n\nEnter the file path for the file where the game is to be saved.");
-        String filePath = this.getInput();
-        
-        try {
-            saveReport(filePath);
-            console.println("\nFile successfully saved to: " + filePath);
-        } catch (GameControlException ex) {
-            ErrorView.display("GameMenuView", ex.getMessage());
-        }
-    }
-     public void saveReport(String filePath) throws GameControlException {
-        TargetControl targetControl = new TargetControl();
-        EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
-        int remainingEnemy = targetControl.getLengthEnemyHealth(enemyFighterList);
-        
-        try (PrintWriter out = new PrintWriter(filePath)) {
-            out.println("\n\n      Remaining Enemies Report");
-            out.printf("%n%-20s%8s","Ammunition Type","Quantity");
-            out.printf("%n%-20s%8s","---------------","--------");
-            
-            // for each inventory item
-            for (EnemyFighter enemyFighter : enemyFighterList) {
-                out.printf("%n%-20s"+ enemyFighter);
-            }
-        } catch (Exception e) {
-            throw new GameControlException(e.getMessage());
-        }
-    }
-       
-    }
-    
-        
-    
 
+    private void targetView() {
+        SelectTargetView targetView = new SelectTargetView();
+        targetView.display();
+    }
+    
+        
+    
+}

@@ -102,6 +102,7 @@ public class GameControl {
         tieFighter.setTargetShield(100);
         tieFighter.setTargetLocation(location);
         
+        
         // Populate the tie fighters
         for (int i = 0; i < 11; i++) {
             tieFighter.setTargetName("Tie Fighter " + (i + 1));
@@ -113,6 +114,22 @@ public class GameControl {
         tieFighter.setTargetHealth(EnemyFighter.targetType.tieInterceptor.getDefaultHealth());
         for (int i = 11; i < 19; i++) {
             tieFighter.setTargetName("Tie Interceptor " + (i - 10));
+            enemyFighters[i] = tieFighter;
+        }
+        
+        // Populate the turbo laser
+        tieFighter.setTargetType(EnemyFighter.targetType.turboLaser);
+        tieFighter.setTargetHealth(EnemyFighter.targetType.turboLaser.getDefaultHealth());
+        for (int i = 11; i < 19; i++) {
+            tieFighter.setTargetName("Turbo Laser " + (i - 10));
+            enemyFighters[i] = tieFighter;
+        }
+          
+        // Populate the Deflector Shield
+        tieFighter.setTargetType(EnemyFighter.targetType.deflectorShield);
+        tieFighter.setTargetHealth(EnemyFighter.targetType.deflectorShield.getDefaultHealth());
+        for (int i = 11; i < 19; i++) {
+            tieFighter.setTargetName("Defelector Shield " + (i - 10));
             enemyFighters[i] = tieFighter;
         }
         
@@ -212,3 +229,4 @@ public class GameControl {
     }
    
  }
+
