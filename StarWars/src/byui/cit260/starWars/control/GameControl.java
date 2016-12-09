@@ -89,30 +89,35 @@ public class GameControl {
 
     private static EnemyFighter[] createEnemyFighters() {
         
-        EnemyFighter[] enemyFighters = new EnemyFighter[20];
+        EnemyFighter[] enemyFighters = new EnemyFighter[35];
         
-        // Create default tie fighter
-        EnemyFighter tieFighter = new EnemyFighter();
         Location location = new Location();
         location.setRow(0);
         location.setColumn(0);
         location.setStatus("Enemy Fighters Initialized Here");
         
-        tieFighter.setTargetType(EnemyFighter.targetType.tieFighter);
-        tieFighter.setTargetHealth(EnemyFighter.targetType.tieFighter.getDefaultHealth());
-        tieFighter.setTargetShield(100);
-        tieFighter.setTargetLocation(location);
-        
         // Populate the tie fighters
         for (int i = 0; i < 11; i++) {
+            // Create default tie fighter
+            EnemyFighter tieFighter = new EnemyFighter();
+
+            tieFighter.setTargetType(EnemyFighter.targetType.tieFighter);
+            tieFighter.setTargetHealth(EnemyFighter.targetType.tieFighter.getDefaultHealth());
+            tieFighter.setTargetShield(100);
+            tieFighter.setTargetLocation(location);
             tieFighter.setTargetName("Tie Fighter " + (i + 1));
             enemyFighters[i] = tieFighter;
         }
         
-        // Populate the tie interceptors
-        tieFighter.setTargetType(EnemyFighter.targetType.tieInterceptor);
-        tieFighter.setTargetHealth(EnemyFighter.targetType.tieInterceptor.getDefaultHealth());
         for (int i = 11; i < 19; i++) {
+            // Create default tie fighter
+            EnemyFighter tieFighter = new EnemyFighter();
+            
+            // Populate the tie interceptors
+            tieFighter.setTargetType(EnemyFighter.targetType.tieInterceptor);
+            tieFighter.setTargetHealth(EnemyFighter.targetType.tieInterceptor.getDefaultHealth());
+            tieFighter.setTargetShield(100);
+            tieFighter.setTargetLocation(location);
             tieFighter.setTargetName("Tie Interceptor " + (i - 10));
             enemyFighters[i] = tieFighter;
         }
@@ -126,6 +131,29 @@ public class GameControl {
         darthVader.setTargetName("Darth Vader");
         
         enemyFighters[19] = darthVader;
+        
+        // Populate the turbo laser
+        for (int i = 20; i < 24; i++) {
+            EnemyFighter turboLaser = new EnemyFighter();
+            turboLaser.setTargetType(EnemyFighter.targetType.turboLaser);
+            turboLaser.setTargetHealth(EnemyFighter.targetType.turboLaser.getDefaultHealth());
+            turboLaser.setTargetShield(100);
+            turboLaser.setTargetLocation(location);
+            turboLaser.setTargetName("Turbo Laser " + (i - 19));
+            enemyFighters[i] = turboLaser;
+        }
+          
+        // Populate the Deflector Shield
+        for (int i = 24; i < 35; i++) {
+            EnemyFighter deflectorShield = new EnemyFighter();
+            deflectorShield.setTargetType(EnemyFighter.targetType.deflectorShield);
+            deflectorShield.setTargetHealth(EnemyFighter.targetType.deflectorShield.getDefaultHealth());
+            deflectorShield.setTargetShield(100);
+            deflectorShield.setTargetLocation(location);
+            deflectorShield.setTargetName("Defelector Shield " + (i - 23));
+            enemyFighters[i] = deflectorShield;
+        }
+        
         
         return enemyFighters;
     }

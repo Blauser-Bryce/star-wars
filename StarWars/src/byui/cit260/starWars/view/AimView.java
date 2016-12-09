@@ -83,10 +83,10 @@ public class AimView extends View {
 
     private void fire() {
         
-        Target target = StarWars.getPlayer().getCurrentTarget();
         if (aim.isOnTarget()) {
             TargetControl targetControl = new TargetControl();
-        
+            Target target = StarWars.getPlayer().getCurrentTarget();
+           
             String attack = targetControl.applyDamage(target, 1.5, 50);
         
             console.println(target.getTargetName() + " - HIT : " + attack);

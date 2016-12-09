@@ -17,7 +17,9 @@ public class Target implements Serializable {
     public enum targetType {
         tieFighter(50),
         tieInterceptor(75),
-        darthVader(100);
+        darthVader(100),
+        turboLaser(25),
+        deflectorShield(35);
         
         private final int defaultHealth;
         
