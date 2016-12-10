@@ -6,6 +6,7 @@
 package byui.cit260.starWars.model;
 
 import java.util.Arrays;
+import java.util.Random;
 import starwars.StarWars;
 
 /**
@@ -25,8 +26,10 @@ public class Aim {
     }
     
     public Aim() {
-        targetRow = 1;
-        targetCol = 1;
+        // Place the target randomly in the view
+        Random random = new Random();
+        targetRow = random.nextInt(10 - 1) + 1;
+        targetCol = random.nextInt(18 - 1) + 1;
     }
    
     public String drawLayout() {

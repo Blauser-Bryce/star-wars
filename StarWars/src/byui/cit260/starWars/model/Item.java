@@ -58,6 +58,10 @@ public class Item implements Serializable {
         this.quantity = (quantity > maxQuantity(this.type)) ? maxQuantity(this.type) : quantity;
     }
     
+    public void useQuantity() {
+        if (this.quantity > 0) this.quantity--;
+    }
+    
     public void replenishQuantity(){
         if (this.quantity >= maxQuantity(this.type)) {
             this.quantity = maxQuantity(this.type);

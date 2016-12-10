@@ -64,7 +64,7 @@ public class SupplyShipView extends View {
             default:
                 ErrorView.display(this.getClass().getName(), "Invalid selection - Try again");
         }
-        this.getQuantity();
+
         return false;
     }
     
@@ -85,9 +85,10 @@ public class SupplyShipView extends View {
                     continue;
                 }
 
-                if (value.toUpperCase().equals("X"))
-                    break;
-
+                if (value.toUpperCase().equals("X")) {
+                    return;
+                }
+                
                 if (Pattern.matches("^[0-9]*$", value)) {
                     valid = true;
                     this.repItem(value);
@@ -124,6 +125,6 @@ public class SupplyShipView extends View {
         String result = repItem.replenishItem(this.item, amount, 10000, true);
         console.println(result);
         
-        this.display();
+        //this.display();
     }
 }

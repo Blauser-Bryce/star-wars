@@ -8,7 +8,8 @@ package byui.cit260.starWars.view;
 import byui.cit260.starWars.control.MapControl;
 import byui.cit260.starWars.control.TargetControl;
 import byui.cit260.starWars.model.Aim;
-import byui.cit260.starWars.model.Player;
+import byui.cit260.starWars.model.Game;
+import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Target;
 import starwars.StarWars;
 
@@ -19,9 +20,9 @@ import starwars.StarWars;
 public class AimView extends View {
     
     Aim aim = new Aim();
-    
+   
     public AimView () {
-        super("\n"
+        super("\n" 
                 + "\n---------------------------------------------------"
                 + "\n Use the U, D, L, R keys to get your target in the "
                 + "\n crosshairs.  Press F to fire when ready.  F = Fire"
@@ -102,8 +103,10 @@ public class AimView extends View {
             console.println("MISSED!");
         }
         
-        //FireTorpedoView torpedo = new  FireTorpedoView();
-        //torpedo.display();
+        Game game = StarWars.getCurrentGame();
+        Item[] item = game.getInventory();
+        item[Item.itemType.Missile.ordinal()].useQuantity();
+        
     }
     
 }

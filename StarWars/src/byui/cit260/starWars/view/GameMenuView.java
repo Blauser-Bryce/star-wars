@@ -107,34 +107,6 @@ public class GameMenuView extends View {
        MapView mapView = new MapView();
        mapView.display();
     }
-    
-    private void attackTurboLaser() {
-       // TargetControl.attackTurboLaser;
-       AttackTurboLaser attackTurboLaser = new AttackTurboLaser();
-       attackTurboLaser.display();
-    }
-    
-    private void attackTieFighter() {
-        //TargetControl.attackTieFighter;
-        AttackTieFighter attackTieFighter = new AttackTieFighter();
-        attackTieFighter.display();
-    }
-    
-    private void attackDeflectorShield() {
-        //TargetControl.attackDefletorShield;
-        AttackDeflectorShield attackDeflectorShield = new AttackDeflectorShield();
-        attackDeflectorShield.display();
-    }
-    
-    private void evasiveManeuver() {
-        //TargetControl.evasiveManeuver;
-        EvasiveManeuver evasiveManeuver = new EvasiveManeuver();
-        evasiveManeuver.display();
-    }
-    
-    private void fireTorpedo() {
-        //TargetControl.fireTorpedo;
-    }
 
     private void viewAmmuntion() {
         // Display the ammuntion

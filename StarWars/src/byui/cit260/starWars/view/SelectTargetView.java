@@ -7,6 +7,8 @@ package byui.cit260.starWars.view;
 
 import byui.cit260.starWars.model.Aim;
 import byui.cit260.starWars.model.EnemyFighter;
+import byui.cit260.starWars.model.Game;
+import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Target;
 import java.util.ArrayList;
 import starwars.StarWars;
@@ -127,10 +129,17 @@ public class SelectTargetView extends View {
             return;
         }
         
-        Aim aim = new Aim();
-        console.println(aim.drawLayout());
+        Game game = StarWars.getCurrentGame();
+        Item[] item = game.getInventory();
+        int remaining = item[Item.itemType.Missile.ordinal()].getQuantity();
         
+        if (remaining <= 0) {
+            console.println("\nYou have no missiles!  Go to supply ship to replenish");
+            return;
+        }
+                
         AimView aimView = new AimView();
+        aimView.console.println(aimView.aim.drawLayout());
         aimView.display();
     }
     
