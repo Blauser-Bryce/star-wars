@@ -17,7 +17,11 @@ public class Location implements Serializable{
     
     private int row;
     private int column;
-    private String status;
+    private locationStatus status;
+    public enum locationStatus {
+        unlocked,
+        locked
+    }
     private Scene scene;
     private ArrayList<Actor> actors;
     
@@ -39,12 +43,12 @@ public class Location implements Serializable{
     public void setColumn(int column) {
         this.column = column;
     }
-
-    public String getStatus() {
+    
+    public locationStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(locationStatus status) {
         this.status = status;
     }
 

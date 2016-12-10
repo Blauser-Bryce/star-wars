@@ -6,8 +6,6 @@
 package byui.cit260.starWars.view;
 
 import byui.cit260.starWars.model.Aim;
-import byui.cit260.starWars.model.Player;
-import starwars.StarWars;
 
 /**
  *
@@ -62,7 +60,6 @@ public class AttackTurboLaser extends View {
         
         return false;
     }
-
 
     private void damageTurboLaser() {
                         

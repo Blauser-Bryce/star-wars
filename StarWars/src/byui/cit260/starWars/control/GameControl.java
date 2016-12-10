@@ -14,6 +14,7 @@ import static byui.cit260.starWars.model.Item.itemType.Flare;
 import static byui.cit260.starWars.model.Item.itemType.Missile;
 import static byui.cit260.starWars.model.Item.itemType.Torpedo;
 import byui.cit260.starWars.model.Location;
+import byui.cit260.starWars.model.Location.locationStatus;
 import byui.cit260.starWars.model.Scene;
 import byui.cit260.starWars.model.Scene.SceneType;
 import byui.cit260.starWars.view.ErrorView;
@@ -71,9 +72,7 @@ public class GameControl {
         game.setMap(map);
        
         // Move player to location
-        Location location = new Location();
-        location.setColumn(10);
-        location.setRow(10);
+        Location location = map.getLocations()[10][10];
         try {
             PlayerControl.movePlayerToLocation(location);
         } catch (MapControlException me) {
@@ -94,7 +93,7 @@ public class GameControl {
         Location location = new Location();
         location.setRow(0);
         location.setColumn(0);
-        location.setStatus("Enemy Fighters Initialized Here");
+        location.setStatus(locationStatus.unlocked);
         
         // Populate the tie fighters
         for (int i = 0; i < 11; i++) {
@@ -200,11 +199,20 @@ public class GameControl {
         locations[1][5].setScene(scenes[SceneType.quadrant2.ordinal()]);
         locations[2][4].setScene(scenes[SceneType.quadrant3.ordinal()]);
         locations[3][3].setScene(scenes[SceneType.quadrant4.ordinal()]);
+        
+        // Locations are locked until deflector shields are destroyed
         locations[4][2].setScene(scenes[SceneType.deathStarTrench.ordinal()]);
+            locations[4][2].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
         locations[5][1].setScene(scenes[SceneType.trenchEntrance.ordinal()]);
+            locations[5][1].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
         locations[10][1].setScene(scenes[SceneType.trenchBattleLocation.ordinal()]);
+            locations[10][1].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
         locations[11][2].setScene(scenes[SceneType.trenchExit.ordinal()]);
+            locations[11][2].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
         locations[12][3].setScene(scenes[SceneType.deathStarExhaustPort.ordinal()]);
+            locations[12][3].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
+        
+            
         locations[13][4].setScene(scenes[SceneType.deathStarRetreatLocation.ordinal()]);
         locations[14][5].setScene(scenes[SceneType.turboLaserBatteries.ordinal()]);
         locations[15][6].setScene(scenes[SceneType.deflectorShieldGenerators.ordinal()]);

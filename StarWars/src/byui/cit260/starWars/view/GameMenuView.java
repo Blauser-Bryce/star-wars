@@ -54,21 +54,21 @@ public class GameMenuView extends View {
             case "M": // view map
                 this.viewMap();
                 break;
-            case "L": // attack turbo laser
-                this.attackTurboLaser();
-                break;
-            case "F": // attack tie fighter
-                this.attackTieFighter();
-                break;
-            case "S": // attack deflector shield
-                this.attackDeflectorShield();
-                break;
-            case "E": // evasive maneuver
-                this.evasiveManeuver();
-                break;
-            case "T": // fire torpedo
-                this.fireTorpedo();
-                break;
+            //case "L": // attack turbo laser
+            //    this.attackTurboLaser();
+            //    break;
+            //case "F": // attack tie fighter
+            //    this.attackTieFighter();
+            //    break;
+            //case "S": // attack deflector shield
+            //    this.attackDeflectorShield();
+            //    break;
+            //case "E": // evasive maneuver
+            //    this.evasiveManeuver();
+            //    break;
+            //case "T": // fire torpedo
+            //    this.fireTorpedo();
+            //    break;
             case "A": // view ammunition
                 this.viewAmmuntion();
                 break;

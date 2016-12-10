@@ -5,7 +5,10 @@
  */
 package byui.cit260.starWars.control;
 
+import byui.cit260.starWars.model.Location;
+import byui.cit260.starWars.model.Location.locationStatus;
 import byui.cit260.starWars.model.Map;
+import byui.cit260.starWars.view.SupplyShipView;
 import java.io.PrintWriter;
 import starwars.StarWars;
 
@@ -24,41 +27,56 @@ public class MapControl {
                 
         return map;
     }
-/*
-    public Location[][] getClosestLocations() {
         
-        Game game = new Game(); // Create new game
-        StarWars.getCurrentGame(); // get current game
+    public boolean goToLocation(Location location) {
+        
+        if (location.getStatus() == locationStatus.locked) {
+            return false;
+        }
+        
+        // Check if the player moved to a new scene and perform action if necessary
+        String displaySymbol = location.getScene().getDisplaySymbol();
 
-        Location[][] locations = game.getMap().getLocations();
+        if (displaySymbol == null || displaySymbol.isEmpty() || "  ".equals(displaySymbol)) {
+            console.println("\n*** Nothing of interest to see here ***");
+            return true;
+        }
+
+        // Show the description for the scene
+        console.println(location.getScene().getDescription());
+
+        switch (location.getScene().getSceneType()) {
+            case supplyShip:
+                moveToSupplyShip(); // Move to Supply Ship
+                break;
+
+            default:
+                //console.println("\n*** You are at an unknown location ***");
+        }
         
-        console.println(locations.length());
-        
-        return locations;
+        return true;
     }
     
-    public static Location[][] sortLocations(Location[][] array) {
+    public void unlockTrench() {
         
-        private int totalLocations = array.get
+        Map map = StarWars.getCurrentGame().getMap();
+        Location[][] locations = map.getLocations();
         
-        final String[][] data;
+        int noOfRows = map.getNoOfRows();
+        int noOfCols = map.getNoOfColumns();
         
-        // Populate the data to sort
-        for (Location[] row : array) {
-            for (Location col : row) {
-                data[row][col] = 
+        for (int row = 0; row < noOfRows; row++) {
+            for (int col = 0; col < noOfCols; col++) {
+                locations[row][col].setStatus(Location.locationStatus.unlocked);
             }
-            
         }
     }
-  
-    private static void swapLocations(int i, int j, Location[][] array) {
-        int temp;
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    
+    private void moveToSupplyShip() {
+        SupplyShipView supplyView = new SupplyShipView();
+        supplyView.display();
     }
-*/    
+    
     static void moveActorsToStartingLocation(Map map) {
         console.println("\n *** moveActorsToStartingLocation called ***");
     }

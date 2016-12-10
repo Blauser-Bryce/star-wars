@@ -29,10 +29,16 @@ public class PlayerControl {
         if (newRow < 0 || newRow >= map.getNoOfRows() || newColumn < 0 || newColumn >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move player to location " + newRow + ", " + newColumn + " because that location is outside the bounds of the map.");
         } else {
-            Player player = StarWars.getPlayer();
-            player.setLocation(location);
+            MapControl mapControl = new MapControl();
+            if (mapControl.goToLocation(location)) {
+                Player player = StarWars.getPlayer();
+                player.setLocation(location);
+                player.setCurrentTarget(null); // do not select a target once moved to a new location
+            } else {
+                throw new MapControlException("Can not move player to location " + newRow + ", " + newColumn + " because that location is locked."
+                        +"\nYou must destroy all Deflector Shields before moving into this location.");
+            }
         }
-        
     }
     
 }

@@ -17,7 +17,8 @@ public class Scene implements Serializable{
     private String description;
     private int travelTime;
     private String displaySymbol;
-
+    private SceneType type;
+    
     public enum SceneType {
         rebelTransportShip,
         yavin4,
@@ -74,6 +75,14 @@ public class Scene implements Serializable{
         return displaySymbol;
     }
 
+    public void setSceneType(SceneType type) {
+        this.type = type;
+    }
+    
+    public SceneType getSceneType() {
+        return this.type;
+    }
+    
     public void setDisplaySymbol(String displaySymbol) {
         this.displaySymbol = displaySymbol;
     }

@@ -8,7 +8,6 @@ package byui.cit260.starWars.view;
 import byui.cit260.starWars.control.PlayerControl;
 import byui.cit260.starWars.model.Location;
 import byui.cit260.starWars.model.Map;
-import byui.cit260.starWars.model.Scene;
 import exceptions.MapControlException;
 import starwars.StarWars;
 
@@ -42,42 +41,36 @@ public class EnterWaypointView extends View {
                 row = Integer.parseInt(locationArray[0]);
             } catch (NumberFormatException nf) {
                 ErrorView.display(this.getClass().getName(), "You must enter a valid set of numbers.  Try again or enter X to Exit.");
+                return false;
             }
             
             try {
                 column = Integer.parseInt(locationArray[1]);
             } catch (NumberFormatException nf) {
-                ErrorView.display(this.getClass().getName(), "nYou must enter a valid set of numbers.  Try again or enter X to Exit.");
+                ErrorView.display(this.getClass().getName(), "You must enter a valid set of numbers.  Try again or enter X to Exit.");
+                return false;
             }
-                        
+            
+            Map map = StarWars.getCurrentGame().getMap();
+            if (row >= map.getNoOfRows() || column >= map.getNoOfColumns()) {
+                ErrorView.display(this.getClass().getName(), "Location outside bounds of map.  Try again or enter X to Exit.");
+                return false;
+            }
+            
             // Move player to location
-            Location location = new Location();
-            location.setRow(row);
-            location.setColumn(column);
             try {
+                Location location = map.getLocations()[row][column];
                 PlayerControl.movePlayerToLocation(location);
+                return false;
             } catch (MapControlException me) {
                 ErrorView.display(this.getClass().getName(), me.getMessage());
             }
-            
-            // Check if the player moved to a new scene and perform action if necessary
-            Map map = StarWars.getCurrentGame().getMap();     
-            Location[][] locations = map.getLocations();
-            
-            // Move to Supply ship view if location matches
-            if ("SS".equals(locations[row][column].getScene().getDisplaySymbol())) {
-                moveToSupplyShip();
-            }
-                        
+
         } else {
             console.println("\n*** Invalid selection *** Try again");
         }
 
         return false;
     }
-    
-    private void moveToSupplyShip() {
-        SupplyShipView supplyView = new SupplyShipView();
-        supplyView.display();
-    }
+
 }

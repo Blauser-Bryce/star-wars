@@ -5,6 +5,7 @@
  */
 package byui.cit260.starWars.view;
 
+import byui.cit260.starWars.control.MapControl;
 import byui.cit260.starWars.control.TargetControl;
 import byui.cit260.starWars.model.Aim;
 import byui.cit260.starWars.model.Player;
@@ -90,6 +91,13 @@ public class AimView extends View {
             String attack = targetControl.applyDamage(target, 1.5, 50);
         
             console.println(target.getTargetName() + " - HIT : " + attack);
+            
+            // Check if we should unlock the trench
+            if (targetControl.getDeflectorShieldCount() <= 0) {
+                MapControl mapControl = new MapControl();
+                mapControl.unlockTrench();
+            }
+            
         } else {
             console.println("MISSED!");
         }

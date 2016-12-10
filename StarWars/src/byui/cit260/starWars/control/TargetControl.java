@@ -8,6 +8,7 @@ package byui.cit260.starWars.control;
 import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Target;
 import exceptions.TargetControlException;
+import starwars.StarWars;
 
 /**
  *
@@ -73,25 +74,19 @@ public class TargetControl {
         }
         if (amplifier < 1 || amplifier > 2) {
             return "Error: Invalid Amplifier value";
-        }
-
-        
-        else if (target.getTargetHealth() > 100 && target.getTargetShield() < 100){
+        } else if (target.getTargetHealth() > 100 && target.getTargetShield() < 100){
             repairHealth = 100; 
             repairShield = amount * 0.75 * amplifier;
-        }
-        else if (target.getTargetHealth() > 50) {
+        } else if (target.getTargetHealth() > 50) {
             repairShield = amount * 0.75 * amplifier;
             repairHealth = amount * amplifier;
-        }
-        else if (target.getTargetHealth() >= 1) {
+        } else if (target.getTargetHealth() >= 1) {
             repairShield = amount * 0.5 * amplifier;
             repairHealth = amount * 0.75 * amplifier;
+        } else {
+            return "Player at full health";
         }
-        else {
-            
-            return "Target Destoryed";
-        }
+        
         applyRepairShield = repairShield + target.getTargetShield();
         applyRepairHealth = repairHealth + target.getTargetHealth();
         
@@ -133,7 +128,21 @@ public class TargetControl {
         return enemyIndex;   
     }
     
-        public int getLowEnemyHealth(EnemyFighter[] enemyFighterList) {
+    public int getDeflectorShieldCount() {
+        
+        EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
+        
+        int deflectorShieldsRemaining = 0;
+        
+        for (EnemyFighter enemyFighter : enemyFighterList) {
+            if (enemyFighter.getTargetHealth() > 0 && enemyFighter.getTargetType() ==  EnemyFighter.targetType.deflectorShield) {
+               deflectorShieldsRemaining++;
+            } 
+        }
+        return deflectorShieldsRemaining;
+    }
+    
+    public int getLowEnemyHealth(EnemyFighter[] enemyFighterList) {
         double lowValue = enemyFighterList[0].getTargetHealth();
         int index = 0;
         int enemyIndex = -1;
@@ -149,20 +158,22 @@ public class TargetControl {
         
         return enemyIndex;   
     }
-        public int getLengthEnemyHealth(EnemyFighter[] enemyFighterList) {
+    
+    public int getLengthEnemyHealth(EnemyFighter[] enemyFighterList) {
         int size = enemyFighterList.length;
         return size;
     }
-        public double getAvgEnemyHealth(EnemyFighter[] enemyFighterList) {
+    
+    public double getAvgEnemyHealth(EnemyFighter[] enemyFighterList) {
        
         double total = 0;
         for (int i = 0; i < enemyFighterList.length -1 ; i++) {
             total = total + enemyFighterList[i].getTargetHealth();
-        }
+    }
         
-        double average = total / (enemyFighterList.length-1);         
+    double average = total / (enemyFighterList.length-1);         
         
         return average;            
        
-         }  
-    }
+    }  
+}

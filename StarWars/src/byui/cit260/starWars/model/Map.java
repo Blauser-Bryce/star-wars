@@ -6,6 +6,7 @@
 package byui.cit260.starWars.model;
 
 import byui.cit260.starWars.control.GameControl;
+import byui.cit260.starWars.model.Location.locationStatus;
 import byui.cit260.starWars.model.Scene.SceneType;
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -78,7 +79,7 @@ public class Map implements Serializable{
                 location.setColumn(column);
                 location.setRow(row);
                 location.setScene(scene);
-                location.setStatus("initialized");
+                location.setStatus(locationStatus.unlocked);
                 
                 // assign the location object to the current position in the array
                 locations[row][column] = location;
@@ -101,150 +102,175 @@ public class Map implements Serializable{
         rebelTransportShip.setDescription("Description ... ");
         rebelTransportShip.setDisplaySymbol("RT");
         rebelTransportShip.setTravelTime(100);
+        rebelTransportShip.setSceneType(SceneType.rebelTransportShip);
         scenes[SceneType.rebelTransportShip.ordinal()] = rebelTransportShip;
         
         Scene yavin4 = new Scene();
         yavin4.setDescription("Description ... ");
         yavin4.setDisplaySymbol("Y4");
         yavin4.setTravelTime(100);
+        yavin4.setSceneType(SceneType.yavin4);
         scenes[SceneType.yavin4.ordinal()] = yavin4;
         
         Scene rebelBaseCommandCenter = new Scene();
         rebelBaseCommandCenter.setDescription("Description ... ");
         rebelBaseCommandCenter.setDisplaySymbol("RB");
         rebelBaseCommandCenter.setTravelTime(100);
+        rebelBaseCommandCenter.setSceneType(SceneType.rebelBaseCommandCenter);
         scenes[SceneType.rebelBaseCommandCenter.ordinal()] = rebelBaseCommandCenter;
         
         Scene rebelBaseHanger = new Scene();
         rebelBaseHanger.setDescription("Description ... ");
         rebelBaseHanger.setDisplaySymbol("BH");
         rebelBaseHanger.setTravelTime(100);
+        rebelBaseHanger.setSceneType(SceneType.rebelBaseHanger);
         scenes[SceneType.rebelBaseHanger.ordinal()] = rebelBaseHanger;
         
         Scene openSpace = new Scene();
         openSpace.setDescription("Description ... ");
         openSpace.setDisplaySymbol("OS");
         openSpace.setTravelTime(100);
+        openSpace.setSceneType(SceneType.openSpace);
         scenes[SceneType.openSpace.ordinal()] = openSpace;
         
         Scene deepSpaceBattleLocation = new Scene();
         deepSpaceBattleLocation.setDescription("Description ... ");
         deepSpaceBattleLocation.setDisplaySymbol("BL");
         deepSpaceBattleLocation.setTravelTime(100);
+        deepSpaceBattleLocation.setSceneType(SceneType.deepSpaceBattleLocation);
         scenes[SceneType.deepSpaceBattleLocation.ordinal()] = deepSpaceBattleLocation;
         
         Scene deepSpaceRetreatLocation = new Scene();
         deepSpaceRetreatLocation.setDescription("Description ... ");
         deepSpaceRetreatLocation.setDisplaySymbol("RL");
         deepSpaceRetreatLocation.setTravelTime(100);
+        deepSpaceRetreatLocation.setSceneType(SceneType.deepSpaceRetreatLocation);
         scenes[SceneType.deepSpaceRetreatLocation.ordinal()] = deepSpaceRetreatLocation;
         
         Scene DeathStar = new Scene();
         DeathStar.setDescription("Description ... ");
         DeathStar.setDisplaySymbol("DS");
         DeathStar.setTravelTime(100);
+        DeathStar.setSceneType(SceneType.DeathStar);
         scenes[SceneType.DeathStar.ordinal()] = DeathStar;
         
         Scene deathStarFighterEngagement = new Scene();
         deathStarFighterEngagement.setDescription("Description ... ");
         deathStarFighterEngagement.setDisplaySymbol("FE");
         deathStarFighterEngagement.setTravelTime(100);
+        deathStarFighterEngagement.setSceneType(SceneType.deathStarFighterEngagement);
         scenes[SceneType.deathStarFighterEngagement.ordinal()] = deathStarFighterEngagement;
         
         Scene quadrant1 = new Scene();
         quadrant1.setDescription("Description ... ");
         quadrant1.setDisplaySymbol("Q1");
         quadrant1.setTravelTime(100);
+        quadrant1.setSceneType(SceneType.quadrant1);
         scenes[SceneType.quadrant1.ordinal()] = quadrant1;
         
         Scene quadrant2 = new Scene();
         quadrant2.setDescription("Description ... ");
         quadrant2.setDisplaySymbol("Q2");
         quadrant2.setTravelTime(100);
+        quadrant2.setSceneType(SceneType.quadrant2);
         scenes[SceneType.quadrant2.ordinal()] = quadrant2;
         
         Scene quadrant3 = new Scene();
         quadrant3.setDescription("Description ... ");
         quadrant3.setDisplaySymbol("Q3");
         quadrant3.setTravelTime(100);
+        quadrant3.setSceneType(SceneType.quadrant3);
         scenes[SceneType.quadrant3.ordinal()] = quadrant3;
         
         Scene quadrant4 = new Scene();
         quadrant4.setDescription("Description ... ");
         quadrant4.setDisplaySymbol("Q4");
         quadrant4.setTravelTime(100);
+        quadrant4.setSceneType(SceneType.quadrant4);
         scenes[SceneType.quadrant4.ordinal()] = quadrant4;
         
         Scene deathStarTrench = new Scene();
         deathStarTrench.setDescription("Description ... ");
         deathStarTrench.setDisplaySymbol("TR");
         deathStarTrench.setTravelTime(100);
+        deathStarTrench.setSceneType(SceneType.deathStarTrench);
         scenes[SceneType.deathStarTrench.ordinal()] = deathStarTrench;
         
         Scene trenchEntrance = new Scene();
         trenchEntrance.setDescription("Description ... ");
         trenchEntrance.setDisplaySymbol("TE");
         trenchEntrance.setTravelTime(100);
+        trenchEntrance.setSceneType(SceneType.trenchEntrance);
         scenes[SceneType.trenchEntrance.ordinal()] = trenchEntrance;
         
         Scene trenchBattleLocation = new Scene();
         trenchBattleLocation.setDescription("Description ... ");
         trenchBattleLocation.setDisplaySymbol("TB");
         trenchBattleLocation.setTravelTime(100);
+        trenchBattleLocation.setSceneType(SceneType.trenchBattleLocation);
         scenes[SceneType.trenchBattleLocation.ordinal()] = trenchBattleLocation;
         
         Scene trenchExit = new Scene();
         trenchExit.setDescription("Description ... ");
         trenchExit.setDisplaySymbol("TX");
         trenchExit.setTravelTime(100);
+        trenchExit.setSceneType(SceneType.trenchExit);
         scenes[SceneType.trenchExit.ordinal()] = trenchExit;
         
         Scene deathStarExhaustPort = new Scene();
         deathStarExhaustPort.setDescription("Description ... ");
         deathStarExhaustPort.setDisplaySymbol("EP");
         deathStarExhaustPort.setTravelTime(100);
+        deathStarExhaustPort.setSceneType(SceneType.deathStarExhaustPort);
         scenes[SceneType.deathStarExhaustPort.ordinal()] = deathStarExhaustPort;
         
         Scene deathStarRetreatLocation = new Scene();
         deathStarRetreatLocation.setDescription("Description ... ");
         deathStarRetreatLocation.setDisplaySymbol("DR");
         deathStarRetreatLocation.setTravelTime(100);
+        deathStarRetreatLocation.setSceneType(SceneType.deepSpaceRetreatLocation);
         scenes[SceneType.deathStarRetreatLocation.ordinal()] = deathStarRetreatLocation;
         
         Scene turboLaserBatteries = new Scene();
         turboLaserBatteries.setDescription("Description ... ");
         turboLaserBatteries.setDisplaySymbol("TL");
         turboLaserBatteries.setTravelTime(100);
+        turboLaserBatteries.setSceneType(SceneType.turboLaserBatteries);
         scenes[SceneType.turboLaserBatteries.ordinal()] = turboLaserBatteries;
         
         Scene deflectorShieldGenerators = new Scene();
         deflectorShieldGenerators.setDescription("Description ... ");
         deflectorShieldGenerators.setDisplaySymbol("SG");
         deflectorShieldGenerators.setTravelTime(100);
+        deflectorShieldGenerators.setSceneType(SceneType.deflectorShieldGenerators);
         scenes[SceneType.deflectorShieldGenerators.ordinal()] = deflectorShieldGenerators;
         
         Scene enemyFighters = new Scene();
         enemyFighters.setDescription("Description ... ");
         enemyFighters.setDisplaySymbol("EF");
         enemyFighters.setTravelTime(100);
+        enemyFighters.setSceneType(SceneType.enemyFighters);
         scenes[SceneType.enemyFighters.ordinal()] = enemyFighters;
         
         Scene friendlyFighters = new Scene();
         friendlyFighters.setDescription("Description ... ");
         friendlyFighters.setDisplaySymbol("FF");
         friendlyFighters.setTravelTime(100);
+        friendlyFighters.setSceneType(SceneType.friendlyFighters);
         scenes[SceneType.friendlyFighters.ordinal()] = friendlyFighters;
         
         Scene supplyShip = new Scene();
         supplyShip.setDescription("Description ... ");
         supplyShip.setDisplaySymbol("SS");
         supplyShip.setTravelTime(100);
+        supplyShip.setSceneType(SceneType.supplyShip);
         scenes[SceneType.supplyShip.ordinal()] = supplyShip;
         
         Scene repairShip = new Scene();
         repairShip.setDescription("Description ... ");
         repairShip.setDisplaySymbol("RS");
         repairShip.setTravelTime(100);
+        repairShip.setSceneType(SceneType.repairShip);
         scenes[SceneType.repairShip.ordinal()] = repairShip;
         
         return scenes;
