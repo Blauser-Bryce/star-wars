@@ -72,7 +72,7 @@ public class GameControl {
         game.setMap(map);
        
         // Move player to location
-        Location location = map.getLocations()[10][10];
+        Location location = map.getLocations()[0][0];
         try {
             PlayerControl.movePlayerToLocation(location);
         } catch (MapControlException me) {
