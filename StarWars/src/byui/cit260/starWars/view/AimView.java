@@ -11,6 +11,7 @@ import byui.cit260.starWars.model.Aim;
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Target;
+import java.util.Random;
 import starwars.StarWars;
 
 /**
@@ -88,8 +89,10 @@ public class AimView extends View {
         if (aim.isOnTarget()) {
             TargetControl targetControl = new TargetControl();
             Target target = StarWars.getPlayer().getCurrentTarget();
-           
-            String attack = targetControl.applyDamage(target, 1.5, 50);
+            
+            // Apply random damage between 10 and 50 with boost between 1-2
+            Random random = new Random();
+            String attack = targetControl.applyDamage(target, (random.nextInt(20-10)+10) *0.1, random.nextInt(50 - 10) + 10);
         
             console.println(target.getTargetName() + " - HIT : " + attack);
             
@@ -103,10 +106,14 @@ public class AimView extends View {
             console.println("MISSED!");
         }
         
+        // Use inventory
         Game game = StarWars.getCurrentGame();
         Item[] item = game.getInventory();
-        item[Item.itemType.Missile.ordinal()].useQuantity();
-        
+        if (StarWars.getPlayer().getCurrentTarget().getTargetType() == Target.targetType.exhaustPort) {
+            item[Item.itemType.Torpedo.ordinal()].useQuantity();
+        } else {
+            item[Item.itemType.Missile.ordinal()].useQuantity();
+        }
     }
     
 }

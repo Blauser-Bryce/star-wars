@@ -7,6 +7,7 @@ package byui.cit260.starWars.control;
 
 import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Target;
+import byui.cit260.starWars.model.Target.targetType;
 import exceptions.TargetControlException;
 import starwars.StarWars;
 
@@ -51,6 +52,11 @@ public class TargetControl {
         
         target.setTargetShield(applyShield);
         target.setTargetHealth(applyHealth);
+        
+        // Check if exhaust port is destroyed
+        if (target.getTargetHealth() <= 0 && target.getTargetType() == targetType.exhaustPort) {
+            return "Death Star Destroyed!!!!\nGame Over!\nCongratulations!  You saved the galaxy";
+        }
         
         if (target.getTargetHealth() <= 0) {
             return "Target Destroyed";

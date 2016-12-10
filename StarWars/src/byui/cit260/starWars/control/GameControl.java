@@ -90,16 +90,14 @@ public class GameControl {
         
         EnemyFighter[] enemyFighters = new EnemyFighter[35];
         
-        Location location = new Location();
-        location.setRow(0);
-        location.setColumn(0);
-        location.setStatus(locationStatus.unlocked);
-        
         // Populate the tie fighters
         for (int i = 0; i < 11; i++) {
             // Create default tie fighter
             EnemyFighter tieFighter = new EnemyFighter();
-
+            Location location = new Location();
+            location.setStatus(locationStatus.unlocked);
+            location.setRow(4);
+            location.setColumn(10);
             tieFighter.setTargetType(EnemyFighter.targetType.tieFighter);
             tieFighter.setTargetHealth(EnemyFighter.targetType.tieFighter.getDefaultHealth());
             tieFighter.setTargetShield(100);
@@ -108,10 +106,29 @@ public class GameControl {
             enemyFighters[i] = tieFighter;
         }
         
-        for (int i = 11; i < 19; i++) {
-            // Create default tie fighter
+        for (int i = 11; i < 17; i++) {
+            // Create default tie interceptor
             EnemyFighter tieFighter = new EnemyFighter();
-            
+            Location location = new Location();
+            location.setStatus(locationStatus.locked);
+            location.setRow(7);
+            location.setColumn(8);
+            // Populate the tie interceptors
+            tieFighter.setTargetType(EnemyFighter.targetType.tieInterceptor);
+            tieFighter.setTargetHealth(EnemyFighter.targetType.tieInterceptor.getDefaultHealth());
+            tieFighter.setTargetShield(100);
+            tieFighter.setTargetLocation(location);
+            tieFighter.setTargetName("Tie Interceptor " + (i - 10));
+            enemyFighters[i] = tieFighter;
+        }
+        
+        for (int i = 17; i < 19; i++) {
+            // Create default tie interceptor
+            EnemyFighter tieFighter = new EnemyFighter();
+            Location location = new Location();
+            location.setStatus(locationStatus.locked);
+            location.setRow(11);
+            location.setColumn(10);
             // Populate the tie interceptors
             tieFighter.setTargetType(EnemyFighter.targetType.tieInterceptor);
             tieFighter.setTargetHealth(EnemyFighter.targetType.tieInterceptor.getDefaultHealth());
@@ -122,6 +139,10 @@ public class GameControl {
         }
         
         // Create Darth Vader fighter
+        Location location = new Location();
+        location.setStatus(locationStatus.locked);
+        location.setRow(11);
+        location.setColumn(10);
         EnemyFighter darthVader = new EnemyFighter();
         darthVader.setTargetType(EnemyFighter.targetType.darthVader);
         darthVader.setTargetHealth(EnemyFighter.targetType.darthVader.getDefaultHealth());
@@ -133,26 +154,75 @@ public class GameControl {
         
         // Populate the turbo laser
         for (int i = 20; i < 24; i++) {
+            Location locationTL = new Location();
+            locationTL.setStatus(locationStatus.unlocked);
+            locationTL.setRow(10);
+            locationTL.setColumn(10);
+            locationTL.setStatus(locationStatus.unlocked);
             EnemyFighter turboLaser = new EnemyFighter();
             turboLaser.setTargetType(EnemyFighter.targetType.turboLaser);
             turboLaser.setTargetHealth(EnemyFighter.targetType.turboLaser.getDefaultHealth());
             turboLaser.setTargetShield(100);
-            turboLaser.setTargetLocation(location);
+            turboLaser.setTargetLocation(locationTL);
             turboLaser.setTargetName("Turbo Laser " + (i - 19));
             enemyFighters[i] = turboLaser;
         }
           
         // Populate the Deflector Shield
-        for (int i = 24; i < 35; i++) {
+        for (int i = 24; i < 34; i++) {
+            Location locationDS = new Location();
+            switch(i){
+                case 24:
+                case 25:
+                    locationDS.setRow(8);
+                    locationDS.setColumn(5);
+                    break;
+                case 26:
+                case 27:
+                    locationDS.setRow(8);
+                    locationDS.setColumn(11);
+                    break;
+                case 28:
+                case 29:
+                    locationDS.setRow(14);
+                    locationDS.setColumn(5);
+                    break;
+                case 30:
+                case 31:
+                    locationDS.setRow(14);
+                    locationDS.setColumn(11);
+                    break;
+                case 32:
+                case 33:
+                    locationDS.setRow(13);
+                    locationDS.setColumn(10);
+                    break;
+            }
+            
+            locationDS.setStatus(locationStatus.unlocked);
             EnemyFighter deflectorShield = new EnemyFighter();
             deflectorShield.setTargetType(EnemyFighter.targetType.deflectorShield);
             deflectorShield.setTargetHealth(EnemyFighter.targetType.deflectorShield.getDefaultHealth());
             deflectorShield.setTargetShield(100);
-            deflectorShield.setTargetLocation(location);
+            deflectorShield.setTargetLocation(locationDS);
             deflectorShield.setTargetName("Defelector Shield " + (i - 23));
             enemyFighters[i] = deflectorShield;
         }
         
+        // Create Exhaust port
+        Location locationEP = new Location();
+        locationEP.setStatus(locationStatus.locked);
+        locationEP.setRow(11);
+        locationEP.setColumn(8);
+        locationEP.setStatus(locationStatus.locked);
+        EnemyFighter exhaustPort = new EnemyFighter();
+        exhaustPort.setTargetType(EnemyFighter.targetType.exhaustPort);
+        exhaustPort.setTargetHealth(EnemyFighter.targetType.exhaustPort.getDefaultHealth());
+        exhaustPort.setTargetShield(0);
+        exhaustPort.setTargetLocation(locationEP);
+        exhaustPort.setTargetName("Exhaust Port");
+        
+        enemyFighters[34] = exhaustPort;
         
         return enemyFighters;
     }
@@ -186,40 +256,39 @@ public class GameControl {
         Location[][] locations = map.getLocations();
         
         //start point
-        locations[0][1].setScene(scenes[SceneType.rebelTransportShip.ordinal()]);
-        locations[0][2].setScene(scenes[SceneType.yavin4.ordinal()]);
-        locations[0][3].setScene(scenes[SceneType.rebelBaseCommandCenter.ordinal()]);
-        locations[0][4].setScene(scenes[SceneType.rebelBaseHanger.ordinal()]);
-        locations[0][5].setScene(scenes[SceneType.openSpace.ordinal()]);
-        locations[1][0].setScene(scenes[SceneType.deepSpaceBattleLocation.ordinal()]);
-        locations[2][0].setScene(scenes[SceneType.deepSpaceRetreatLocation.ordinal()]);
-        locations[3][0].setScene(scenes[SceneType.DeathStar.ordinal()]);
-        locations[4][0].setScene(scenes[SceneType.deathStarFighterEngagement.ordinal()]);
-        locations[5][0].setScene(scenes[SceneType.quadrant1.ordinal()]);
-        locations[1][5].setScene(scenes[SceneType.quadrant2.ordinal()]);
-        locations[2][4].setScene(scenes[SceneType.quadrant3.ordinal()]);
-        locations[3][3].setScene(scenes[SceneType.quadrant4.ordinal()]);
+        locations[0][0].setScene(scenes[SceneType.rebelTransportShip.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.yavin4.ordinal()]);
+        locations[3][1].setScene(scenes[SceneType.rebelBaseCommandCenter.ordinal()]);
+        locations[3][2].setScene(scenes[SceneType.rebelBaseHanger.ordinal()]);
+        locations[3][14].setScene(scenes[SceneType.openSpace.ordinal()]);
+        locations[4][9].setScene(scenes[SceneType.deepSpaceBattleLocation.ordinal()]);
+        locations[4][8].setScene(scenes[SceneType.deepSpaceRetreatLocation.ordinal()]);
+        locations[11][4].setScene(scenes[SceneType.DeathStar.ordinal()]);
+        locations[7][8].setScene(scenes[SceneType.deathStarFighterEngagement.ordinal()]);
+        locations[8][5].setScene(scenes[SceneType.quadrant1.ordinal()]);
+        locations[8][11].setScene(scenes[SceneType.quadrant2.ordinal()]);
+        locations[14][5].setScene(scenes[SceneType.quadrant3.ordinal()]);
+        locations[14][11].setScene(scenes[SceneType.quadrant4.ordinal()]);
         
         // Locations are locked until deflector shields are destroyed
-        locations[4][2].setScene(scenes[SceneType.deathStarTrench.ordinal()]);
-            locations[4][2].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
-        locations[5][1].setScene(scenes[SceneType.trenchEntrance.ordinal()]);
-            locations[5][1].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
-        locations[10][1].setScene(scenes[SceneType.trenchBattleLocation.ordinal()]);
-            locations[10][1].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
-        locations[11][2].setScene(scenes[SceneType.trenchExit.ordinal()]);
-            locations[11][2].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
-        locations[12][3].setScene(scenes[SceneType.deathStarExhaustPort.ordinal()]);
-            locations[12][3].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
+        locations[11][11].setScene(scenes[SceneType.deathStarTrench.ordinal()]);
+            locations[11][11].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
+        locations[11][12].setScene(scenes[SceneType.trenchEntrance.ordinal()]);
+            locations[11][12].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
+        locations[11][10].setScene(scenes[SceneType.trenchBattleLocation.ordinal()]);
+            locations[11][10].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
+        locations[11][7].setScene(scenes[SceneType.trenchExit.ordinal()]);
+            locations[11][7].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
+        locations[11][8].setScene(scenes[SceneType.deathStarExhaustPort.ordinal()]);
+            locations[11][8].setStatus(locationStatus.locked); // Lock until all deflector shields are destroyed
         
-            
-        locations[13][4].setScene(scenes[SceneType.deathStarRetreatLocation.ordinal()]);
-        locations[14][5].setScene(scenes[SceneType.turboLaserBatteries.ordinal()]);
-        locations[15][6].setScene(scenes[SceneType.deflectorShieldGenerators.ordinal()]);
-        locations[16][7].setScene(scenes[SceneType.enemyFighters.ordinal()]);
-        locations[17][8].setScene(scenes[SceneType.friendlyFighters.ordinal()]);
-        locations[18][9].setScene(scenes[SceneType.supplyShip.ordinal()]);
-        locations[19][10].setScene(scenes[SceneType.repairShip.ordinal()]);
+        locations[15][8].setScene(scenes[SceneType.deathStarRetreatLocation.ordinal()]);
+        locations[10][10].setScene(scenes[SceneType.turboLaserBatteries.ordinal()]);
+        locations[13][10].setScene(scenes[SceneType.deflectorShieldGenerators.ordinal()]);
+        locations[4][10].setScene(scenes[SceneType.enemyFighters.ordinal()]);
+        locations[3][8].setScene(scenes[SceneType.friendlyFighters.ordinal()]);
+        locations[5][6].setScene(scenes[SceneType.supplyShip.ordinal()]);
+        locations[5][5].setScene(scenes[SceneType.repairShip.ordinal()]);
     }
 
     public static void saveGame(Game game, String filePath) throws GameControlException {

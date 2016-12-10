@@ -19,7 +19,8 @@ public class Target implements Serializable {
         tieInterceptor(75),
         darthVader(100),
         turboLaser(25),
-        deflectorShield(35);
+        deflectorShield(35),
+        exhaustPort(1);
         
         private final int defaultHealth;
         
@@ -109,6 +110,17 @@ public class Target implements Serializable {
                 + "\n       ;'';''''''';;';;;;''';     " 
                 + "\n       ;;;;;''';'';;;;;;;;++'     " 
                 + "\n       ;';;;'''';';;'';;;;'';     "
+                + "\n----------------------------------";
+                break;
+            case exhaustPort:
+                display = "\n"
+                + "\n----------------------------------"                  
+                + "\n    |         ___        |        " 
+                + "\n    |        /   \\       |        " 
+                + "\n    |        \\___/       |        "
+                + "\n    |                    |        "
+                + "\n    |                    |        "     
+                + "\n    |                    |        "
                 + "\n----------------------------------";
                 break;
         }

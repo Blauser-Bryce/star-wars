@@ -23,7 +23,7 @@ public class MapView extends View {
                 + "\n-------------------------------------------"
                 + "\nW - Move to Waypoint"
                 + "\nX - Exit"
-                + "\n  Supply Ship 18,9"
+                + "\n  Supply Ship 5,6"
                 + "\n-------------------------------------------");
 
     }

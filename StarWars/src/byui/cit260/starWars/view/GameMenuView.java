@@ -84,7 +84,7 @@ public class GameMenuView extends View {
             case "H": // view avearge health enemy
                 this.viewAvgEnemy();
                 break;
-            case "P": // view avearge health enemy
+            case "P": // print remaining enemies
                 this.remainingEnemiesp();
                 break;
             case "N": // Select Target View
@@ -190,18 +190,16 @@ public class GameMenuView extends View {
         }
     }
      public void saveReport(String filePath) throws GameControlException {
-        TargetControl targetControl = new TargetControl();
         EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
-        int remainingEnemy = targetControl.getLengthEnemyHealth(enemyFighterList);
         
         try (PrintWriter out = new PrintWriter(filePath)) {
             out.println("\n\n      Remaining Enemies Report");
-            out.printf("%n%-20s%8s","Ammunition Type","Quantity");
+            out.printf("%n%-20s%8s","Target","R,C");
             out.printf("%n%-20s%8s","---------------","--------");
             
             // for each inventory item
             for (EnemyFighter enemyFighter : enemyFighterList) {
-                out.printf("%n%-20s"+ enemyFighter);
+                out.printf("%n%-20s%1d,%1d", enemyFighter.getTargetName(),enemyFighter.getTargetLocation().getRow(),enemyFighter.getTargetLocation().getColumn());
             }
         } catch (Exception e) {
             throw new GameControlException(e.getMessage());

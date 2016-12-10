@@ -99,175 +99,175 @@ public class Map implements Serializable{
         Scene[] scenes = new Scene[SceneType.values().length];
         
         Scene rebelTransportShip = new Scene();
-        rebelTransportShip.setDescription("Description ... ");
+        rebelTransportShip.setDescription("You have entered the rebel transport ship location...");
         rebelTransportShip.setDisplaySymbol("RT");
         rebelTransportShip.setTravelTime(100);
         rebelTransportShip.setSceneType(SceneType.rebelTransportShip);
         scenes[SceneType.rebelTransportShip.ordinal()] = rebelTransportShip;
         
         Scene yavin4 = new Scene();
-        yavin4.setDescription("Description ... ");
+        yavin4.setDescription("You have landed on Yavin 4.  Stay awhile and enjoy the scenary.");
         yavin4.setDisplaySymbol("Y4");
         yavin4.setTravelTime(100);
         yavin4.setSceneType(SceneType.yavin4);
         scenes[SceneType.yavin4.ordinal()] = yavin4;
         
         Scene rebelBaseCommandCenter = new Scene();
-        rebelBaseCommandCenter.setDescription("Description ... ");
+        rebelBaseCommandCenter.setDescription("You have entered the Rebel Base Command Center.\nThis will be a good place to plan your attack.");
         rebelBaseCommandCenter.setDisplaySymbol("RB");
         rebelBaseCommandCenter.setTravelTime(100);
         rebelBaseCommandCenter.setSceneType(SceneType.rebelBaseCommandCenter);
         scenes[SceneType.rebelBaseCommandCenter.ordinal()] = rebelBaseCommandCenter;
         
         Scene rebelBaseHanger = new Scene();
-        rebelBaseHanger.setDescription("Description ... ");
+        rebelBaseHanger.setDescription("You have entered the Rebel Base Hanger.  Make sure you're ready to leave.");
         rebelBaseHanger.setDisplaySymbol("BH");
         rebelBaseHanger.setTravelTime(100);
         rebelBaseHanger.setSceneType(SceneType.rebelBaseHanger);
         scenes[SceneType.rebelBaseHanger.ordinal()] = rebelBaseHanger;
         
         Scene openSpace = new Scene();
-        openSpace.setDescription("Description ... ");
+        openSpace.setDescription("Not much here except a lot of nothing...");
         openSpace.setDisplaySymbol("OS");
         openSpace.setTravelTime(100);
         openSpace.setSceneType(SceneType.openSpace);
         scenes[SceneType.openSpace.ordinal()] = openSpace;
         
         Scene deepSpaceBattleLocation = new Scene();
-        deepSpaceBattleLocation.setDescription("Description ... ");
+        deepSpaceBattleLocation.setDescription("You have entered what looks like a battle location.\nBe careful and watch your back.");
         deepSpaceBattleLocation.setDisplaySymbol("BL");
         deepSpaceBattleLocation.setTravelTime(100);
         deepSpaceBattleLocation.setSceneType(SceneType.deepSpaceBattleLocation);
         scenes[SceneType.deepSpaceBattleLocation.ordinal()] = deepSpaceBattleLocation;
         
         Scene deepSpaceRetreatLocation = new Scene();
-        deepSpaceRetreatLocation.setDescription("Description ... ");
+        deepSpaceRetreatLocation.setDescription("This is a good place to get away from your enemies and re-evaluate your plan.");
         deepSpaceRetreatLocation.setDisplaySymbol("RL");
         deepSpaceRetreatLocation.setTravelTime(100);
         deepSpaceRetreatLocation.setSceneType(SceneType.deepSpaceRetreatLocation);
         scenes[SceneType.deepSpaceRetreatLocation.ordinal()] = deepSpaceRetreatLocation;
         
         Scene DeathStar = new Scene();
-        DeathStar.setDescription("Description ... ");
+        DeathStar.setDescription("You are in range of the Death Star... definitely not a moon.");
         DeathStar.setDisplaySymbol("DS");
         DeathStar.setTravelTime(100);
         DeathStar.setSceneType(SceneType.DeathStar);
         scenes[SceneType.DeathStar.ordinal()] = DeathStar;
         
         Scene deathStarFighterEngagement = new Scene();
-        deathStarFighterEngagement.setDescription("Description ... ");
+        deathStarFighterEngagement.setDescription("Watch your back, enemies are all around.");
         deathStarFighterEngagement.setDisplaySymbol("FE");
         deathStarFighterEngagement.setTravelTime(100);
         deathStarFighterEngagement.setSceneType(SceneType.deathStarFighterEngagement);
         scenes[SceneType.deathStarFighterEngagement.ordinal()] = deathStarFighterEngagement;
         
         Scene quadrant1 = new Scene();
-        quadrant1.setDescription("Description ... ");
+        quadrant1.setDescription("You have entered Quandrant 1.\nTake out the deflector shields in this area to enter the trench.");
         quadrant1.setDisplaySymbol("Q1");
         quadrant1.setTravelTime(100);
         quadrant1.setSceneType(SceneType.quadrant1);
         scenes[SceneType.quadrant1.ordinal()] = quadrant1;
         
         Scene quadrant2 = new Scene();
-        quadrant2.setDescription("Description ... ");
+        quadrant2.setDescription("You have entered Quandrant 2.\nTake out the deflector shields in this area to enter the trench.");
         quadrant2.setDisplaySymbol("Q2");
         quadrant2.setTravelTime(100);
         quadrant2.setSceneType(SceneType.quadrant2);
         scenes[SceneType.quadrant2.ordinal()] = quadrant2;
         
         Scene quadrant3 = new Scene();
-        quadrant3.setDescription("Description ... ");
+        quadrant3.setDescription("You have entered Quandrant 3.\nTake out the deflector shields in this area to enter the trench.");
         quadrant3.setDisplaySymbol("Q3");
         quadrant3.setTravelTime(100);
         quadrant3.setSceneType(SceneType.quadrant3);
         scenes[SceneType.quadrant3.ordinal()] = quadrant3;
         
         Scene quadrant4 = new Scene();
-        quadrant4.setDescription("Description ... ");
+        quadrant4.setDescription("You have entered Quandrant 4.\nTake out the deflector shields in this area to enter the trench.");
         quadrant4.setDisplaySymbol("Q4");
         quadrant4.setTravelTime(100);
         quadrant4.setSceneType(SceneType.quadrant4);
         scenes[SceneType.quadrant4.ordinal()] = quadrant4;
         
         Scene deathStarTrench = new Scene();
-        deathStarTrench.setDescription("Description ... ");
+        deathStarTrench.setDescription("You have entered the trench area.\nFind the exhaust port.");
         deathStarTrench.setDisplaySymbol("TR");
         deathStarTrench.setTravelTime(100);
         deathStarTrench.setSceneType(SceneType.deathStarTrench);
         scenes[SceneType.deathStarTrench.ordinal()] = deathStarTrench;
         
         Scene trenchEntrance = new Scene();
-        trenchEntrance.setDescription("Description ... ");
+        trenchEntrance.setDescription("Avoid turbo laser fire and stay focused.  The exhaust port is just up ahead.");
         trenchEntrance.setDisplaySymbol("TE");
         trenchEntrance.setTravelTime(100);
         trenchEntrance.setSceneType(SceneType.trenchEntrance);
         scenes[SceneType.trenchEntrance.ordinal()] = trenchEntrance;
         
         Scene trenchBattleLocation = new Scene();
-        trenchBattleLocation.setDescription("Description ... ");
+        trenchBattleLocation.setDescription("Watch your back, enemies are closing in.");
         trenchBattleLocation.setDisplaySymbol("TB");
         trenchBattleLocation.setTravelTime(100);
         trenchBattleLocation.setSceneType(SceneType.trenchBattleLocation);
         scenes[SceneType.trenchBattleLocation.ordinal()] = trenchBattleLocation;
         
         Scene trenchExit = new Scene();
-        trenchExit.setDescription("Description ... ");
+        trenchExit.setDescription("This is a good place to make your escape.");
         trenchExit.setDisplaySymbol("TX");
         trenchExit.setTravelTime(100);
         trenchExit.setSceneType(SceneType.trenchExit);
         scenes[SceneType.trenchExit.ordinal()] = trenchExit;
         
         Scene deathStarExhaustPort = new Scene();
-        deathStarExhaustPort.setDescription("Description ... ");
+        deathStarExhaustPort.setDescription("Hit the exhaust port and get out.");
         deathStarExhaustPort.setDisplaySymbol("EP");
         deathStarExhaustPort.setTravelTime(100);
         deathStarExhaustPort.setSceneType(SceneType.deathStarExhaustPort);
         scenes[SceneType.deathStarExhaustPort.ordinal()] = deathStarExhaustPort;
         
         Scene deathStarRetreatLocation = new Scene();
-        deathStarRetreatLocation.setDescription("Description ... ");
+        deathStarRetreatLocation.setDescription("You have found a safe place to plan your attack.");
         deathStarRetreatLocation.setDisplaySymbol("DR");
         deathStarRetreatLocation.setTravelTime(100);
         deathStarRetreatLocation.setSceneType(SceneType.deepSpaceRetreatLocation);
         scenes[SceneType.deathStarRetreatLocation.ordinal()] = deathStarRetreatLocation;
         
         Scene turboLaserBatteries = new Scene();
-        turboLaserBatteries.setDescription("Description ... ");
+        turboLaserBatteries.setDescription("Better try to avoid those Turbo Laser Battries or destroy them if you can.");
         turboLaserBatteries.setDisplaySymbol("TL");
         turboLaserBatteries.setTravelTime(100);
         turboLaserBatteries.setSceneType(SceneType.turboLaserBatteries);
         scenes[SceneType.turboLaserBatteries.ordinal()] = turboLaserBatteries;
         
         Scene deflectorShieldGenerators = new Scene();
-        deflectorShieldGenerators.setDescription("Description ... ");
+        deflectorShieldGenerators.setDescription("Destroy the remaining Deflector Shields.");
         deflectorShieldGenerators.setDisplaySymbol("SG");
         deflectorShieldGenerators.setTravelTime(100);
         deflectorShieldGenerators.setSceneType(SceneType.deflectorShieldGenerators);
         scenes[SceneType.deflectorShieldGenerators.ordinal()] = deflectorShieldGenerators;
         
         Scene enemyFighters = new Scene();
-        enemyFighters.setDescription("Description ... ");
+        enemyFighters.setDescription("You found a hornets nest of enemy fighters.\nEither engage or flee.");
         enemyFighters.setDisplaySymbol("EF");
         enemyFighters.setTravelTime(100);
         enemyFighters.setSceneType(SceneType.enemyFighters);
         scenes[SceneType.enemyFighters.ordinal()] = enemyFighters;
         
         Scene friendlyFighters = new Scene();
-        friendlyFighters.setDescription("Description ... ");
+        friendlyFighters.setDescription("You've regrouped with your squad, they've got your back.");
         friendlyFighters.setDisplaySymbol("FF");
         friendlyFighters.setTravelTime(100);
         friendlyFighters.setSceneType(SceneType.friendlyFighters);
         scenes[SceneType.friendlyFighters.ordinal()] = friendlyFighters;
         
         Scene supplyShip = new Scene();
-        supplyShip.setDescription("Description ... ");
+        supplyShip.setDescription("Welcome to the supply ship.\nYou're going to need more ammo.");
         supplyShip.setDisplaySymbol("SS");
         supplyShip.setTravelTime(100);
         supplyShip.setSceneType(SceneType.supplyShip);
         scenes[SceneType.supplyShip.ordinal()] = supplyShip;
         
         Scene repairShip = new Scene();
-        repairShip.setDescription("Description ... ");
+        repairShip.setDescription("You've taken on some heavy damage.\nLet's get you fixed up so you can get back out there.");
         repairShip.setDisplaySymbol("RS");
         repairShip.setTravelTime(100);
         repairShip.setSceneType(SceneType.repairShip);
@@ -283,11 +283,9 @@ public class Map implements Serializable{
         String line;
         
         console.println("                       Star Wars Map ");
-        console.println("    0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19");
+        console.println("    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19");
         console.println("  -------------------------------------------------------------");
-                
-        location = map.locations[0][0];
-        console.println(location.getScene().getDisplaySymbol());
+        
         for (int row = 0; row < map.getNoOfRows(); row++) {
             line = String.valueOf(row); 
             if (row < 10) line += " ";
@@ -297,7 +295,7 @@ public class Map implements Serializable{
             }
             console.println(line + "|");
         }
-        console.println("-------------------------------------------------------------");
+        console.println("  -------------------------------------------------------------");
     }    
 
     @Override

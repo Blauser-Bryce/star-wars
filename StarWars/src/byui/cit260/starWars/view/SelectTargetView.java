@@ -10,6 +10,7 @@ import byui.cit260.starWars.model.EnemyFighter;
 import byui.cit260.starWars.model.Game;
 import byui.cit260.starWars.model.Item;
 import byui.cit260.starWars.model.Target;
+import byui.cit260.starWars.model.Target.targetType;
 import java.util.ArrayList;
 import starwars.StarWars;
 
@@ -76,7 +77,7 @@ public class SelectTargetView extends View {
         int playerCol = StarWars.getPlayer().getLocation().getColumn();
         
         if (enemyFighterList.length > 0){
-             for (int i = 0; i < enemyFighterList.length -1 ; i++){
+             for (int i = 0; i < enemyFighterList.length; i++){
                 // Show only enemies at the player's current location and enemy health > 0
                 if (enemyFighterList[i].getTargetLocation().getRow() == playerRow &&
                     enemyFighterList[i].getTargetLocation().getColumn() == playerCol &&
@@ -131,13 +132,23 @@ public class SelectTargetView extends View {
         
         Game game = StarWars.getCurrentGame();
         Item[] item = game.getInventory();
-        int remaining = item[Item.itemType.Missile.ordinal()].getQuantity();
         
-        if (remaining <= 0) {
-            console.println("\nYou have no missiles!  Go to supply ship to replenish");
-            return;
+        if (StarWars.getPlayer().getCurrentTarget().getTargetType() == targetType.exhaustPort) {
+            int remaining = item[Item.itemType.Torpedo.ordinal()].getQuantity();
+        
+            if (remaining <= 0) {
+                console.println("\nYou have no torpedos!  Go to supply ship to replenish");
+                return;
+            }
+        } else {
+            int remaining = item[Item.itemType.Missile.ordinal()].getQuantity();
+        
+            if (remaining <= 0) {
+                console.println("\nYou have no missiles!  Go to supply ship to replenish");
+                return;
+            }
         }
-                
+
         AimView aimView = new AimView();
         aimView.console.println(aimView.aim.drawLayout());
         aimView.display();
