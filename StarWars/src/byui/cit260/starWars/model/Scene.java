@@ -5,11 +5,6 @@
  */
 package byui.cit260.starWars.model;
 
-import byui.cit260.starWars.view.StartProgramView;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -23,64 +18,6 @@ public class Scene implements Serializable{
     private int travelTime;
     private String displaySymbol;
     private SceneType type;
-    
-    private static PrintWriter outFile = null;
-    private static BufferedReader inFile = null;
-
-    public static PrintWriter getOutFile() {
-        return outFile;
-    }
-
-    public static void setOutFile(PrintWriter outFile) {
-        Scene.outFile = outFile;
-    }
-
-    public static BufferedReader getInFile() {
-        return inFile;
-    }
-
-    public static void setInFile(BufferedReader inFile) {
-        Scene.inFile = inFile;
-    }
-    
-    public static void main(String[] args) throws IOException {
-        try {
-            //open character stream files for end user input and output
-            starwars.StarWars.inFile = new BufferedReader(new InputStreamReader(System.in));
-            starwars.StarWars.outFile = new PrintWriter(System.out, true);
-            
-            // open log file
-            String filePath = "log.txt";
-            starwars.StarWars.logFile = new PrintWriter(filePath);
-            
-            // create StartProgramView ans start the program
-            StartProgramView startProgramView = new StartProgramView();
-            startProgramView.display();
-            return;
-            
-        } catch (Throwable e) {
-            System.out.println("Exception: " + e.toString() + 
-                               "\nCause: " + e.getCause() +
-                               "\nMessage: " + e.getMessage());
-            
-            e.printStackTrace();;
-        }
-        
-        finally {
-            
-            try {
-                if (starwars.StarWars.inFile != null) starwars.StarWars.inFile.close();
-                
-                if (starwars.StarWars.outFile != null) starwars.StarWars.outFile.close();
-                
-                if (starwars.StarWars.logFile != null) starwars.StarWars.logFile.close();
-                
-            } catch (IOException ex) {
-                System.out.println("Error closing files");
-                return;
-            }
-        }
-    }
     
     public enum SceneType {
         rebelTransportShip,
