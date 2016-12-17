@@ -16,6 +16,10 @@ import starwars.StarWars;
  */
 public class EnemyFighter extends Target implements Serializable {
 
+    public static EnemyFighter[] values() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private int noOfFighter;
     private String enemyFigthersLocation;
 
@@ -71,6 +75,10 @@ public class EnemyFighter extends Target implements Serializable {
     }
 
     EnemyFighter[] enemyFighterList = StarWars.getCurrentGame().getEnemyFighters();
+
+    public Point getCoordinates() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public enum EnemyFighters implements Serializable {
         BlackLeader1("Black Leader #1"),
