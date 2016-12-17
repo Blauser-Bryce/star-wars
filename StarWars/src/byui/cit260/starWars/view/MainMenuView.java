@@ -6,7 +6,7 @@
 package byui.cit260.starWars.view;
 
 import byui.cit260.starWars.control.GameControl;
-import java.util.Scanner;
+import exceptions.GameControlException;
 import starwars.StarWars;
 
 /**
@@ -22,8 +22,8 @@ public class MainMenuView extends View {
                 + "\n--------------------------------"
                 + "\n| Main Menu                    |"
                 + "\n--------------------------------"
-                + "\nG - Start New Game"
-                + "\nL - Load Saved Game"
+                + "\nN - Start New Game"
+                + "\nG - Start Saved Game"
                 + "\nH - Help Menu"
                 + "\nS - Save Game"
                 + "\nX - Exit Game"
@@ -37,10 +37,10 @@ public class MainMenuView extends View {
         choice = choice.toUpperCase(); // converto to upper
         
         switch (choice) {
-            case "G": // Create and start game
+            case "N": // Create and start game
                 this.startNewGame();
                 break;
-            case "L": 
+            case "G": 
                 this.startExistingGame();
                 break;
             case "H":
@@ -57,6 +57,7 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
+        // create a new game
         GameControl.createNewGame(StarWars.getPlayer());
         
         // display the game menu
@@ -72,7 +73,7 @@ public class MainMenuView extends View {
         
         try {
             GameControl.getSavedGame(filePath);
-        } catch (Exception ex) {
+        } catch (GameControlException ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
         
@@ -94,7 +95,7 @@ public class MainMenuView extends View {
         
         try {
             GameControl.saveGame(StarWars.getCurrentGame(), filePath);
-        } catch (Exception ex) {
+        } catch (GameControlException ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
 
