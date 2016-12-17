@@ -64,8 +64,8 @@ public class GameControl {
         game.setInventory(inventoryList);
         
         // create the enemy fighter list
-        EnemyFighter[] enemyFighterList = GameControl.createEnemyFighters();
-        game.setEnemyFighters(enemyFighterList);
+        EnemyFighter[] enemyFighterList = GameControl.createEnemyFighter();
+        game.setEnemyFighter(enemyFighterList);
         
         Map map = new Map(); 
         map = map.createMap();  // Create and initialize the map
@@ -86,11 +86,11 @@ public class GameControl {
         return null;
     }
 
-    private static EnemyFighter[] createEnemyFighters() {
+    private static EnemyFighter[] createEnemyFighter() {
         
-        EnemyFighter[] enemyFighters = new EnemyFighter[35];
+        EnemyFighter[] enemyFighter = new EnemyFighter[35];
         
-        // Populate the tie fighters
+        // Populate the tie fighter
         for (int i = 0; i < 11; i++) {
             // Create default tie fighter
             EnemyFighter tieFighter = new EnemyFighter();
@@ -103,7 +103,7 @@ public class GameControl {
             tieFighter.setTargetShield(100);
             tieFighter.setTargetLocation(location);
             tieFighter.setTargetName("Tie Fighter " + (i + 1));
-            enemyFighters[i] = tieFighter;
+            enemyFighter[i] = tieFighter;
         }
         
         for (int i = 11; i < 17; i++) {
@@ -119,7 +119,7 @@ public class GameControl {
             tieFighter.setTargetShield(100);
             tieFighter.setTargetLocation(location);
             tieFighter.setTargetName("Tie Interceptor " + (i - 10));
-            enemyFighters[i] = tieFighter;
+            enemyFighter[i] = tieFighter;
         }
         
         for (int i = 17; i < 19; i++) {
@@ -135,7 +135,7 @@ public class GameControl {
             tieFighter.setTargetShield(100);
             tieFighter.setTargetLocation(location);
             tieFighter.setTargetName("Tie Interceptor " + (i - 10));
-            enemyFighters[i] = tieFighter;
+            enemyFighter[i] = tieFighter;
         }
         
         // Create Darth Vader fighter
@@ -150,7 +150,7 @@ public class GameControl {
         darthVader.setTargetLocation(location);
         darthVader.setTargetName("Darth Vader");
         
-        enemyFighters[19] = darthVader;
+        enemyFighter[19] = darthVader;
         
         // Populate the turbo laser
         for (int i = 20; i < 24; i++) {
@@ -165,7 +165,7 @@ public class GameControl {
             turboLaser.setTargetShield(100);
             turboLaser.setTargetLocation(locationTL);
             turboLaser.setTargetName("Turbo Laser " + (i - 19));
-            enemyFighters[i] = turboLaser;
+            enemyFighter[i] = turboLaser;
         }
           
         // Populate the Deflector Shield
@@ -206,7 +206,7 @@ public class GameControl {
             deflectorShield.setTargetShield(100);
             deflectorShield.setTargetLocation(locationDS);
             deflectorShield.setTargetName("Defelector Shield " + (i - 23));
-            enemyFighters[i] = deflectorShield;
+            enemyFighter[i] = deflectorShield;
         }
         
         // Create Exhaust port
@@ -222,9 +222,9 @@ public class GameControl {
         exhaustPort.setTargetLocation(locationEP);
         exhaustPort.setTargetName("Exhaust Port");
         
-        enemyFighters[34] = exhaustPort;
+        enemyFighter[34] = exhaustPort;
         
-        return enemyFighters;
+        return enemyFighter;
     }
     
     private static Item[] createInventoryList() {
@@ -285,7 +285,7 @@ public class GameControl {
         locations[15][8].setScene(scenes[SceneType.deathStarRetreatLocation.ordinal()]);
         locations[10][10].setScene(scenes[SceneType.turboLaserBatteries.ordinal()]);
         locations[13][10].setScene(scenes[SceneType.deflectorShieldGenerators.ordinal()]);
-        locations[4][10].setScene(scenes[SceneType.enemyFighters.ordinal()]);
+        locations[4][10].setScene(scenes[SceneType.enemyFighter.ordinal()]);
         locations[3][8].setScene(scenes[SceneType.friendlyFighters.ordinal()]);
         locations[5][6].setScene(scenes[SceneType.supplyShip.ordinal()]);
         locations[5][5].setScene(scenes[SceneType.repairShip.ordinal()]);
