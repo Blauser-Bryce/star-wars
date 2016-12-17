@@ -111,7 +111,6 @@ public class StarWars {
         menulist.setHelp("help menu");
         menulist.setSave("would you like to save game");
         menulist.setQuit("Give UP?");
-
         String menuInfo = menulist.toString();
         
         console.println(menuInfo);
@@ -124,18 +123,14 @@ public class StarWars {
          
         newMap.setRowCount("A");
         newMap.setColumCount("1");
-
         String gameMap = newMap.toString();
-
         console.println(gameMap);
             
         Item shipItems = new Item();
          
         shipItems.setType(itemType.Missile);
         shipItems.setQuantity(10);
-
         String weapons = shipItems.toString();
-
         console.println(weapons);
             
         Location shipLocation = new Location();
@@ -143,21 +138,15 @@ public class StarWars {
         shipLocation.setRow("y");
         shipLocation.setColumn("3");
         shipLocation.setStatus("DogFight");
-
         String ship = shipLocation.toString();
-
         console.println(ship);
-
         
         // Scene
         Scene scene = new Scene();
-
         scene.setDescription("Scene by Itself...");
         scene.setDisplaySymbol("X");
         scene.setTravelTime(20.0);
-
         String theScene = scene.toString();
-
         console.println(theScene);
         
         // Friendly Fighters
@@ -172,7 +161,6 @@ public class StarWars {
         friendlyFighters.setFriendlyFighterLocation("B,5");
         
         String theFriendlyFighters = friendlyFighters.toString();
-
         console.println(theFriendlyFighters);
         
         // Supply Ship
@@ -187,7 +175,6 @@ public class StarWars {
         supplyShip.setTypeSupplies("Apples and bananas");
         
         String theSupplyShip = supplyShip.toString();
-
         console.println(theSupplyShip);
         
         // Repair Shop
@@ -201,7 +188,6 @@ public class StarWars {
         repairShop.setShipCondition(100);
         
         String theRepairShop = repairShop.toString();
-
         console.println(theRepairShop);
         
         // Enemy Fighters
@@ -216,7 +202,6 @@ public class StarWars {
         enemyFighters.setEnemyFighterLocation("C,22");
         
         String theEnemyFighters = enemyFighters.toString();
-
         console.println(theEnemyFighters);
         
         // Death Star
@@ -231,7 +216,6 @@ public class StarWars {
         deathStar.setNoDeflectorShields(10);
         
         String theDeathStar = deathStar.toString();
-
         console.println(theDeathStar);
         
         // Open Space
@@ -245,7 +229,6 @@ public class StarWars {
         openSpace.setOpenSpaceLocation("D,19");
         
         String theOpenSpace = openSpace.toString();
-
         console.println(theOpenSpace);
     
         // Rebel Transport Ship
@@ -259,7 +242,6 @@ public class StarWars {
         rebelTransportShip.setRebelTransportShipLocation("Z,100");
         
         String theRebelTransportShip = rebelTransportShip.toString();
-
         console.println(theRebelTransportShip);
         
         // Target
@@ -281,7 +263,6 @@ public class StarWars {
        
         repItems1.setType(itemType.Missile);
         repItems1.setQuantity(1);
-
         ItemControl instance1 = new ItemControl();
         String result1 = instance1.replenishItem(repItems1, 5, 1000, true);
         console.println(result1);
@@ -291,7 +272,6 @@ public class StarWars {
          
         repItems.setType(itemType.Flare);
         repItems.setQuantity(0);
-
         ItemControl instance = new ItemControl();
         String result = instance.replenishItem(repItems, 100, 2000, true);
         console.println(result);
