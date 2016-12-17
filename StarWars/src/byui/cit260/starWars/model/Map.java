@@ -331,5 +331,13 @@ public class Map implements Serializable{
     public String toString() {
         return "Map{" + "rowCount=" + noOfRows + ", columCount=" + noOfColumns + '}';
     }    
+
+    public Object getType() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getQuantity() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }
