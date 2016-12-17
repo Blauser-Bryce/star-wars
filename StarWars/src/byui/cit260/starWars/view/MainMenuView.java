@@ -22,8 +22,8 @@ public class MainMenuView extends View {
                 + "\n--------------------------------"
                 + "\n| Main Menu                    |"
                 + "\n--------------------------------"
-                + "\nN - Start New Game"
-                + "\nG - Start Saved Game"
+                + "\nG - Start New Game"
+                + "\nL - Load Saved Game"
                 + "\nH - Help Menu"
                 + "\nS - Save Game"
                 + "\nX - Exit Game"
@@ -37,10 +37,10 @@ public class MainMenuView extends View {
         choice = choice.toUpperCase(); // converto to upper
         
         switch (choice) {
-            case "N": // Create and start game
+            case "G": // Create and start game
                 this.startNewGame();
                 break;
-            case "G": 
+            case "L": 
                 this.startExistingGame();
                 break;
             case "H":
