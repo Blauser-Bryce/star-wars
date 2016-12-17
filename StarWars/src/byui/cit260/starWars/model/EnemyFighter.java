@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author Bryce Blauser
  */
-public class EnemyFighter extends Target implements Serializable {
+public class EnemyFighter extends Target implements Serializable{
     
     private int noOfFighter;
     private String enemyFigthersLocation;
