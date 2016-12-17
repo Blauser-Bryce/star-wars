@@ -5,6 +5,7 @@
  */
 package byui.cit260.starWars.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 
 /**
@@ -26,7 +27,7 @@ public enum EnemyFighters implements Serializable {
     GrayLeader6("Gray Leader #6");
     
     private final String description;
-    private final String coordinates;
+    private final Point coordinates;
     
     /*
     public EnemyFighters() {
@@ -35,7 +36,7 @@ public enum EnemyFighters implements Serializable {
     */
     EnemyFighters(String description) {
         this.description = description;
-        coordinates = "1,1"; // Change to new Point(1,1);
+        coordinates = new Point(12,8); // Change to new Point(12,8);
     }
 
     public String getDescription() {
@@ -43,7 +44,7 @@ public enum EnemyFighters implements Serializable {
     }
 
     // Change to Point
-    public String getCoordinates() {
+    public Point getCoordinates() {
         return coordinates;
     }
 }
