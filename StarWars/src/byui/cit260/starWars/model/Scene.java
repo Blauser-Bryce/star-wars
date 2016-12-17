@@ -44,7 +44,17 @@ public class Scene implements Serializable{
         enemyFighters,
         friendlyFighters,
         supplyShip,
-        repairShip
+        repairShip;
+
+        public static class enemyFighter {
+
+            public static int ordinal() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public enemyFighter() {
+            }
+        }
     }
     
     public Scene() {
