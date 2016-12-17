@@ -24,15 +24,15 @@ public class Game implements Serializable{
 
     private Player player;
     private Item[] inventory;
-    private EnemyFighter[] enemyFighters;
+    private EnemyFighter[] enemyFighter;
     private Map map;
 
-    public EnemyFighter[] getEnemyFighters() {
-        return enemyFighters;
+    public EnemyFighter[] getEnemyFighter() {
+        return enemyFighter;
     }
 
-    public void setEnemyFighters(EnemyFighter[] enemyFighters) {
-        this.enemyFighters = enemyFighters;
+    public void setEnemyFighter(EnemyFighter[] enemyFighter) {
+        this.enemyFighter = enemyFighter;
     }
 
     public Player getPlayer() {
@@ -145,6 +145,10 @@ public class Game implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public EnemyFighter[] getEnemyFighters() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
